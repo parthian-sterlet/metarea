@@ -1,4 +1,4 @@
 # MetArea
 MetArea means meta area under curve computation for cooperative transcription factor binding in ChIP-seq data.
 
-Generalisation of the recognition accuracy estimation for pairs of motifs, calculated as the area under curve, allows to define such a common accuracy for various combinations of motifs. Hence increase of this common measure points to synergetic actions of certain pairs of motifs.
+For a pairs of motifs conventional recognition accuracy are estimated calculated as the values of partial area under curve (pAUC). Generalisation of this accuracy measure to joint curve for these two motifs allows to compute a common accuracy for these motifs. Testing of multiple possible combinations of motifs allows to detect most strongly reinforcing each other. The tested motifs can present either structurally different types of binding sites for the same transcription factor, or binding sites of diferent transcription factors acting as part of a single multi-protein complex. Thus, MetArea predicts motifs with synergistically related functions.
