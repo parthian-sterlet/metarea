@@ -11,7 +11,8 @@ For a combination of two motifs, the joint TP rate is defined similarly as ones 
 
 - If two sites of two models do not overlap, the joint FP rate increases additively by two, dFP = 2. We see two distinct sites in a sequence.
 - If these two sites possess the full overlap, the joint FP rate increases only by one, dFP = 1. We see one site in a sequence.
-- If two sites show the partial overlap, the joint FP rate increases an non-integer impact between one and two (1 < dFP < 2), depending on the ratios between the overlap length (OL), and the lengths of motifs W1 and W2, dFP = 0.5 * (OL / W1 + OL / W2) = 0.5 * OL * (W1 + W2) / (W1 * W2)).
+- If two sites show the partial overlap, the joint FP rate increases an non-integer impact between one and two (1 < dFP < 2), depending on the ratios between the overlap length (OL), and the lengths of motifs W1 and W2, dFP = 0.5 * (OL / W1 + OL / W2) = 
+= 0.5 * OL * (W1 + W2) / (W1 * W2)).
 
 The cases of full or partial overlaps imply that joined FP rate possesses the best estimate of ERR for two sites, -Log10(ERR,joined) = Max( -Log10(ERR1),  -Log10(ERR2)).
 
