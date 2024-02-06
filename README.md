@@ -39,3 +39,5 @@ Running mode #4, [pauc_forback_pwm_sga_only.cpp](https://github.com/parthian-ste
 6. output file, ROC curves for single models PWM and SiteGA, joint ROC curve PWM&SiteGA
 7. output file pAUC, list of three pAUC values
 8. output file log, list of three pAUC values
+
+File [run_pwm_sga](https://github.com/parthian-sterlet/metarea/blob/main/src/run_pwm_sga) shows the example command line implementing the combination of PWM and SiteGA motif models for [the peaks dataset PEAKS039234 for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) from [GTRD](https://gtrd.biouml.org/#!)
