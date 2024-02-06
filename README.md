@@ -28,7 +28,7 @@ The cases of full or partial overlaps imply that joined FP rate possesses the be
 4. Test of a couple of motif models, the first and second models are represented by traditional PWM and the alternative [SiteGA](https://github.com/parthian-sterlet/sitega). The latter was chosen as the most methodologically different from the tradiotional one.
 
 # Source code and command line arguments
-Running mode #4, [pauc_forback_pwm_sga_only.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_pwm_sga_only.cpp)
+Combination of the traditional PWM and alternative SiteGA motif models, [pauc_forback_pwm_sga_only.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_pwm_sga_only.cpp)
 1. path input fasta files (arguments #2, #3)
 2. foreground set of sequences, fasta format, peaks, example - [top1000 peaks for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) from [GTRD](https://gtrd.biouml.org/#!)
 3. background set of sequences, fasta format, genomic sequences, [example](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2_pb.fa) genomic sequences from promoters of protein coding genes extracted by [AntiNoise](https://denovosea.icgbio.ru/antinoise/) 
