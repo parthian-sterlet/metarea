@@ -12,6 +12,7 @@ chmod a+x pauc_forback_anc_lib.exe
 chmod a+x pauc_forback_2motifs.exe
 chmod a+x sitega_thr_dist_mat.exe
 chmod a+x pwm_iz_pwm_thr_dist0.exe
+chmod a+x run_pwm_sga
 
 cd ..
 cd genomes
