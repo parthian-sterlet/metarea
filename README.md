@@ -38,4 +38,4 @@ Running mode #4, [pauc_forback_pwm_sga_only.cpp](https://github.com/parthian-ste
 [SiteGA thresholds selection program](https://github.com/parthian-sterlet/mcot-kernel/blob/master/src/pwm_thr_err/pwm_iz_pwm_thr_dist0.cpp) from [SiteGA](https://github.com/parthian-sterlet/sitega)
 6. output file, ROC curve for single models PWM and SiteGA, joint ROC curve PWM&SiteGA
 7. output file pAUC, list of three pAUC values
-8. output file log, almost the same as the preceding file
+8. output file log, almost the same as the preceding file (argument #7)
