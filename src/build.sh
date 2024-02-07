@@ -16,9 +16,19 @@ chmod a+x pfm_to_pwm_mat.exe
 chmod a+x pwm_iz_pwm_thr_dist0.exe
 chmod a+x run_pwm_sga
 
-cd ..
-cd genomes
-cd mm10
-tar -cvzf ups2kb_mm10.seq.tar.gz ups2kb_mm10.seq
+cd ../partners
+cat h12core_hg38.binary.tar.gz.part* > h12core_hg38.binary.tar.gz
+cat h12core_mm10.binary.tar.gz.part* > h12core_mm10.binary.tar.gz
+tar -xvzf h12core_hg38.binary.tar.gz
+tar -xvzf h12core_mm10.binary.tar.gz
+
+cd ../genomes/at
+tar -xvzf ups1500_at10.seq.tar.gz
+cd ../dm
+tar -xvzf ups1500_dm6.seq.tar.gz
+cd ../mm
+tar -xvzf ups2kb_mm10.seq.tar.gz
+cd ../hs
+tar -xvzf ups2kb_hg38.seq.tar.gz
 cd ..
 cd ..
