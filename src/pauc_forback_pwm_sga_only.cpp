@@ -1035,27 +1035,27 @@ int main(int argc, char* argv[])
 {
 	int i, j, k, n;
 	char*** seq_real, *** seq_back;
-	char file_for[ARGLEN], file_back[ARGLEN], path_fasta[ARGLEN], pfile_for[ARGLEN], pfile_back[ARGLEN], partner_pwm[ARGLEN], partner_sga[ARGLEN];
+	char file_for[ARGLEN], file_back[ARGLEN], partner_pwm[ARGLEN], partner_sga[ARGLEN];// path_fasta[ARGLEN], pfile_for[ARGLEN], pfile_back[ARGLEN]
 	char file_roc[ARGLEN], file_auc[ARGLEN], file_log[ARGLEN];
 	FILE* outlog, * out_roc, * out_auc, * in_pwm, *in_sga;
 
-	if (argc != 9)
+	if (argc != 8)
 	{
-		printf("%s 1path_fasta 2foreground fasta 3background fasta 4,5 pwm,sga binary files 6file ROC 7file pAUC 8file log", argv[0]);
+		printf("%s 1,2input fasta foreground,background  3,4input pwm,sga binary files 5,6,7file output ROC, pAUC_list log", argv[0]);
 		return -1;
 	}
-	strcpy(path_fasta, argv[1]);
-	strcpy(file_for, argv[2]);
-	strcpy(file_back, argv[3]);
-	strcpy(pfile_for, path_fasta);
-	strcpy(pfile_back, path_fasta);
-	strcat(pfile_for, file_for);
-	strcat(pfile_back, file_back);
-	strcpy(partner_pwm, argv[4]); //h12hs, h12mm
-	strcpy(partner_sga, argv[5]); //h12hs, h12mm
-	strcpy(file_roc, argv[6]);
-	strcpy(file_auc, argv[7]);
-	strcpy(file_log, argv[8]);
+	//strcpy(path_fasta, argv[1]);
+	strcpy(file_for, argv[1]);
+	strcpy(file_back, argv[2]);
+//	strcpy(pfile_for, path_fasta);
+//	strcpy(pfile_back, path_fasta);
+	//strcat(pfile_for, file_for);
+//	strcat(pfile_back, file_back);
+	strcpy(partner_pwm, argv[3]); //h12hs, h12mm
+	strcpy(partner_sga, argv[4]); //h12hs, h12mm
+	strcpy(file_roc, argv[5]);
+	strcpy(file_auc, argv[6]);
+	strcpy(file_log, argv[7]);
 	int* len_real, * len_back, nseq_real = 0, nseq_back = 0;
 	int olen_min = 8;
 	int len_peak_max = 3000;
@@ -1068,15 +1068,15 @@ int main(int argc, char* argv[])
 		exit(1);
 	}
 	//	printf("EvalSeq\n");
-	EvalSeq(pfile_for, nseq_real, olen_min, len_peak_max, outlog);
-	EvalSeq(pfile_back, nseq_back, olen_min, len_peak_max, outlog);
+	EvalSeq(file_for, nseq_real, olen_min, len_peak_max, outlog);
+	EvalSeq(file_back, nseq_back, olen_min, len_peak_max, outlog);
 	len_real = new int[nseq_real];
 	if (len_real == NULL) { puts("Out of memory..."); exit(1); }
 	len_back = new int[nseq_back];
 	if (len_back == NULL) { puts("Out of memory..."); exit(1); }
 	//printf("EvalLen\n");
-	EvalLen(pfile_for, len_real, olen_min, len_peak_max, outlog);
-	EvalLen(pfile_back, len_back, olen_min, len_peak_max, outlog);
+	EvalLen(file_for, len_real, olen_min, len_peak_max, outlog);
+	EvalLen(file_back, len_back, olen_min, len_peak_max, outlog);
 	seq_real = new char** [2];
 	if (seq_real == NULL) { puts("Out of memory..."); exit(1); }
 	for (i = 0; i < 2; i++)
@@ -1101,8 +1101,8 @@ int main(int argc, char* argv[])
 			if (seq_back[i][j] == NULL) { puts("Out of memory..."); exit(1); }
 		}
 	}
-	ReadSeq(pfile_for, nseq_real, len_real, seq_real, olen_min, len_peak_max, outlog);
-	ReadSeq(pfile_back, nseq_back, len_back, seq_back, olen_min, len_peak_max, outlog);
+	ReadSeq(file_for, nseq_real, len_real, seq_real, olen_min, len_peak_max, outlog);
+	ReadSeq(file_back, nseq_back, len_back, seq_back, olen_min, len_peak_max, outlog);
 	//motif library
 
 	if ((in_pwm = fopen(partner_pwm, "rb")) == NULL)
