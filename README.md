@@ -79,7 +79,7 @@ The cases of full or partial overlaps imply that joined FP rate possesses the be
  
 [anc_lib](https://github.com/parthian-sterlet/metarea/blob/main/run/anc_lib) command line for PWM motif model derived by _de novo_ motif search for [the peaks dataset PEAKS039234 for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) and the collection of motifs for murine TFs from [Hocomoco v12](http://hocomoco12.autosome.ru/)
 
-- One PWM motif model vs. all motifs for known TFs from a given collection, [pauc_forback_anc_lib.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_anc_lib.cpp)
+- Best performed motifs from the collection of PWM motifs for known TFs for certain taxon or species, [pauc_forback_2motifs.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_2motifs.cpp)
 
 [lib_lib](https://github.com/parthian-sterlet/metarea/blob/main/run/anc_lib) command line to test [the peaks dataset PEAKS039234 for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) for top-scoring pairwise combiantaion of motifs from the [Hocomoco v12](http://hocomoco12.autosome.ru/) collection for known murine TFs.
 All fasta files are represented by ID and RF names from [GTRD](https://gtrd.biouml.org/#!)
