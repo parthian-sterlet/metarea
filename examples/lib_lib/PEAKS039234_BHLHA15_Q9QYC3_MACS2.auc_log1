@@ -1,0 +1,1143 @@
+#Motif	TF	Motif	pAUC	Class	Family
+1	Atf2	ATF2.H12CORE.0.PSM.A	1.185333	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+2	Atf2	ATF2.H12CORE.1.P.B	1.133564	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+3	Atf7	ATF7.H12CORE.0.PSM.A	1.250311	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+4	Bach1	BACH1.H12CORE.0.P.B	1.737352	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+5	Bach2	BACH2.H12CORE.0.P.B	1.551420	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+6	Bach2	BACH2.H12CORE.1.SM.B	1.098935	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+7	Creb5	CREB5.H12CORE.0.P.B	1.388067	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+8	Creb5	CREB5.H12CORE.1.SM.B	1.107511	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+9	Jun	JUN.H12CORE.0.P.B	1.660990	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+10	Jun	JUN.H12CORE.1.S.C	1.431657	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+11	Junb	JUNB.H12CORE.0.PM.A	1.581871	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+12	Junb	JUNB.H12CORE.1.S.C	1.274349	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+13	Jund	JUND.H12CORE.0.PM.A	1.473879	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+14	Jund	JUND.H12CORE.1.SM.B	1.428486	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+15	Nfe2	NFE2.H12CORE.0.P.B	1.758768	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+16	Nfe2	NFE2.H12CORE.1.SM.B	1.084342	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+17	Nfe2l1	NF2L1.H12CORE.0.P.B	1.789243	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+18	Nfe2l2	NF2L2.H12CORE.0.P.B	1.453586	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+19	Nfe2l2	NF2L2.H12CORE.1.P.B	1.742898	Basic leucine zipper factors (bZIP) {1.1}	Jun-related {1.1.1}
+20	Atf3	ATF3.H12CORE.0.P.B	1.655817	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+21	Atf3	ATF3.H12CORE.1.P.B	1.544807	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+22	Atf3	ATF3.H12CORE.2.P.B	1.545850	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+23	Atf3	ATF3.H12CORE.3.SM.B	1.172994	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+24	Fos	FOS.H12CORE.0.P.B	1.626003	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+25	Fos	FOS.H12CORE.1.S.C	1.307262	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+26	Fos	FOS.H12CORE.2.S.C	1.462248	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+27	Fosb	FOSB.H12CORE.0.P.B	1.546431	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+28	Fosb	FOSB.H12CORE.1.M.C	1.254193	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+29	Fosb	FOSB.H12CORE.2.M.C	1.176897	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+30	Fosl1	FOSL1.H12CORE.0.P.B	1.625500	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+31	Fosl2	FOSL2.H12CORE.0.P.B	1.612061	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+32	Jdp2	JDP2.H12CORE.0.SM.B	1.341349	Basic leucine zipper factors (bZIP) {1.1}	Fos-related {1.1.2}
+33	Maf	MAF.H12CORE.0.PM.A	1.924684	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+34	Maf	MAF.H12CORE.1.PSM.A	1.845660	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+35	Mafa	MAFA.H12CORE.0.PSM.A	1.900477	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+36	Mafa	MAFA.H12CORE.1.M.C	1.694197	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+37	Mafb	MAFB.H12CORE.0.PS.A	1.702426	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+38	Mafb	MAFB.H12CORE.1.P.B	2.042933	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+39	Maff	MAFF.H12CORE.0.PSM.A	1.625193	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+40	Maff	MAFF.H12CORE.1.PSM.A	1.793916	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+41	Mafg	MAFG.H12CORE.0.PSM.A	1.636102	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+42	Mafg	MAFG.H12CORE.1.PSM.A	1.907000	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+43	Mafk	MAFK.H12CORE.0.PS.A	1.840001	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+44	Mafk	MAFK.H12CORE.1.P.B	2.298209	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+45	Mafk	MAFK.H12CORE.2.S.B	1.895463	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+46	Nrl	NRL.H12CORE.0.SM.B	1.874073	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+47	Nrl	NRL.H12CORE.1.SM.B	2.001488	Basic leucine zipper factors (bZIP) {1.1}	Maf-related {1.1.3}
+48	Batf	BATF.H12CORE.0.P.B	1.449751	Basic leucine zipper factors (bZIP) {1.1}	B-ATF-related {1.1.4}
+49	Batf	BATF.H12CORE.1.P.B	1.669492	Basic leucine zipper factors (bZIP) {1.1}	B-ATF-related {1.1.4}
+50	Batf3	BATF3.H12CORE.0.P.B	1.372441	Basic leucine zipper factors (bZIP) {1.1}	B-ATF-related {1.1.4}
+51	Batf3	BATF3.H12CORE.1.P.B	1.664884	Basic leucine zipper factors (bZIP) {1.1}	B-ATF-related {1.1.4}
+52	Batf3	BATF3.H12CORE.2.SM.B	1.123524	Basic leucine zipper factors (bZIP) {1.1}	B-ATF-related {1.1.4}
+53	Xbp1	XBP1.H12CORE.0.PS.A	1.465544	Basic leucine zipper factors (bZIP) {1.1}	XBP1-related {1.1.5}
+54	Xbp1	XBP1.H12CORE.1.M.B	1.340192	Basic leucine zipper factors (bZIP) {1.1}	XBP1-related {1.1.5}
+55	Atf4	ATF4.H12CORE.0.P.B	1.818806	Basic leucine zipper factors (bZIP) {1.1}	ATF4-related {1.1.6}
+56	Atf4	ATF4.H12CORE.1.S.B	1.695330	Basic leucine zipper factors (bZIP) {1.1}	ATF4-related {1.1.6}
+57	Atf4	ATF4.H12CORE.2.SM.B	1.246396	Basic leucine zipper factors (bZIP) {1.1}	ATF4-related {1.1.6}
+58	Atf1	ATF1.H12CORE.0.P.B	1.522764	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+59	Atf1	ATF1.H12CORE.1.P.B	1.491829	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+60	Atf6	ATF6A.H12CORE.0.SM.B	1.240132	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+61	Atf6b	ATF6B.H12CORE.0.SM.B	1.363615	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+62	Creb1	CREB1.H12CORE.0.PSM.A	1.507896	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+63	Creb3	CREB3.H12CORE.0.SM.B	1.239445	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+64	Creb3l1	CR3L1.H12CORE.0.PSM.A	1.820957	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+65	Creb3l2	CR3L2.H12CORE.0.PS.A	1.676070	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+66	Creb3l4	CR3L4.H12CORE.0.M.C	1.489482	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+67	Creb3l4	CR3L4.H12CORE.1.S.C	1.479342	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+68	Crem	CREM.H12CORE.0.PSM.A	1.535182	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+69	Crem	CREM.H12CORE.1.P.C	1.735142	Basic leucine zipper factors (bZIP) {1.1}	CREB-related {1.1.7}
+70	Cebpa	CEBPA.H12CORE.0.P.B	1.942446	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+71	Cebpb	CEBPB.H12CORE.0.P.B	2.009127	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+72	Cebpb	CEBPB.H12CORE.1.SM.B	1.848640	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+73	Cebpd	CEBPD.H12CORE.0.P.B	2.082214	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+74	Cebpd	CEBPD.H12CORE.1.SM.B	1.828811	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+75	Cebpe	CEBPE.H12CORE.0.P.B	2.003959	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+76	Cebpe	CEBPE.H12CORE.1.SM.B	1.960541	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+77	Cebpg	CEBPG.H12CORE.0.P.B	1.799059	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+78	Cebpg	CEBPG.H12CORE.1.SM.B	1.926925	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+79	Cebpg	CEBPG.H12CORE.2.P.B	1.885767	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+80	Dbp	DBP.H12CORE.0.SM.B	1.177393	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+81	Ddit3	DDIT3.H12CORE.0.P.B	1.915616	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+82	Hlf	HLF.H12CORE.0.P.B	1.541054	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+83	Hlf	HLF.H12CORE.1.SM.B	1.501951	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+84	Nfil3	NFIL3.H12CORE.0.P.B	1.604958	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+85	Nfil3	NFIL3.H12CORE.1.S.B	1.106857	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+86	Tef	TEF.H12CORE.0.SM.B	1.482783	Basic leucine zipper factors (bZIP) {1.1}	C/EBP-related {1.1.8}
+87	Tcf12	HTF4.H12CORE.0.PSM.A	6.504768	Basic helix-loop-helix factors (bHLH) {1.2}	E2A {1.2.1}
+88	Tcf3	TFE2.H12CORE.0.PS.A	5.837960	Basic helix-loop-helix factors (bHLH) {1.2}	E2A {1.2.1}
+89	Tcf4	ITF2.H12CORE.0.S.B	5.638869	Basic helix-loop-helix factors (bHLH) {1.2}	E2A {1.2.1}
+90	Tcf4	ITF2.H12CORE.1.PSM.A	5.086985	Basic helix-loop-helix factors (bHLH) {1.2}	E2A {1.2.1}
+91	Ascl1	ASCL1.H12CORE.0.PSM.A	7.144794	Basic helix-loop-helix factors (bHLH) {1.2}	MyoD-ASC-related {1.2.2}
+92	Ascl2	ASCL2.H12CORE.0.PSM.A	6.741138	Basic helix-loop-helix factors (bHLH) {1.2}	MyoD-ASC-related {1.2.2}
+93	Myf5	MYF5.H12CORE.0.P.B	7.317353	Basic helix-loop-helix factors (bHLH) {1.2}	MyoD-ASC-related {1.2.2}
+94	Myf6	MYF6.H12CORE.0.SM.B	6.240567	Basic helix-loop-helix factors (bHLH) {1.2}	MyoD-ASC-related {1.2.2}
+95	Myod1	MYOD1.H12CORE.0.P.B	7.172237	Basic helix-loop-helix factors (bHLH) {1.2}	MyoD-ASC-related {1.2.2}
+96	Myod1	MYOD1.H12CORE.1.PSM.A	7.262125	Basic helix-loop-helix factors (bHLH) {1.2}	MyoD-ASC-related {1.2.2}
+97	Myog	MYOG.H12CORE.0.PSM.A	6.714249	Basic helix-loop-helix factors (bHLH) {1.2}	MyoD-ASC-related {1.2.2}
+98	Atoh1	ATOH1.H12CORE.0.P.B	7.922311	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+99	Atoh1	ATOH1.H12CORE.1.SM.B	7.449128	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+100	Atoh8	ATOH8.H12CORE.0.P.C	7.315227	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+101	Bhlha15	BHA15.H12CORE.0.P.B	8.253447	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+102	Bhlha15	BHA15.H12CORE.1.SM.B	5.881358	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+103	Bhlhe22	BHE22.H12CORE.0.SM.B	3.651709	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+104	Bhlhe23	BHE23.H12CORE.0.SM.B	3.409476	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+105	Ferd3l	FER3L.H12CORE.0.SM.B	6.707875	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+106	Figla	FIGLA.H12CORE.0.SM.B	5.631433	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+107	Hand1	HAND1.H12CORE.0.P.B	1.644537	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+108	Hand1	HAND1.H12CORE.1.P.B	1.646071	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+109	Hand2	HAND2.H12CORE.0.P.B	1.895247	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+110	Hand2	HAND2.H12CORE.1.P.B	1.679346	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+111	Hand2	HAND2.H12CORE.2.S.C	2.289611	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+112	Lyl1	LYL1.H12CORE.0.P.C	5.748018	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+113	Lyl1	LYL1.H12CORE.1.P.C	2.539128	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+114	Mesp1	MESP1.H12CORE.0.S.C	1.726285	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+115	Mesp2	MESP2.H12CORE.0.S.C	3.700093	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+116	Msc	MUSC.H12CORE.0.SM.B	7.849450	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+117	Msgn1	MSGN1.H12CORE.0.PSM.A	3.452712	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+118	Neurod1	NDF1.H12CORE.0.P.B	7.851753	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+119	Neurod1	NDF1.H12CORE.1.S.C	3.870760	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+120	Neurod2	NDF2.H12CORE.0.P.B	6.835817	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+121	Neurod2	NDF2.H12CORE.1.S.B	3.858862	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+122	Neurog1	NGN1.H12CORE.0.SM.B	3.523289	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+123	Neurog2	NGN2.H12CORE.0.P.B	7.904250	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+124	Neurog2	NGN2.H12CORE.1.SM.B	3.757615	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+125	Nhlh1	HEN1.H12CORE.0.S.B	6.068312	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+126	Nhlh2	HEN2.H12CORE.0.SM.B	5.729518	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+127	Olig1	OLIG1.H12CORE.0.S.B	3.508801	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+128	Olig2	OLIG2.H12CORE.0.P.B	7.216420	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+129	Olig2	OLIG2.H12CORE.1.P.B	8.456920	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+130	Olig2	OLIG2.H12CORE.2.SM.B	4.051017	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+131	Olig3	OLIG3.H12CORE.0.SM.B	3.731285	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+132	Ptf1a	PTF1A.H12CORE.0.P.B	6.001994	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+133	Ptf1a	PTF1A.H12CORE.1.PS.A	7.676141	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+134	Tal1	TAL1.H12CORE.0.P.B	2.012351	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+135	Tal1	TAL1.H12CORE.1.P.B	3.618979	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+136	Tal1	TAL1.H12CORE.2.P.B	5.920592	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+137	Tcf21	TCF21.H12CORE.0.PS.A	7.718983	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+138	Tcf21	TCF21.H12CORE.1.SM.B	6.832817	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+139	Twist1	TWST1.H12CORE.0.P.B	5.135595	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+140	Twist1	TWST1.H12CORE.1.P.B	6.719983	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+141	Twist2	TWST2.H12CORE.0.P.B	6.812642	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+142	Twist2	TWST2.H12CORE.1.P.B	7.276754	Basic helix-loop-helix factors (bHLH) {1.2}	Tal-related {1.2.3}
+143	Bhlhe40	BHE40.H12CORE.0.PSM.A	1.605252	Basic helix-loop-helix factors (bHLH) {1.2}	Hairy-related {1.2.4}
+144	Bhlhe40	BHE40.H12CORE.1.S.C	1.398896	Basic helix-loop-helix factors (bHLH) {1.2}	Hairy-related {1.2.4}
+145	Bhlhe41	BHE41.H12CORE.0.PSM.A	1.580410	Basic helix-loop-helix factors (bHLH) {1.2}	Hairy-related {1.2.4}
+146	Hes1	HES1.H12CORE.0.S.C	1.416233	Basic helix-loop-helix factors (bHLH) {1.2}	Hairy-related {1.2.4}
+147	Hes1	HES1.H12CORE.1.S.C	1.481590	Basic helix-loop-helix factors (bHLH) {1.2}	Hairy-related {1.2.4}
+148	Hes2	HES2.H12CORE.0.S.C	1.520751	Basic helix-loop-helix factors (bHLH) {1.2}	Hairy-related {1.2.4}
+149	Hes5	HES5.H12CORE.0.SM.B	1.765180	Basic helix-loop-helix factors (bHLH) {1.2}	Hairy-related {1.2.4}
+150	Hes7	HES7.H12CORE.0.S.B	1.544798	Basic helix-loop-helix factors (bHLH) {1.2}	Hairy-related {1.2.4}
+151	Hey1	HEY1.H12CORE.0.S.B	1.337387	Basic helix-loop-helix factors (bHLH) {1.2}	Hairy-related {1.2.4}
+152	Hey2	HEY2.H12CORE.0.S.B	1.671864	Basic helix-loop-helix factors (bHLH) {1.2}	Hairy-related {1.2.4}
+153	Ahr	AHR.H12CORE.0.P.B	1.210192	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+154	Ahrr	AHRR.H12CORE.0.P.C	1.966147	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+155	Arnt	ARNT.H12CORE.0.P.B	1.508306	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+156	Arnt	ARNT.H12CORE.1.P.B	1.133017	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+157	Arnt2	ARNT2.H12CORE.0.P.B	2.088360	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+158	Arnt2	ARNT2.H12CORE.1.P.B	1.312885	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+159	Arnt2	ARNT2.H12CORE.2.S.C	1.601848	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+160	Arntl	BMAL1.H12CORE.0.PSM.A	1.551636	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+161	Clock	CLOCK.H12CORE.0.M.C	1.332896	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+162	Clock	CLOCK.H12CORE.1.PS.A	1.588656	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+163	Epas1	EPAS1.H12CORE.0.P.B	1.587958	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+164	Hif1a	HIF1A.H12CORE.0.P.B	1.630465	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+165	Hif1a	HIF1A.H12CORE.1.P.B	1.367580	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+166	Hif3a	HIF3A.H12CORE.0.P.C	1.202540	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+167	Hif3a	HIF3A.H12CORE.1.P.C	1.278368	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+168	Npas2	NPAS2.H12CORE.0.M.B	2.245224	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+169	Npas2	NPAS2.H12CORE.1.M.C	1.595773	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+170	Npas2	NPAS2.H12CORE.2.S.B	1.433148	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+171	Npas3	NPAS3.H12CORE.0.P.C	1.574716	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+172	Npas4	NPAS4.H12CORE.0.P.B	1.552533	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+173	Sohlh2	SOLH2.H12CORE.0.S.C	1.548610	Basic helix-loop-helix factors (bHLH) {1.2}	PAS {1.2.5}
+174	Max	MAX.H12CORE.0.PS.A	1.464878	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+175	Max	MAX.H12CORE.1.M.C	1.482464	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+176	Max	MAX.H12CORE.2.S.C	1.444564	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+177	Mga	MGAP.H12CORE.0.P.C	1.823093	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+178	Mga	MGAP.H12CORE.1.S.B	1.819693	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+179	Mitf	MITF.H12CORE.0.P.B	1.796637	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+180	Mlx	MLX.H12CORE.0.PM.A	1.793527	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+181	Mlx	MLX.H12CORE.1.SM.B	1.368367	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+182	Mlxipl	MLXPL.H12CORE.0.S.B	1.374775	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+183	Mnt	MNT.H12CORE.0.PS.A	1.370634	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+184	Mxd4	MAD4.H12CORE.0.P.C	1.791664	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+185	Mxi1	MXI1.H12CORE.0.P.B	1.443339	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+186	Myc	MYC.H12CORE.0.P.B	1.441155	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+187	Mycn	MYCN.H12CORE.0.PS.A	1.595353	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+188	Mycn	MYCN.H12CORE.1.M.C	0.951472	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+189	Srebf1	SRBP1.H12CORE.0.P.B	1.451793	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+190	Srebf1	SRBP1.H12CORE.1.S.C	1.355693	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+191	Srebf2	SRBP2.H12CORE.0.S.B	1.237055	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+192	Srebf2	SRBP2.H12CORE.1.P.B	1.324256	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+193	Srebf2	SRBP2.H12CORE.2.M.C	1.364726	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+194	Tfe3	TFE3.H12CORE.0.PSM.A	1.598583	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+195	Tfeb	TFEB.H12CORE.0.SM.B	1.634511	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+196	Tfeb	TFEB.H12CORE.1.P.C	1.756583	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+197	Tfec	TFEC.H12CORE.0.M.B	1.482765	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+198	Tfec	TFEC.H12CORE.1.SM.B	1.519581	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+199	Usf1	USF1.H12CORE.0.PSM.A	1.674605	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+200	Usf2	USF2.H12CORE.0.PSM.A	1.617143	Basic helix-loop-helix factors (bHLH) {1.2}	bHLH-ZIP {1.2.6}
+201	Tfap2a	AP2A.H12CORE.0.PSM.A	1.116237	Basic helix-span-helix factors (bHSH) {1.3}	AP-2 {1.3.1}
+202	Tfap2b	AP2B.H12CORE.0.SM.B	1.210203	Basic helix-span-helix factors (bHSH) {1.3}	AP-2 {1.3.1}
+203	Tfap2c	AP2C.H12CORE.0.PSM.A	1.300855	Basic helix-span-helix factors (bHSH) {1.3}	AP-2 {1.3.1}
+204	Tfap2e	AP2E.H12CORE.0.SM.B	1.198572	Basic helix-span-helix factors (bHSH) {1.3}	AP-2 {1.3.1}
+205	Ar	ANDR.H12CORE.0.P.B	1.627488	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+206	Ar	ANDR.H12CORE.2.P.B	1.260726	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+207	Esr1	ESR1.H12CORE.0.P.B	1.355525	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+208	Esr1	ESR1.H12CORE.1.P.B	1.639178	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+209	Esr2	ESR2.H12CORE.0.P.B	1.243315	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+210	Esrra	ERR1.H12CORE.0.PSM.A	1.662597	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+211	Esrrb	ERR2.H12CORE.0.PSM.A	1.634064	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+212	Esrrg	ERR3.H12CORE.0.PSM.A	1.589987	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+213	Nr3c1	GCR.H12CORE.0.PS.A	1.686187	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+214	Nr3c1	GCR.H12CORE.1.S.B	2.373219	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+215	Nr3c2	MCR.H12CORE.0.S.B	1.754855	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+216	Nr3c2	MCR.H12CORE.1.SM.B	2.275780	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+217	Pgr	PRGR.H12CORE.0.P.B	1.785925	Nuclear receptors with C4 zinc fingers {2.1}	Steroid hormone receptors {2.1.1}
+218	Nr1d1	NR1D1.H12CORE.0.P.B	1.562523	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+219	Nr1d1	NR1D1.H12CORE.1.SM.B	1.467353	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+220	Nr1d2	NR1D2.H12CORE.0.P.B	1.287213	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+221	Nr1d2	NR1D2.H12CORE.1.SM.B	1.413102	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+222	Nr1h2	NR1H2.H12CORE.0.P.C	1.606872	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+223	Nr1h2	NR1H2.H12CORE.1.P.C	1.707147	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+224	Nr1h3	NR1H3.H12CORE.0.P.B	1.771495	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+225	Nr1h3	NR1H3.H12CORE.1.P.B	1.619154	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+226	Nr1h4	NR1H4.H12CORE.0.P.B	1.266066	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+227	Nr1h4	NR1H4.H12CORE.1.P.B	1.270994	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+228	Nr1i2	NR1I2.H12CORE.0.M.C	1.256001	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+229	Nr1i2	NR1I2.H12CORE.1.S.C	1.336965	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+230	Nr1i3	NR1I3.H12CORE.0.P.B	1.884595	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+231	Nr1i3	NR1I3.H12CORE.1.PSM.A	1.413746	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+232	Nr1i3	NR1I3.H12CORE.2.M.C	1.213575	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+233	Ppara	PPARA.H12CORE.0.P.B	1.424194	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+234	Ppara	PPARA.H12CORE.1.P.B	1.917707	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+235	Ppard	PPARD.H12CORE.0.PSM.A	1.477440	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+236	Pparg	PPARG.H12CORE.0.P.B	1.427233	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+237	Pparg	PPARG.H12CORE.1.P.B	1.974614	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+238	Rara	RARA.H12CORE.0.PSM.A	1.509681	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+239	Rara	RARA.H12CORE.1.P.B	1.279159	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+240	Rara	RARA.H12CORE.2.P.B	1.339081	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+241	Rara	RARA.H12CORE.3.P.B	1.069912	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+242	Rarb	RARB.H12CORE.0.SM.B	1.558934	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+243	Rarb	RARB.H12CORE.1.P.B	1.610948	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+244	Rarg	RARG.H12CORE.0.P.B	1.230785	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+245	Rarg	RARG.H12CORE.1.PSM.A	1.545677	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+246	Rarg	RARG.H12CORE.2.SM.B	1.461135	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+247	Rarg	RARG.H12CORE.3.S.B	1.471594	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+248	Rora	RORA.H12CORE.0.P.C	1.538968	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+249	Rorb	RORB.H12CORE.0.SM.B	1.473418	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+250	Rorc	RORG.H12CORE.0.M.C	1.408334	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+251	Rorc	RORG.H12CORE.1.PS.A	1.491738	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+252	Thra	THA.H12CORE.0.P.B	1.419180	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+253	Thra	THA.H12CORE.2.S.B	1.458165	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+254	Thrb	THB.H12CORE.0.P.B	1.512968	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+255	Thrb	THB.H12CORE.1.PSM.A	1.648875	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+256	Thrb	THB.H12CORE.2.SM.B	1.462895	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+257	Thrb	THB.H12CORE.3.S.C	1.585486	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+258	Vdr	VDR.H12CORE.0.PS.A	1.323543	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+259	Vdr	VDR.H12CORE.1.PS.A	1.381994	Nuclear receptors with C4 zinc fingers {2.1}	Thyroid hormone receptor-related {2.1.2}
+260	Hnf4a	HNF4A.H12CORE.0.PSM.A	1.848159	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+261	Hnf4g	HNF4G.H12CORE.0.P.B	1.869324	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+262	Nr2c1	NR2C1.H12CORE.0.S.C	1.504136	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+263	Nr2c1	NR2C1.H12CORE.1.PM.A	1.286872	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+264	Nr2c2	NR2C2.H12CORE.0.SM.B	1.459700	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+265	Nr2c2	NR2C2.H12CORE.1.PS.A	1.385092	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+266	Nr2e1	NR2E1.H12CORE.0.SM.B	1.853999	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+267	Nr2e1	NR2E1.H12CORE.1.S.B	1.968977	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+268	Nr2f1	COT1.H12CORE.0.PSM.A	1.576690	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+269	Nr2f1	COT1.H12CORE.1.PSM.A	1.587622	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+270	Nr2f2	COT2.H12CORE.0.P.B	1.584441	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+271	Nr2f2	COT2.H12CORE.1.P.B	1.571896	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+272	Nr2f6	NR2F6.H12CORE.0.P.C	1.606494	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+273	Nr2f6	NR2F6.H12CORE.1.PSM.A	1.569103	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+274	Nr2f6	NR2F6.H12CORE.2.SM.B	1.421076	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+275	Nr2f6	NR2F6.H12CORE.3.SM.B	1.560981	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+276	Rxra	RXRA.H12CORE.0.PS.A	1.606782	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+277	Rxra	RXRA.H12CORE.1.S.C	1.485305	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+278	Rxra	RXRA.H12CORE.2.SM.B	1.388881	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+279	Rxra	RXRA.H12CORE.3.P.B	0.932726	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+280	Rxrb	RXRB.H12CORE.0.P.C	1.651858	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+281	Rxrb	RXRB.H12CORE.1.SM.B	1.268868	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+282	Rxrb	RXRB.H12CORE.2.PS.A	1.411015	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+283	Rxrg	RXRG.H12CORE.0.P.B	1.310546	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+284	Rxrg	RXRG.H12CORE.1.SM.B	1.414212	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+285	Rxrg	RXRG.H12CORE.2.P.B	1.192200	Nuclear receptors with C4 zinc fingers {2.1}	RXR-related receptors {2.1.3}
+286	Nr4a2	NR4A2.H12CORE.0.SM.B	1.836772	Nuclear receptors with C4 zinc fingers {2.1}	NGFI (NR4A) {2.1.4}
+287	Nr5a1	STF1.H12CORE.0.PSM.A	1.323904	Nuclear receptors with C4 zinc fingers {2.1}	FTZF1-related (NR5A) {2.1.5}
+288	Nr5a2	NR5A2.H12CORE.0.PSM.A	1.516315	Nuclear receptors with C4 zinc fingers {2.1}	FTZF1-related (NR5A) {2.1.5}
+289	Nr6a1	NR6A1.H12CORE.0.P.C	1.435358	Nuclear receptors with C4 zinc fingers {2.1}	GCNF (NR6) {2.1.6}
+290	Nr6a1	NR6A1.H12CORE.1.P.C	1.709817	Nuclear receptors with C4 zinc fingers {2.1}	GCNF (NR6) {2.1.6}
+291	Nr6a1	NR6A1.H12CORE.2.SM.B	1.343750	Nuclear receptors with C4 zinc fingers {2.1}	GCNF (NR6) {2.1.6}
+292	Gata1	GATA1.H12CORE.0.P.B	2.073264	Other C4 zinc finger-type factors {2.2}	C4-GATA-related {2.2.1}
+293	Gata1	GATA1.H12CORE.1.PSM.A	2.160320	Other C4 zinc finger-type factors {2.2}	C4-GATA-related {2.2.1}
+294	Gata2	GATA2.H12CORE.0.PSM.A	2.090571	Other C4 zinc finger-type factors {2.2}	C4-GATA-related {2.2.1}
+295	Gata2	GATA2.H12CORE.1.P.B	1.904434	Other C4 zinc finger-type factors {2.2}	C4-GATA-related {2.2.1}
+296	Gata3	GATA3.H12CORE.0.PS.A	2.113304	Other C4 zinc finger-type factors {2.2}	C4-GATA-related {2.2.1}
+297	Gata3	GATA3.H12CORE.1.SM.B	1.923267	Other C4 zinc finger-type factors {2.2}	C4-GATA-related {2.2.1}
+298	Gata4	GATA4.H12CORE.0.PSM.A	2.176507	Other C4 zinc finger-type factors {2.2}	C4-GATA-related {2.2.1}
+299	Gata5	GATA5.H12CORE.0.SM.B	2.045027	Other C4 zinc finger-type factors {2.2}	C4-GATA-related {2.2.1}
+300	Gata6	GATA6.H12CORE.0.PSM.A	2.144709	Other C4 zinc finger-type factors {2.2}	C4-GATA-related {2.2.1}
+301	Trps1	TRPS1.H12CORE.0.P.B	2.083387	Other C4 zinc finger-type factors {2.2}	C4-GATA-related {2.2.1}
+302	Egr1	EGR1.H12CORE.0.PS.A	0.854293	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+303	Egr2	EGR2.H12CORE.0.PSM.A	0.817991	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+304	Egr3	EGR3.H12CORE.0.PSM.A	0.922462	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+305	Egr4	EGR4.H12CORE.0.S.B	1.250411	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+306	Klf1	KLF1.H12CORE.0.P.B	1.028560	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+307	Klf10	KLF10.H12CORE.0.P.C	0.833171	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+308	Klf10	KLF10.H12CORE.1.PSM.A	0.361712	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+309	Klf11	KLF11.H12CORE.0.P.B	0.979662	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+310	Klf11	KLF11.H12CORE.1.SM.B	0.368046	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+311	Klf12	KLF12.H12CORE.0.P.C	0.762654	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+312	Klf12	KLF12.H12CORE.1.PSM.A	0.933179	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+313	Klf13	KLF13.H12CORE.0.PSM.A	0.900614	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+314	Klf13	KLF13.H12CORE.1.P.C	0.546597	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+315	Klf14	KLF14.H12CORE.0.PSM.A	1.029162	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+316	Klf14	KLF14.H12CORE.1.P.C	0.377015	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+317	Klf15	KLF15.H12CORE.0.S.B	0.815855	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+318	Klf15	KLF15.H12CORE.1.P.C	0.267195	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+319	Klf16	KLF16.H12CORE.0.SM.B	1.017311	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+320	Klf16	KLF16.H12CORE.1.P.B	0.321237	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+321	Klf17	KLF17.H12CORE.0.M.C	0.984655	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+322	Klf17	KLF17.H12CORE.1.P.C	0.765464	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+323	Klf2	KLF2.H12CORE.0.S.C	1.027248	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+324	Klf3	KLF3.H12CORE.0.PS.A	0.924233	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+325	Klf3	KLF3.H12CORE.1.M.C	1.187344	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+326	Klf4	KLF4.H12CORE.0.PSM.A	1.034819	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+327	Klf5	KLF5.H12CORE.0.PM.A	1.052122	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+328	Klf6	KLF6.H12CORE.0.P.B	0.796297	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+329	Klf6	KLF6.H12CORE.1.SM.B	0.945559	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+330	Klf8	KLF8.H12CORE.0.P.C	0.932882	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+331	Klf8	KLF8.H12CORE.1.P.C	0.263710	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+332	Klf9	KLF9.H12CORE.0.P.B	0.900925	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+333	Klf9	KLF9.H12CORE.1.P.B	0.488849	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+334	Sp1	SP1.H12CORE.0.P.B	1.073436	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+335	Sp1	SP1.H12CORE.1.SM.B	1.026232	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+336	Sp1	SP1.H12CORE.2.P.B	0.842351	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+337	Sp2	SP2.H12CORE.0.P.D	0.949332	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+338	Sp2	SP2.H12CORE.1.P.B	0.635597	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+339	Sp3	SP3.H12CORE.0.P.B	0.985709	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+340	Sp3	SP3.H12CORE.1.S.B	1.030099	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+341	Sp4	SP4.H12CORE.0.P.C	0.904297	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+342	Sp4	SP4.H12CORE.1.S.B	1.117691	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+343	Sp4	SP4.H12CORE.2.P.B	0.413122	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+344	Sp5	SP5.H12CORE.0.P.B	0.852152	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+345	Sp5	SP5.H12CORE.1.P.B	0.228519	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+346	Sp7	SP7.H12CORE.0.P.B	1.674200	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+347	Sp8	SP8.H12CORE.0.SM.B	1.222197	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+348	Sp9	SP9.H12CORE.0.P.B	1.679580	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+349	Sp9	SP9.H12CORE.1.S.C	1.142681	C2H2 zinc finger factors {2.3}	Three-zinc finger Kruppel-related {2.3.1}
+350	Osr1	OSR1.H12CORE.0.SM.B	1.839414	C2H2 zinc finger factors {2.3}	Other with up to three adjacent zinc fingers {2.3.2}
+351	Zbtb22	ZBT22.H12CORE.0.SM.B	1.644004	C2H2 zinc finger factors {2.3}	Other with up to three adjacent zinc fingers {2.3.2}
+352	Zbtb33	KAISO.H12CORE.0.P.B	1.208734	C2H2 zinc finger factors {2.3}	Other with up to three adjacent zinc fingers {2.3.2}
+353	Zbtb33	KAISO.H12CORE.1.P.B	1.131174	C2H2 zinc finger factors {2.3}	Other with up to three adjacent zinc fingers {2.3.2}
+354	Zbtb43	ZBT43.H12CORE.0.S.C	2.343303	C2H2 zinc finger factors {2.3}	Other with up to three adjacent zinc fingers {2.3.2}
+355	Znf580	ZN580.H12CORE.0.SM.B	1.351312	C2H2 zinc finger factors {2.3}	Other with up to three adjacent zinc fingers {2.3.2}
+356	Znf580	ZN580.H12CORE.1.SM.B	1.327081	C2H2 zinc finger factors {2.3}	Other with up to three adjacent zinc fingers {2.3.2}
+357	Znf740	ZN740.H12CORE.0.P.C	0.511539	C2H2 zinc finger factors {2.3}	Other with up to three adjacent zinc fingers {2.3.2}
+358	Znf740	ZN740.H12CORE.1.S.C	0.198186	C2H2 zinc finger factors {2.3}	Other with up to three adjacent zinc fingers {2.3.2}
+359	Bcl6	BCL6.H12CORE.0.PSM.A	1.509345	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+360	Bcl6b	BCL6B.H12CORE.0.PSM.A	1.660860	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+361	Ctcf	CTCF.H12CORE.0.P.B	3.419846	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+362	Ctcfl	CTCFL.H12CORE.0.P.B	3.043643	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+363	Fezf1	FEZF1.H12CORE.0.P.B	2.324479	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+364	Gfi1	GFI1.H12CORE.0.PSM.A	1.754587	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+365	Gfi1b	GFI1B.H12CORE.0.PSM.A	1.587130	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+366	Gfi1b	GFI1B.H12CORE.1.S.C	1.390852	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+367	Gli1	GLI1.H12CORE.0.P.C	1.226693	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+368	Gli2	GLI2.H12CORE.0.PSM.A	1.009070	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+369	Gli3	GLI3.H12CORE.0.PS.A	1.005351	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+370	Gli3	GLI3.H12CORE.1.M.C	1.229897	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+371	Glis1	GLIS1.H12CORE.0.P.B	1.572636	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+372	Glis1	GLIS1.H12CORE.1.P.B	1.418772	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+373	Glis1	GLIS1.H12CORE.2.SM.B	0.747224	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+374	Glis2	GLIS2.H12CORE.0.SM.B	0.733075	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+375	Glis3	GLIS3.H12CORE.0.P.C	1.385200	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+376	Glis3	GLIS3.H12CORE.1.S.C	0.869567	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+377	Mtf1	MTF1.H12CORE.0.SM.B	2.234940	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+378	Mynn	MYNN.H12CORE.0.P.B	1.775603	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+379	Osr2	OSR2.H12CORE.0.PSM.A	1.769357	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+380	Osr2	OSR2.H12CORE.1.M.C	1.704938	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+381	Ovol1	OVOL1.H12CORE.0.SM.B	1.878140	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+382	Ovol2	OVOL2.H12CORE.0.PSM.A	1.821242	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+383	Prdm1	PRDM1.H12CORE.0.S.B	1.694366	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+384	Prdm1	PRDM1.H12CORE.1.PS.A	1.399653	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+385	Prdm14	PRD14.H12CORE.0.P.B	1.551197	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+386	Prdm5	PRDM5.H12CORE.0.P.B	1.517164	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+387	Prdm5	PRDM5.H12CORE.1.P.B	2.035782	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+388	Prdm6	PRDM6.H12CORE.0.P.B	1.190427	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+389	Rbak	RBAK.H12CORE.0.P.C	1.690849	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+390	Scrt1	SCRT1.H12CORE.0.PSM.A	3.423807	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+391	Scrt2	SCRT2.H12CORE.0.PSM.A	2.290243	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+392	Snai1	SNAI1.H12CORE.0.PSM.A	2.120432	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+393	Snai2	SNAI2.H12CORE.0.PSM.A	2.272389	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+394	Snai3	SNAI3.H12CORE.0.S.C	2.069720	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+395	Wt1	WT1.H12CORE.0.P.B	0.784597	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+396	Wt1	WT1.H12CORE.1.P.B	0.376363	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+397	Yy1	TYY1.H12CORE.0.PSM.A	1.733388	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+398	Yy1	TYY1.H12CORE.1.S.B	1.618678	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+399	Yy2	TYY2.H12CORE.0.PS.A	1.679895	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+400	Yy2	TYY2.H12CORE.1.SM.B	1.766280	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+401	Zbtb14	ZBT14.H12CORE.0.P.C	0.721161	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+402	Zbtb14	ZBT14.H12CORE.1.S.B	0.701956	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+403	Zbtb18	ZBT18.H12CORE.0.PSM.A	6.530304	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+404	Zbtb20	ZBT20.H12CORE.0.SM.B	1.313450	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+405	Zbtb24	ZBT24.H12CORE.0.P.B	1.605757	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+406	Zbtb42	ZBT42.H12CORE.0.P.C	6.281494	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+407	Zbtb44	ZBT44.H12CORE.0.P.C	2.395631	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+408	Zbtb45	ZBT45.H12CORE.0.SM.B	2.179269	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+409	Zbtb48	TZAP.H12CORE.0.P.B	1.519641	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+410	Zbtb49	ZBT49.H12CORE.0.P.C	1.395443	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+411	Zbtb6	ZBTB6.H12CORE.0.P.B	1.476858	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+412	Zbtb7a	ZBT7A.H12CORE.0.P.B	0.778475	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+413	Zbtb7a	ZBT7A.H12CORE.1.SM.B	0.726637	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+414	Zbtb7b	ZBT7B.H12CORE.0.SM.B	0.999143	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+415	Zbtb7c	ZBT7C.H12CORE.0.S.B	1.035502	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+416	Zfp1	ZFP1.H12CORE.0.PSM.A	1.866571	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+417	Zfp13	ZN205.H12CORE.0.P.C	2.034751	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+418	Zfp14	ZFP14.H12CORE.0.P.C	1.291306	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+419	Zfp184	ZN184.H12CORE.0.P.B	0.943394	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+420	Zfp28	ZFP28.H12CORE.0.P.B	0.521144	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+421	Zfp3	ZFP3.H12CORE.0.P.C	1.160559	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+422	Zfp37	ZFP37.H12CORE.0.P.C	0.749305	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+423	Zfp41	ZFP41.H12CORE.0.SM.B	1.812640	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+424	Zfp42	ZFP42.H12CORE.0.PM.A	1.692093	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+425	Zfp64	ZF64B.H12CORE.0.P.B	1.656056	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+426	Zfp64	ZF64B.H12CORE.1.P.B	1.516117	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+427	Zfp69	ZFP69.H12CORE.0.P.C	1.506145	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+428	Zfp82	ZFP82.H12CORE.0.P.C	0.607404	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+429	Zfp90	ZFP90.H12CORE.0.P.C	2.341527	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+430	Zfp90	ZFP90.H12CORE.1.P.C	1.807281	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+431	Zfp91	ZFP91.H12CORE.0.P.C	1.461079	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+432	Zfx	ZFX.H12CORE.0.P.B	1.433264	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+433	Zic1	ZIC1.H12CORE.0.P.B	2.627741	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+434	Zic1	ZIC1.H12CORE.1.M.B	2.332615	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+435	Zic1	ZIC1.H12CORE.2.S.B	2.124101	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+436	Zic2	ZIC2.H12CORE.0.P.B	2.673931	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+437	Zic3	ZIC3.H12CORE.0.P.B	2.969213	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+438	Zic3	ZIC3.H12CORE.1.S.B	1.901547	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+439	Zic3	ZIC3.H12CORE.2.M.B	2.087139	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+440	Zic4	ZIC4.H12CORE.0.SM.B	1.423229	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+441	Zic5	ZIC5.H12CORE.0.P.B	2.302755	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+442	Zic5	ZIC5.H12CORE.1.M.C	2.087497	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+443	Zic5	ZIC5.H12CORE.2.S.C	1.220351	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+444	Zik1	ZIK1.H12CORE.0.P.C	0.678786	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+445	Zkscan1	ZKSC1.H12CORE.0.P.B	1.649385	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+446	Znf12	ZNF12.H12CORE.0.P.C	2.289283	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+447	Znf12	ZNF12.H12CORE.1.M.C	1.637304	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+448	Znf12	ZNF12.H12CORE.2.S.C	1.768635	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+449	Znf143	ZN143.H12CORE.0.P.B	1.522777	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+450	Znf146	OZF.H12CORE.0.P.B	1.267850	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+451	Znf148	ZN148.H12CORE.0.P.B	0.568942	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+452	Znf18	ZNF18.H12CORE.0.P.B	1.523888	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+453	Znf2	ZNF2.H12CORE.0.P.B	1.807474	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+454	Znf239	ZN239.H12CORE.0.P.C	0.281417	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+455	Znf24	ZNF24.H12CORE.0.P.B	1.071387	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+456	Znf250	ZN250.H12CORE.0.P.C	1.690019	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+457	Znf250	ZN250.H12CORE.1.M.C	1.374885	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+458	Znf260	ZN260.H12CORE.0.P.C	1.577475	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+459	Znf263	ZN263.H12CORE.0.PM.A	1.091136	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+460	Znf263	ZN263.H12CORE.1.P.B	0.361214	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+461	Znf276	ZN276.H12CORE.0.SM.B	1.034617	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+462	Znf281	ZN281.H12CORE.0.P.B	0.611141	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+463	Znf281	ZN281.H12CORE.1.SM.B	0.330501	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+464	Znf32	ZNF32.H12CORE.0.SM.B	1.552632	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+465	Znf322	ZN322.H12CORE.0.P.C	1.519152	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+466	Znf329	ZN329.H12CORE.0.P.C	1.935513	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+467	Znf329	ZN329.H12CORE.1.P.C	1.917132	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+468	Znf354a	Z354A.H12CORE.0.P.B	1.038075	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+469	Znf394	ZN394.H12CORE.0.P.C	1.769269	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+470	Znf410	ZN410.H12CORE.0.SM.B	1.277016	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+471	Znf431	ZN431.H12CORE.0.P.C	1.884100	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+472	Znf436	ZN436.H12CORE.0.P.C	1.520250	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+473	Znf524	ZN524.H12CORE.0.S.B	1.070864	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+474	Znf652	ZN652.H12CORE.0.PS.A	1.740526	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+475	Znf664	ZN664.H12CORE.0.P.C	1.266795	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+476	Znf664	ZN664.H12CORE.1.P.C	1.778563	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+477	Znf667	ZN667.H12CORE.0.P.C	1.816805	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+478	Znf667	ZN667.H12CORE.1.P.C	1.659486	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+479	Znf692	ZN692.H12CORE.0.P.C	1.556885	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+480	Znf76	ZNF76.H12CORE.0.P.B	1.357931	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+481	Znf76	ZNF76.H12CORE.1.SM.B	1.330856	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+482	Znf768	ZN768.H12CORE.0.P.B	1.424470	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+483	Znf768	ZN768.H12CORE.1.P.B	2.211983	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+484	Znf771	ZN771.H12CORE.0.SM.B	1.810859	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+485	Znf879	ZN879.H12CORE.0.P.C	0.498365	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+486	Zscan21	ZSC21.H12CORE.0.P.C	1.571406	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+487	Zscan4c	ZSCA4.H12CORE.0.SM.B	0.469547	C2H2 zinc finger factors {2.3}	More than 3 adjacent zinc fingers {2.3.3}
+488	E4f1	E4F1.H12CORE.0.P.B	1.668394	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+489	Hic1	HIC1.H12CORE.0.PSM.A	2.628207	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+490	Hinfp	HINFP.H12CORE.0.P.B	1.346224	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+491	Hinfp	HINFP.H12CORE.1.P.B	1.547693	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+492	Hinfp	HINFP.H12CORE.2.S.B	1.262415	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+493	Maz	MAZ.H12CORE.0.P.B	0.686355	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+494	Maz	MAZ.H12CORE.1.P.B	0.309576	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+495	Prdm13	PRD13.H12CORE.0.P.B	3.400989	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+496	Prdm15	PRD15.H12CORE.0.P.B	1.349422	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+497	Prdm16	PRD16.H12CORE.0.P.B	1.551563	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+498	Prdm4	PRDM4.H12CORE.0.PSM.A	2.083707	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+499	Prdm9	PRDM9.H12CORE.0.P.B	2.850761	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+500	Rest	REST.H12CORE.0.P.B	2.248126	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+501	Sall1	SALL1.H12CORE.0.P.C	0.691500	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+502	Sall4	SALL4.H12CORE.0.P.B	0.959820	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+503	Zbtb17	ZBT17.H12CORE.0.P.B	0.575759	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+504	Zfp57	ZFP57.H12CORE.0.P.B	1.887331	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+505	Zkscan5	ZKSC5.H12CORE.0.P.C	1.003833	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+506	Znf112	ZN112.H12CORE.0.P.C	1.613411	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+507	Znf296	ZN296.H12CORE.0.S.C	1.961639	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+508	Znf316	ZN316.H12CORE.0.P.C	1.771101	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+509	Znf335	ZN335.H12CORE.0.P.B	2.082198	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+510	Znf382	ZN382.H12CORE.0.P.B	1.389810	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+511	Znf423	ZN423.H12CORE.0.P.C	1.410674	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+512	Znf467	ZN467.H12CORE.0.P.C	0.100322	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+513	Znf574	ZN574.H12CORE.0.P.B	1.788414	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+514	Znf711	ZN711.H12CORE.0.P.C	1.361373	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+515	Znf770	ZN770.H12CORE.0.P.B	1.345631	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+516	Znf770	ZN770.H12CORE.1.P.B	0.732504	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+517	Znf784	ZN784.H12CORE.0.SM.B	1.052082	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+518	Znf787	ZN787.H12CORE.0.M.C	1.220443	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+519	Znf787	ZN787.H12CORE.1.S.C	1.401447	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+520	Znf8	ZNF8.H12CORE.0.P.C	1.805550	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+521	Znf8	ZNF8.H12CORE.1.P.B	1.680798	C2H2 zinc finger factors {2.3}	Multiple dispersed zinc fingers {2.3.4}
+522	Dmrt1	DMRT1.H12CORE.0.PS.A	1.379268	DM-type intertwined zinc finger factors {2.5}	DMRT {2.5.1}
+523	Dmrt1	DMRT1.H12CORE.1.M.C	1.642623	DM-type intertwined zinc finger factors {2.5}	DMRT {2.5.1}
+524	Dmrt3	DMRT3.H12CORE.0.S.C	1.430452	DM-type intertwined zinc finger factors {2.5}	DMRT {2.5.1}
+525	Dmrta1	DMRTA.H12CORE.0.SM.B	1.651734	DM-type intertwined zinc finger factors {2.5}	DMRT {2.5.1}
+526	Dmrta2	DMTA2.H12CORE.0.SM.B	1.619137	DM-type intertwined zinc finger factors {2.5}	DMRT {2.5.1}
+527	Dmrtb1	DMRTB.H12CORE.0.P.C	1.613618	DM-type intertwined zinc finger factors {2.5}	DMRT {2.5.1}
+528	Dmrtc2	DMRTD.H12CORE.0.SM.B	1.689450	DM-type intertwined zinc finger factors {2.5}	DMRT {2.5.1}
+529	Kmt2a	KMT2A.H12CORE.0.P.B	0.336032	CXXC zinc finger factors {2.6}	CpG-binding {2.6.1}
+530	Thap1	THAP1.H12CORE.0.P.B	1.708985	C2CH THAP-type zinc finger factors {2.9}	THAP {2.9.1}
+531	Cdx1	CDX1.H12CORE.0.M.B	1.448870	Homeo domain factors {3.1}	HOX-related {3.1.1}
+532	Cdx1	CDX1.H12CORE.1.S.B	1.369389	Homeo domain factors {3.1}	HOX-related {3.1.1}
+533	Cdx2	CDX2.H12CORE.0.PS.A	1.327061	Homeo domain factors {3.1}	HOX-related {3.1.1}
+534	Cdx2	CDX2.H12CORE.1.M.C	1.355980	Homeo domain factors {3.1}	HOX-related {3.1.1}
+535	Cdx4	CDX4.H12CORE.0.S.C	1.323088	Homeo domain factors {3.1}	HOX-related {3.1.1}
+536	Cdx4	CDX4.H12CORE.1.M.C	1.491407	Homeo domain factors {3.1}	HOX-related {3.1.1}
+537	Evx1	EVX1.H12CORE.0.SM.B	1.481027	Homeo domain factors {3.1}	HOX-related {3.1.1}
+538	Evx2	EVX2.H12CORE.0.SM.B	1.545351	Homeo domain factors {3.1}	HOX-related {3.1.1}
+539	Evx2	EVX2.H12CORE.1.S.B	1.168725	Homeo domain factors {3.1}	HOX-related {3.1.1}
+540	Gbx1	GBX1.H12CORE.0.S.B	1.402336	Homeo domain factors {3.1}	HOX-related {3.1.1}
+541	Gbx1	GBX1.H12CORE.1.S.B	1.062102	Homeo domain factors {3.1}	HOX-related {3.1.1}
+542	Gbx2	GBX2.H12CORE.0.SM.B	1.361430	Homeo domain factors {3.1}	HOX-related {3.1.1}
+543	Gbx2	GBX2.H12CORE.1.S.B	0.931213	Homeo domain factors {3.1}	HOX-related {3.1.1}
+544	Gsx1	GSX1.H12CORE.0.SM.B	1.502793	Homeo domain factors {3.1}	HOX-related {3.1.1}
+545	Gsx2	GSX2.H12CORE.0.SM.B	1.452521	Homeo domain factors {3.1}	HOX-related {3.1.1}
+546	Hoxa1	HXA1.H12CORE.0.SM.B	1.536952	Homeo domain factors {3.1}	HOX-related {3.1.1}
+547	Hoxa1	HXA1.H12CORE.1.S.B	1.203632	Homeo domain factors {3.1}	HOX-related {3.1.1}
+548	Hoxa10	HXA10.H12CORE.0.S.B	1.463970	Homeo domain factors {3.1}	HOX-related {3.1.1}
+549	Hoxa10	HXA10.H12CORE.1.M.B	1.435482	Homeo domain factors {3.1}	HOX-related {3.1.1}
+550	Hoxa11	HXA11.H12CORE.0.PS.A	1.280130	Homeo domain factors {3.1}	HOX-related {3.1.1}
+551	Hoxa11	HXA11.H12CORE.1.SM.B	1.545838	Homeo domain factors {3.1}	HOX-related {3.1.1}
+552	Hoxa13	HXA13.H12CORE.0.P.B	1.295141	Homeo domain factors {3.1}	HOX-related {3.1.1}
+553	Hoxa13	HXA13.H12CORE.1.SM.B	1.470792	Homeo domain factors {3.1}	HOX-related {3.1.1}
+554	Hoxa2	HXA2.H12CORE.0.SM.B	1.461560	Homeo domain factors {3.1}	HOX-related {3.1.1}
+555	Hoxa4	HXA4.H12CORE.0.SM.B	1.466660	Homeo domain factors {3.1}	HOX-related {3.1.1}
+556	Hoxa5	HXA5.H12CORE.0.SM.B	1.493099	Homeo domain factors {3.1}	HOX-related {3.1.1}
+557	Hoxa6	HXA6.H12CORE.0.SM.B	1.408739	Homeo domain factors {3.1}	HOX-related {3.1.1}
+558	Hoxa7	HXA7.H12CORE.0.SM.B	1.413148	Homeo domain factors {3.1}	HOX-related {3.1.1}
+559	Hoxa9	HXA9.H12CORE.0.P.B	1.477947	Homeo domain factors {3.1}	HOX-related {3.1.1}
+560	Hoxa9	HXA9.H12CORE.1.SM.B	1.495099	Homeo domain factors {3.1}	HOX-related {3.1.1}
+561	Hoxa9	HXA9.H12CORE.2.P.B	1.333076	Homeo domain factors {3.1}	HOX-related {3.1.1}
+562	Hoxb1	HXB1.H12CORE.0.SM.B	1.546122	Homeo domain factors {3.1}	HOX-related {3.1.1}
+563	Hoxb13	HXB13.H12CORE.0.PS.A	1.465369	Homeo domain factors {3.1}	HOX-related {3.1.1}
+564	Hoxb13	HXB13.H12CORE.1.SM.B	1.569728	Homeo domain factors {3.1}	HOX-related {3.1.1}
+565	Hoxb2	HXB2.H12CORE.0.SM.B	1.512172	Homeo domain factors {3.1}	HOX-related {3.1.1}
+566	Hoxb3	HXB3.H12CORE.0.S.B	1.569047	Homeo domain factors {3.1}	HOX-related {3.1.1}
+567	Hoxb4	HXB4.H12CORE.0.P.B	1.719076	Homeo domain factors {3.1}	HOX-related {3.1.1}
+568	Hoxb4	HXB4.H12CORE.1.PSM.A	1.455841	Homeo domain factors {3.1}	HOX-related {3.1.1}
+569	Hoxb5	HXB5.H12CORE.0.SM.B	1.451193	Homeo domain factors {3.1}	HOX-related {3.1.1}
+570	Hoxb6	HXB6.H12CORE.0.SM.B	1.495377	Homeo domain factors {3.1}	HOX-related {3.1.1}
+571	Hoxb7	HXB7.H12CORE.0.P.C	1.444838	Homeo domain factors {3.1}	HOX-related {3.1.1}
+572	Hoxb7	HXB7.H12CORE.1.SM.B	1.585438	Homeo domain factors {3.1}	HOX-related {3.1.1}
+573	Hoxb8	HXB8.H12CORE.0.PSM.A	1.405179	Homeo domain factors {3.1}	HOX-related {3.1.1}
+574	Hoxb9	HXB9.H12CORE.0.S.C	1.520065	Homeo domain factors {3.1}	HOX-related {3.1.1}
+575	Hoxb9	HXB9.H12CORE.1.M.C	1.448524	Homeo domain factors {3.1}	HOX-related {3.1.1}
+576	Hoxc10	HXC10.H12CORE.0.P.B	1.344266	Homeo domain factors {3.1}	HOX-related {3.1.1}
+577	Hoxc10	HXC10.H12CORE.1.S.B	1.429953	Homeo domain factors {3.1}	HOX-related {3.1.1}
+578	Hoxc10	HXC10.H12CORE.2.SM.B	1.450441	Homeo domain factors {3.1}	HOX-related {3.1.1}
+579	Hoxc11	HXC11.H12CORE.0.SM.B	1.504550	Homeo domain factors {3.1}	HOX-related {3.1.1}
+580	Hoxc11	HXC11.H12CORE.1.S.B	1.499375	Homeo domain factors {3.1}	HOX-related {3.1.1}
+581	Hoxc12	HXC12.H12CORE.0.SM.B	1.554201	Homeo domain factors {3.1}	HOX-related {3.1.1}
+582	Hoxc13	HXC13.H12CORE.0.SM.B	1.520621	Homeo domain factors {3.1}	HOX-related {3.1.1}
+583	Hoxc4	HXC4.H12CORE.0.SM.B	1.430484	Homeo domain factors {3.1}	HOX-related {3.1.1}
+584	Hoxc8	HXC8.H12CORE.0.SM.B	1.503511	Homeo domain factors {3.1}	HOX-related {3.1.1}
+585	Hoxc9	HXC9.H12CORE.0.P.B	1.511476	Homeo domain factors {3.1}	HOX-related {3.1.1}
+586	Hoxc9	HXC9.H12CORE.1.S.C	1.458612	Homeo domain factors {3.1}	HOX-related {3.1.1}
+587	Hoxc9	HXC9.H12CORE.2.M.C	1.387341	Homeo domain factors {3.1}	HOX-related {3.1.1}
+588	Hoxd1	HXD1.H12CORE.0.SM.B	1.267338	Homeo domain factors {3.1}	HOX-related {3.1.1}
+589	Hoxd10	HXD10.H12CORE.0.SM.B	1.512966	Homeo domain factors {3.1}	HOX-related {3.1.1}
+590	Hoxd11	HXD11.H12CORE.0.PS.A	1.433037	Homeo domain factors {3.1}	HOX-related {3.1.1}
+591	Hoxd11	HXD11.H12CORE.1.SM.B	1.285394	Homeo domain factors {3.1}	HOX-related {3.1.1}
+592	Hoxd12	HXD12.H12CORE.0.SM.B	1.475776	Homeo domain factors {3.1}	HOX-related {3.1.1}
+593	Hoxd13	HXD13.H12CORE.0.PS.A	1.398684	Homeo domain factors {3.1}	HOX-related {3.1.1}
+594	Hoxd13	HXD13.H12CORE.1.SM.B	1.594616	Homeo domain factors {3.1}	HOX-related {3.1.1}
+595	Hoxd3	HXD3.H12CORE.0.SM.B	1.397543	Homeo domain factors {3.1}	HOX-related {3.1.1}
+596	Hoxd4	HXD4.H12CORE.0.SM.B	1.500439	Homeo domain factors {3.1}	HOX-related {3.1.1}
+597	Hoxd8	HXD8.H12CORE.0.SM.B	1.487790	Homeo domain factors {3.1}	HOX-related {3.1.1}
+598	Hoxd9	HXD9.H12CORE.0.SM.B	1.438841	Homeo domain factors {3.1}	HOX-related {3.1.1}
+599	Meox1	MEOX1.H12CORE.0.SM.B	1.450962	Homeo domain factors {3.1}	HOX-related {3.1.1}
+600	Meox2	MEOX2.H12CORE.0.SM.B	1.533075	Homeo domain factors {3.1}	HOX-related {3.1.1}
+601	Mnx1	MNX1.H12CORE.0.SM.B	1.385408	Homeo domain factors {3.1}	HOX-related {3.1.1}
+602	Pdx1	PDX1.H12CORE.0.P.B	1.605872	Homeo domain factors {3.1}	HOX-related {3.1.1}
+603	Pdx1	PDX1.H12CORE.1.PSM.A	1.489119	Homeo domain factors {3.1}	HOX-related {3.1.1}
+604	Hmbox1	HMBX1.H12CORE.0.PSM.A	1.900058	Homeo domain factors {3.1}	POU {3.1.10}
+605	Hnf1a	HNF1A.H12CORE.0.PS.A	1.678173	Homeo domain factors {3.1}	POU {3.1.10}
+606	Hnf1b	HNF1B.H12CORE.0.PS.A	1.649414	Homeo domain factors {3.1}	POU {3.1.10}
+607	Hnf1b	HNF1B.H12CORE.1.P.D	1.757939	Homeo domain factors {3.1}	POU {3.1.10}
+608	Pou1f1	PIT1.H12CORE.0.SM.B	1.612961	Homeo domain factors {3.1}	POU {3.1.10}
+609	Pou1f1	PIT1.H12CORE.1.S.B	1.349114	Homeo domain factors {3.1}	POU {3.1.10}
+610	Pou2f1	PO2F1.H12CORE.0.PS.A	1.495723	Homeo domain factors {3.1}	POU {3.1.10}
+611	Pou2f2	PO2F2.H12CORE.0.PSM.A	1.556829	Homeo domain factors {3.1}	POU {3.1.10}
+612	Pou2f2	PO2F2.H12CORE.1.M.C	1.614846	Homeo domain factors {3.1}	POU {3.1.10}
+613	Pou2f2	PO2F2.H12CORE.2.S.B	1.569424	Homeo domain factors {3.1}	POU {3.1.10}
+614	Pou2f3	PO2F3.H12CORE.0.PS.A	1.828575	Homeo domain factors {3.1}	POU {3.1.10}
+615	Pou2f3	PO2F3.H12CORE.1.S.C	1.539505	Homeo domain factors {3.1}	POU {3.1.10}
+616	Pou3f1	PO3F1.H12CORE.0.P.B	1.465548	Homeo domain factors {3.1}	POU {3.1.10}
+617	Pou3f1	PO3F1.H12CORE.1.PS.A	1.149746	Homeo domain factors {3.1}	POU {3.1.10}
+618	Pou3f1	PO3F1.H12CORE.2.S.C	1.405850	Homeo domain factors {3.1}	POU {3.1.10}
+619	Pou3f1	PO3F1.H12CORE.3.M.C	1.544028	Homeo domain factors {3.1}	POU {3.1.10}
+620	Pou3f2	PO3F2.H12CORE.0.P.B	1.314476	Homeo domain factors {3.1}	POU {3.1.10}
+621	Pou3f2	PO3F2.H12CORE.1.S.B	1.339786	Homeo domain factors {3.1}	POU {3.1.10}
+622	Pou3f2	PO3F2.H12CORE.2.SM.B	1.629479	Homeo domain factors {3.1}	POU {3.1.10}
+623	Pou3f3	PO3F3.H12CORE.0.P.C	1.528192	Homeo domain factors {3.1}	POU {3.1.10}
+624	Pou3f3	PO3F3.H12CORE.1.P.C	1.344470	Homeo domain factors {3.1}	POU {3.1.10}
+625	Pou3f3	PO3F3.H12CORE.2.S.B	1.479985	Homeo domain factors {3.1}	POU {3.1.10}
+626	Pou3f4	PO3F4.H12CORE.0.SM.B	1.777605	Homeo domain factors {3.1}	POU {3.1.10}
+627	Pou4f1	PO4F1.H12CORE.0.S.B	1.324845	Homeo domain factors {3.1}	POU {3.1.10}
+628	Pou4f1	PO4F1.H12CORE.1.SM.B	0.961704	Homeo domain factors {3.1}	POU {3.1.10}
+629	Pou4f2	PO4F2.H12CORE.0.S.B	0.950831	Homeo domain factors {3.1}	POU {3.1.10}
+630	Pou4f3	PO4F3.H12CORE.0.SM.B	1.261552	Homeo domain factors {3.1}	POU {3.1.10}
+631	Pou5f1	PO5F1.H12CORE.0.P.B	1.561794	Homeo domain factors {3.1}	POU {3.1.10}
+632	Pou5f1	PO5F1.H12CORE.1.P.B	1.734218	Homeo domain factors {3.1}	POU {3.1.10}
+633	Pou5f1	PO5F1.H12CORE.2.SM.B	1.655292	Homeo domain factors {3.1}	POU {3.1.10}
+634	Pou6f1	PO6F1.H12CORE.0.SM.B	1.550307	Homeo domain factors {3.1}	POU {3.1.10}
+635	Pou6f2	PO6F2.H12CORE.0.S.B	1.419419	Homeo domain factors {3.1}	POU {3.1.10}
+636	Barhl1	BARH1.H12CORE.0.SM.B	1.655712	Homeo domain factors {3.1}	NK-related {3.1.2}
+637	Barhl1	BARH1.H12CORE.1.S.B	1.372749	Homeo domain factors {3.1}	NK-related {3.1.2}
+638	Barhl2	BARH2.H12CORE.0.SM.B	1.627048	Homeo domain factors {3.1}	NK-related {3.1.2}
+639	Barhl2	BARH2.H12CORE.1.S.B	1.196389	Homeo domain factors {3.1}	NK-related {3.1.2}
+640	Barhl2	BARH2.H12CORE.2.S.C	1.631754	Homeo domain factors {3.1}	NK-related {3.1.2}
+641	Barx1	BARX1.H12CORE.0.P.C	1.625911	Homeo domain factors {3.1}	NK-related {3.1.2}
+642	Barx1	BARX1.H12CORE.1.S.B	1.493856	Homeo domain factors {3.1}	NK-related {3.1.2}
+643	Barx2	BARX2.H12CORE.0.SM.B	1.464044	Homeo domain factors {3.1}	NK-related {3.1.2}
+644	Bsx	BSH.H12CORE.0.SM.B	1.516477	Homeo domain factors {3.1}	NK-related {3.1.2}
+645	Dlx1	DLX1.H12CORE.0.S.B	0.986183	Homeo domain factors {3.1}	NK-related {3.1.2}
+646	Dlx1	DLX1.H12CORE.1.PSM.A	1.378337	Homeo domain factors {3.1}	NK-related {3.1.2}
+647	Dlx2	DLX2.H12CORE.0.PSM.A	1.258665	Homeo domain factors {3.1}	NK-related {3.1.2}
+648	Dlx2	DLX2.H12CORE.1.S.B	1.023938	Homeo domain factors {3.1}	NK-related {3.1.2}
+649	Dlx3	DLX3.H12CORE.0.SM.B	1.440441	Homeo domain factors {3.1}	NK-related {3.1.2}
+650	Dlx3	DLX3.H12CORE.1.S.B	1.014758	Homeo domain factors {3.1}	NK-related {3.1.2}
+651	Dlx4	DLX4.H12CORE.0.SM.B	1.190593	Homeo domain factors {3.1}	NK-related {3.1.2}
+652	Dlx4	DLX4.H12CORE.1.S.C	0.944248	Homeo domain factors {3.1}	NK-related {3.1.2}
+653	Dlx5	DLX5.H12CORE.0.PSM.A	1.186218	Homeo domain factors {3.1}	NK-related {3.1.2}
+654	Dlx6	DLX6.H12CORE.0.SM.B	1.307450	Homeo domain factors {3.1}	NK-related {3.1.2}
+655	Emx1	EMX1.H12CORE.0.SM.B	1.430036	Homeo domain factors {3.1}	NK-related {3.1.2}
+656	Emx2	EMX2.H12CORE.0.S.B	1.449590	Homeo domain factors {3.1}	NK-related {3.1.2}
+657	En1	HME1.H12CORE.0.PSM.A	1.346392	Homeo domain factors {3.1}	NK-related {3.1.2}
+658	En2	HME2.H12CORE.0.SM.B	1.478476	Homeo domain factors {3.1}	NK-related {3.1.2}
+659	Hmx1	HMX1.H12CORE.0.SM.B	1.524222	Homeo domain factors {3.1}	NK-related {3.1.2}
+660	Hmx2	HMX2.H12CORE.0.SM.B	1.408578	Homeo domain factors {3.1}	NK-related {3.1.2}
+661	Hmx3	HMX3.H12CORE.0.S.B	1.528673	Homeo domain factors {3.1}	NK-related {3.1.2}
+662	Lbx2	LBX2.H12CORE.0.S.B	1.288938	Homeo domain factors {3.1}	NK-related {3.1.2}
+663	Lbx2	LBX2.H12CORE.1.S.B	1.161728	Homeo domain factors {3.1}	NK-related {3.1.2}
+664	Lbx2	LBX2.H12CORE.2.M.C	1.326204	Homeo domain factors {3.1}	NK-related {3.1.2}
+665	Msx1	MSX1.H12CORE.0.SM.B	1.305019	Homeo domain factors {3.1}	NK-related {3.1.2}
+666	Msx1	MSX1.H12CORE.1.S.C	1.132454	Homeo domain factors {3.1}	NK-related {3.1.2}
+667	Msx2	MSX2.H12CORE.0.SM.B	1.367285	Homeo domain factors {3.1}	NK-related {3.1.2}
+668	Msx2	MSX2.H12CORE.1.SM.B	0.948021	Homeo domain factors {3.1}	NK-related {3.1.2}
+669	Nanog	NANOG.H12CORE.0.P.B	1.607870	Homeo domain factors {3.1}	NK-related {3.1.2}
+670	Nanog	NANOG.H12CORE.1.P.B	1.663285	Homeo domain factors {3.1}	NK-related {3.1.2}
+671	Nanog	NANOG.H12CORE.2.M.C	1.458147	Homeo domain factors {3.1}	NK-related {3.1.2}
+672	Nkx2-1	NKX21.H12CORE.0.P.B	1.700229	Homeo domain factors {3.1}	NK-related {3.1.2}
+673	Nkx2-2	NKX22.H12CORE.0.P.B	1.585090	Homeo domain factors {3.1}	NK-related {3.1.2}
+674	Nkx2-3	NKX23.H12CORE.0.SM.B	1.542399	Homeo domain factors {3.1}	NK-related {3.1.2}
+675	Nkx2-5	NKX25.H12CORE.0.PSM.A	1.512207	Homeo domain factors {3.1}	NK-related {3.1.2}
+676	Nkx2-5	NKX25.H12CORE.1.P.B	2.058274	Homeo domain factors {3.1}	NK-related {3.1.2}
+677	Nkx2-8	NKX28.H12CORE.0.SM.B	1.515931	Homeo domain factors {3.1}	NK-related {3.1.2}
+678	Nkx3-1	NKX31.H12CORE.0.PSM.A	1.576860	Homeo domain factors {3.1}	NK-related {3.1.2}
+679	Nkx3-2	NKX32.H12CORE.0.PSM.A	1.625993	Homeo domain factors {3.1}	NK-related {3.1.2}
+680	Nkx3-2	NKX32.H12CORE.1.S.B	1.544755	Homeo domain factors {3.1}	NK-related {3.1.2}
+681	Nkx6-1	NKX61.H12CORE.0.PS.A	1.257856	Homeo domain factors {3.1}	NK-related {3.1.2}
+682	Nkx6-1	NKX61.H12CORE.1.P.B	1.532838	Homeo domain factors {3.1}	NK-related {3.1.2}
+683	Nkx6-1	NKX61.H12CORE.2.S.B	1.357925	Homeo domain factors {3.1}	NK-related {3.1.2}
+684	Nkx6-3	NKX63.H12CORE.0.SM.B	1.414692	Homeo domain factors {3.1}	NK-related {3.1.2}
+685	Noto	NOTO.H12CORE.0.SM.B	1.504448	Homeo domain factors {3.1}	NK-related {3.1.2}
+686	Tlx2	TLX2.H12CORE.0.SM.B	1.522098	Homeo domain factors {3.1}	NK-related {3.1.2}
+687	Tlx3	TLX3.H12CORE.0.SM.B	1.509852	Homeo domain factors {3.1}	NK-related {3.1.2}
+688	Vax1	VAX1.H12CORE.0.SM.B	1.487497	Homeo domain factors {3.1}	NK-related {3.1.2}
+689	Vax2	VAX2.H12CORE.0.SM.B	1.418983	Homeo domain factors {3.1}	NK-related {3.1.2}
+690	Alx1	ALX1.H12CORE.0.SM.B	1.271492	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+691	Alx3	ALX3.H12CORE.0.SM.B	1.386858	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+692	Alx3	ALX3.H12CORE.1.S.B	1.144968	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+693	Alx4	ALX4.H12CORE.0.S.B	1.280145	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+694	Alx4	ALX4.H12CORE.1.SM.B	1.427779	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+695	Arx	ARX.H12CORE.0.S.B	1.220899	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+696	Arx	ARX.H12CORE.1.SM.B	1.520870	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+697	Crx	CRX.H12CORE.0.PSM.A	1.328993	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+698	Dmbx1	DMBX1.H12CORE.0.SM.B	1.579992	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+699	Drgx	DRGX.H12CORE.0.S.B	1.062181	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+700	Drgx	DRGX.H12CORE.1.SM.B	1.367570	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+701	Gsc	GSC.H12CORE.0.SM.B	1.426166	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+702	Gsc2	GSC2.H12CORE.0.SM.B	1.438608	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+703	Hesx1	HESX1.H12CORE.0.SM.B	1.331573	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+704	Hesx1	HESX1.H12CORE.1.S.B	1.053401	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+705	Isx	ISX.H12CORE.0.SM.B	1.023282	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+706	Isx	ISX.H12CORE.1.S.B	1.108127	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+707	Isx	ISX.H12CORE.2.SM.B	1.074328	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+708	Mixl1	MIXL1.H12CORE.0.SM.B	1.320887	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+709	Mixl1	MIXL1.H12CORE.1.S.B	1.462669	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+710	Otx1	OTX1.H12CORE.0.SM.B	1.431429	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+711	Otx1	OTX1.H12CORE.1.S.B	1.429460	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+712	Otx2	OTX2.H12CORE.0.PSM.A	1.354296	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+713	Phox2a	PHX2A.H12CORE.0.PS.A	1.062316	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+714	Phox2a	PHX2A.H12CORE.1.SM.B	1.407034	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+715	Phox2b	PHX2B.H12CORE.0.PSM.A	1.268914	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+716	Phox2b	PHX2B.H12CORE.1.SM.B	1.446030	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+717	Pitx1	PITX1.H12CORE.0.PSM.A	1.425676	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+718	Pitx1	PITX1.H12CORE.1.S.B	1.195031	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+719	Pitx2	PITX2.H12CORE.0.SM.B	1.424314	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+720	Pitx3	PITX3.H12CORE.0.SM.B	1.421665	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+721	Pitx3	PITX3.H12CORE.1.S.B	1.211673	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+722	Prop1	PROP1.H12CORE.0.PSM.A	1.308737	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+723	Prop1	PROP1.H12CORE.1.P.C	1.526654	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+724	Prrx1	PRRX1.H12CORE.0.S.B	1.278515	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+725	Prrx1	PRRX1.H12CORE.1.S.B	0.913157	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+726	Prrx2	PRRX2.H12CORE.0.SM.B	1.452357	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+727	Prrx2	PRRX2.H12CORE.1.S.B	1.072079	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+728	Rax	RX.H12CORE.0.SM.B	1.203362	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+729	Shox2	SHOX2.H12CORE.0.S.B	0.920283	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+730	Shox2	SHOX2.H12CORE.1.S.C	1.332272	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+731	Uncx	UNC4.H12CORE.0.S.B	1.245002	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+732	Uncx	UNC4.H12CORE.1.S.B	1.466608	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+733	Vsx1	VSX1.H12CORE.0.SM.B	1.429354	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+734	Vsx1	VSX1.H12CORE.1.SM.B	1.122603	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+735	Vsx2	VSX2.H12CORE.0.PSM.A	1.568890	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+736	Vsx2	VSX2.H12CORE.1.S.B	1.090681	Homeo domain factors {3.1}	Paired-related HD {3.1.3}
+737	Irx1	IRX1.H12CORE.0.S.C	1.707258	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+738	Irx2	IRX2.H12CORE.0.S.B	1.665731	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+739	Irx3	IRX3.H12CORE.0.M.C	1.896061	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+740	Irx3	IRX3.H12CORE.1.S.B	1.689190	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+741	Irx3	IRX3.H12CORE.2.S.C	1.365989	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+742	Irx5	IRX5.H12CORE.0.M.C	1.808819	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+743	Irx5	IRX5.H12CORE.1.SM.B	1.793922	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+744	Meis1	MEIS1.H12CORE.0.P.B	1.506675	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+745	Meis1	MEIS1.H12CORE.1.PS.A	2.584498	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+746	Meis2	MEIS2.H12CORE.0.P.C	1.646174	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+747	Meis2	MEIS2.H12CORE.1.PSM.A	2.207113	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+748	Meis2	MEIS2.H12CORE.2.SM.B	2.580036	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+749	Meis3	MEIS3.H12CORE.0.SM.B	1.928543	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+750	Meis3	MEIS3.H12CORE.1.S.B	3.195035	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+751	Pbx1	PBX1.H12CORE.0.P.B	1.786786	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+752	Pbx1	PBX1.H12CORE.1.P.B	1.736959	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+753	Pbx1	PBX1.H12CORE.2.P.B	2.375667	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+754	Pbx2	PBX2.H12CORE.0.P.B	1.790192	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+755	Pbx2	PBX2.H12CORE.1.P.C	1.722983	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+756	Pbx2	PBX2.H12CORE.2.P.C	1.817485	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+757	Pbx3	PBX3.H12CORE.0.P.B	1.758392	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+758	Pbx3	PBX3.H12CORE.1.P.B	1.699444	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+759	Pknox1	PKNX1.H12CORE.0.P.B	1.783748	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+760	Pknox1	PKNX1.H12CORE.1.P.B	1.814752	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+761	Pknox1	PKNX1.H12CORE.2.SM.B	1.933166	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+762	Pknox1	PKNX1.H12CORE.3.SM.B	2.084065	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+763	Pknox2	PKNX2.H12CORE.0.SM.B	2.986250	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+764	Pknox2	PKNX2.H12CORE.1.SM.B	2.483569	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+765	Tgif1	TGIF1.H12CORE.1.S.B	1.754550	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+766	Tgif2	TGIF2.H12CORE.0.S.B	2.811599	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+767	Tgif2	TGIF2.H12CORE.1.PSM.A	2.017239	Homeo domain factors {3.1}	TALE-type HD {3.1.4}
+768	Isl1	ISL1.H12CORE.0.PSM.A	1.609973	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+769	Isl2	ISL2.H12CORE.0.SM.B	1.540087	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+770	Lhx1	LHX1.H12CORE.0.S.C	1.468193	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+771	Lhx1	LHX1.H12CORE.1.M.C	1.695780	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+772	Lhx2	LHX2.H12CORE.0.PS.A	1.486777	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+773	Lhx2	LHX2.H12CORE.1.S.C	1.120513	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+774	Lhx3	LHX3.H12CORE.0.P.B	1.402818	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+775	Lhx4	LHX4.H12CORE.0.SM.B	1.467069	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+776	Lhx5	LHX5.H12CORE.0.PSM.A	1.313691	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+777	Lhx6	LHX6.H12CORE.0.P.B	1.663312	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+778	Lhx6	LHX6.H12CORE.1.S.B	1.491461	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+779	Lhx6	LHX6.H12CORE.2.M.C	1.685906	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+780	Lhx8	LHX8.H12CORE.0.S.B	1.428862	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+781	Lhx8	LHX8.H12CORE.1.M.C	1.671296	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+782	Lhx9	LHX9.H12CORE.0.PS.A	1.339407	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+783	Lhx9	LHX9.H12CORE.1.M.B	1.480658	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+784	Lmx1a	LMX1A.H12CORE.0.SM.B	1.314763	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+785	Lmx1b	LMX1B.H12CORE.1.SM.B	1.269113	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+786	Lmx1b	LMX1B.H12CORE.2.S.B	1.003688	Homeo domain factors {3.1}	HD-LIM {3.1.5}
+787	Six1	SIX1.H12CORE.0.P.B	1.651118	Homeo domain factors {3.1}	HD-SINE {3.1.6}
+788	Six1	SIX1.H12CORE.1.SM.B	1.460698	Homeo domain factors {3.1}	HD-SINE {3.1.6}
+789	Six2	SIX2.H12CORE.0.P.B	1.612056	Homeo domain factors {3.1}	HD-SINE {3.1.6}
+790	Six2	SIX2.H12CORE.1.M.C	1.563380	Homeo domain factors {3.1}	HD-SINE {3.1.6}
+791	Six2	SIX2.H12CORE.2.SM.B	1.687709	Homeo domain factors {3.1}	HD-SINE {3.1.6}
+792	Six3	SIX3.H12CORE.0.SM.B	1.494400	Homeo domain factors {3.1}	HD-SINE {3.1.6}
+793	Six4	SIX4.H12CORE.0.P.B	1.738476	Homeo domain factors {3.1}	HD-SINE {3.1.6}
+794	Six4	SIX4.H12CORE.1.M.C	1.243114	Homeo domain factors {3.1}	HD-SINE {3.1.6}
+795	Six6	SIX6.H12CORE.0.SM.B	1.532786	Homeo domain factors {3.1}	HD-SINE {3.1.6}
+796	Prox1	PROX1.H12CORE.0.SM.B	1.601420	Homeo domain factors {3.1}	HD-PROS {3.1.7}
+797	Homez	HOMEZ.H12CORE.0.S.B	1.556017	Homeo domain factors {3.1}	HD-ZF {3.1.8}
+798	Zeb1	ZEB1.H12CORE.0.P.B	2.095706	Homeo domain factors {3.1}	HD-ZF {3.1.8}
+799	Cux1	CUX1.H12CORE.0.PM.A	1.400012	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+800	Cux1	CUX1.H12CORE.1.S.B	1.478394	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+801	Cux1	CUX1.H12CORE.2.P.C	1.576289	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+802	Cux2	CUX2.H12CORE.0.P.C	1.332921	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+803	Cux2	CUX2.H12CORE.1.SM.B	1.280742	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+804	Cux2	CUX2.H12CORE.2.S.C	1.453455	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+805	Onecut1	HNF6.H12CORE.0.PM.A	1.418386	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+806	Onecut1	HNF6.H12CORE.1.S.B	1.221432	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+807	Onecut1	HNF6.H12CORE.2.S.B	1.030387	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+808	Onecut1	HNF6.H12CORE.3.M.B	1.344920	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+809	Onecut2	ONEC2.H12CORE.0.S.B	1.499250	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+810	Onecut2	ONEC2.H12CORE.1.PM.A	1.424491	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+811	Onecut2	ONEC2.H12CORE.2.S.B	1.279440	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+812	Onecut2	ONEC2.H12CORE.3.P.B	0.904050	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+813	Onecut3	ONEC3.H12CORE.0.S.B	1.407139	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+814	Onecut3	ONEC3.H12CORE.1.S.C	1.242165	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+815	Onecut3	ONEC3.H12CORE.2.M.C	1.597946	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+816	Satb1	SATB1.H12CORE.0.P.B	0.981225	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+817	Satb1	SATB1.H12CORE.1.P.B	1.421514	Homeo domain factors {3.1}	HD-CUT {3.1.9}
+818	Pax3	PAX3.H12CORE.0.PS.A	1.697258	Paired box factors {3.2}	PD+HD {3.2.1}
+819	Pax3	PAX3.H12CORE.1.SM.B	1.667595	Paired box factors {3.2}	PD+HD {3.2.1}
+820	Pax3	PAX3.H12CORE.2.P.C	1.426035	Paired box factors {3.2}	PD+HD {3.2.1}
+821	Pax3	PAX3.H12CORE.3.S.B	0.997103	Paired box factors {3.2}	PD+HD {3.2.1}
+822	Pax4	PAX4.H12CORE.0.SM.B	1.667625	Paired box factors {3.2}	PD+HD {3.2.1}
+823	Pax4	PAX4.H12CORE.1.S.C	1.339102	Paired box factors {3.2}	PD+HD {3.2.1}
+824	Pax6	PAX6.H12CORE.0.PSM.A	1.473424	Paired box factors {3.2}	PD+HD {3.2.1}
+825	Pax7	PAX7.H12CORE.0.P.B	1.725825	Paired box factors {3.2}	PD+HD {3.2.1}
+826	Pax7	PAX7.H12CORE.1.S.B	1.338164	Paired box factors {3.2}	PD+HD {3.2.1}
+827	Pax7	PAX7.H12CORE.2.PM.A	1.340945	Paired box factors {3.2}	PD+HD {3.2.1}
+828	Pax1	PAX1.H12CORE.0.SM.B	1.419275	Paired box factors {3.2}	PD {3.2.2}
+829	Pax2	PAX2.H12CORE.0.SM.B	1.456819	Paired box factors {3.2}	PD {3.2.2}
+830	Pax5	PAX5.H12CORE.0.PS.A	1.365111	Paired box factors {3.2}	PD {3.2.2}
+831	Pax8	PAX8.H12CORE.0.PSM.A	1.332577	Paired box factors {3.2}	PD {3.2.2}
+832	Pax9	PAX9.H12CORE.0.SM.B	1.370308	Paired box factors {3.2}	PD {3.2.2}
+833	Foxa1	FOXA1.H12CORE.0.P.B	2.512025	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+834	Foxa1	FOXA1.H12CORE.1.S.C	2.149360	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+835	Foxa2	FOXA2.H12CORE.0.PSM.A	2.546701	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+836	Foxa2	FOXA2.H12CORE.1.SM.B	2.093528	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+837	Foxa3	FOXA3.H12CORE.0.PS.A	2.488182	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+838	Foxa3	FOXA3.H12CORE.1.M.C	1.871164	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+839	Foxb1	FOXB1.H12CORE.0.SM.B	1.812532	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+840	Foxc1	FOXC1.H12CORE.0.S.B	1.523937	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+841	Foxc1	FOXC1.H12CORE.1.S.C	1.449672	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+842	Foxc2	FOXC2.H12CORE.0.SM.B	1.327307	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+843	Foxd2	FOXD2.H12CORE.0.S.B	1.348544	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+844	Foxd2	FOXD2.H12CORE.1.SM.B	1.214162	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+845	Foxd3	FOXD3.H12CORE.0.P.C	2.149977	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+846	Foxd3	FOXD3.H12CORE.1.S.B	1.250141	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+847	Foxe1	FOXE1.H12CORE.0.SM.B	1.209312	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+848	Foxe1	FOXE1.H12CORE.1.S.C	1.029394	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+849	Foxf1	FOXF1.H12CORE.0.P.C	1.905687	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+850	Foxg1	FOXG1.H12CORE.0.PSM.A	2.278810	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+851	Foxh1	FOXH1.H12CORE.0.P.B	1.708392	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+852	Foxi1	FOXI1.H12CORE.0.SM.B	1.742840	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+853	Foxj2	FOXJ2.H12CORE.0.PSM.A	1.746579	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+854	Foxj2	FOXJ2.H12CORE.1.SM.B	1.757638	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+855	Foxj2	FOXJ2.H12CORE.2.S.B	0.731457	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+856	Foxj3	FOXJ3.H12CORE.0.SM.B	2.113346	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+857	Foxk1	FOXK1.H12CORE.0.PS.A	2.071020	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+858	Foxk2	FOXK2.H12CORE.0.P.B	2.096571	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+859	Foxl1	FOXL1.H12CORE.0.S.B	0.843991	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+860	Foxl2	FOXL2.H12CORE.0.PSM.A	1.897090	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+861	Foxm1	FOXM1.H12CORE.0.P.B	2.295185	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+862	Foxo1	FOXO1.H12CORE.0.PS.A	2.360957	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+863	Foxo3	FOXO3.H12CORE.0.PS.A	2.346748	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+864	Foxo4	FOXO4.H12CORE.0.SM.B	1.542839	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+865	Foxo6	FOXO6.H12CORE.0.S.B	1.906783	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+866	Foxp1	FOXP1.H12CORE.0.PS.A	2.641797	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+867	Foxp2	FOXP2.H12CORE.0.P.B	2.563439	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+868	Foxp3	FOXP3.H12CORE.0.P.B	1.438589	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+869	Foxr2	FOXR2.H12CORE.0.M.C	0.387850	Fork head/winged helix factors {3.3}	FOX {3.3.1}
+870	E2f1	E2F1.H12CORE.0.P.B	1.322585	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+871	E2f1	E2F1.H12CORE.1.S.B	1.516718	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+872	E2f2	E2F2.H12CORE.0.S.B	1.469109	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+873	E2f3	E2F3.H12CORE.0.P.B	1.315235	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+874	E2f3	E2F3.H12CORE.1.SM.B	1.264381	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+875	E2f4	E2F4.H12CORE.0.P.B	1.435236	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+876	E2f4	E2F4.H12CORE.1.P.B	1.259589	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+877	E2f4	E2F4.H12CORE.2.S.B	1.755796	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+878	E2f6	E2F6.H12CORE.0.P.B	1.075840	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+879	E2f7	E2F7.H12CORE.0.S.C	1.281141	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+880	E2f7	E2F7.H12CORE.1.P.B	1.605973	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+881	E2f8	E2F8.H12CORE.0.P.C	1.685971	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+882	E2f8	E2F8.H12CORE.1.SM.B	1.485698	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+883	Tfdp1	TFDP1.H12CORE.0.P.B	1.062822	Fork head/winged helix factors {3.3}	E2F {3.3.2}
+884	Rfx1	RFX1.H12CORE.0.PM.A	2.034989	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+885	Rfx1	RFX1.H12CORE.1.PSM.A	1.768287	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+886	Rfx1	RFX1.H12CORE.2.S.C	2.158726	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+887	Rfx2	RFX2.H12CORE.0.PS.A	1.862667	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+888	Rfx2	RFX2.H12CORE.1.PSM.A	1.630564	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+889	Rfx3	RFX3.H12CORE.0.PSM.A	1.970548	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+890	Rfx3	RFX3.H12CORE.1.PS.A	1.908722	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+891	Rfx3	RFX3.H12CORE.2.S.B	0.441041	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+892	Rfx4	RFX4.H12CORE.0.SM.B	1.736449	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+893	Rfx5	RFX5.H12CORE.0.P.B	2.684654	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+894	Rfx5	RFX5.H12CORE.1.PSM.A	2.503297	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+895	Rfx5	RFX5.H12CORE.2.S.B	1.966649	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+896	Rfx6	RFX6.H12CORE.0.P.C	2.367831	Fork head/winged helix factors {3.3}	RFX {3.3.3}
+897	Hsf1	HSF1.H12CORE.0.PSM.A	1.470609	Heat shock factors {3.4}	HSF {3.4.1}
+898	Hsf1	HSF1.H12CORE.1.P.B	1.928478	Heat shock factors {3.4}	HSF {3.4.1}
+899	Hsf1	HSF1.H12CORE.2.P.B	1.083175	Heat shock factors {3.4}	HSF {3.4.1}
+900	Hsf2	HSF2.H12CORE.0.PSM.A	1.640455	Heat shock factors {3.4}	HSF {3.4.1}
+901	Hsf4	HSF4.H12CORE.0.SM.B	1.629114	Heat shock factors {3.4}	HSF {3.4.1}
+902	Hsf5	HSF5.H12CORE.0.M.C	1.836637	Heat shock factors {3.4}	HSF {3.4.1}
+903	Hsf5	HSF5.H12CORE.1.S.C	1.897984	Heat shock factors {3.4}	HSF {3.4.1}
+904	Myb	MYB.H12CORE.0.P.B	2.619707	Tryptophan cluster factors {3.5}	Myb/SANT domain {3.5.1}
+905	Mybl1	MYBA.H12CORE.0.P.B	2.500498	Tryptophan cluster factors {3.5}	Myb/SANT domain {3.5.1}
+906	Mybl1	MYBA.H12CORE.1.PS.A	2.043721	Tryptophan cluster factors {3.5}	Myb/SANT domain {3.5.1}
+907	Mybl1	MYBA.H12CORE.2.S.B	1.815117	Tryptophan cluster factors {3.5}	Myb/SANT domain {3.5.1}
+908	Mybl2	MYBB.H12CORE.0.S.B	1.920536	Tryptophan cluster factors {3.5}	Myb/SANT domain {3.5.1}
+909	Mybl2	MYBB.H12CORE.1.S.B	1.817170	Tryptophan cluster factors {3.5}	Myb/SANT domain {3.5.1}
+910	Ehf	EHF.H12CORE.0.P.B	1.497731	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+911	Elf1	ELF1.H12CORE.0.PSM.A	1.545842	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+912	Elf2	ELF2.H12CORE.0.PS.A	1.524601	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+913	Elf2	ELF2.H12CORE.1.M.B	1.531279	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+914	Elf3	ELF3.H12CORE.0.S.B	1.614830	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+915	Elf3	ELF3.H12CORE.1.PM.A	1.569450	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+916	Elf4	ELF4.H12CORE.0.PS.A	1.676087	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+917	Elf4	ELF4.H12CORE.1.M.B	1.525972	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+918	Elf5	ELF5.H12CORE.0.PSM.A	1.359524	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+919	Elf5	ELF5.H12CORE.1.S.B	1.685492	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+920	Elk1	ELK1.H12CORE.0.PSM.A	1.763453	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+921	Elk3	ELK3.H12CORE.0.PSM.A	1.742483	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+922	Elk4	ELK4.H12CORE.0.PSM.A	1.762808	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+923	Erf	ERF.H12CORE.0.PS.A	1.501102	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+924	Erg	ERG.H12CORE.0.P.B	1.608071	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+925	Erg	ERG.H12CORE.1.SM.B	1.659840	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+926	Ets1	ETS1.H12CORE.0.S.B	1.678412	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+927	Ets1	ETS1.H12CORE.1.P.B	1.402798	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+928	Ets2	ETS2.H12CORE.0.S.C	1.547035	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+929	Ets2	ETS2.H12CORE.1.P.B	1.384355	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+930	Etv1	ETV1.H12CORE.0.PSM.A	1.665095	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+931	Etv1	ETV1.H12CORE.1.PM.A	1.252239	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+932	Etv2	ETV2.H12CORE.0.S.B	1.739139	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+933	Etv2	ETV2.H12CORE.1.PM.A	1.531927	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+934	Etv3	ETV3.H12CORE.0.SM.B	1.666407	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+935	Etv4	ETV4.H12CORE.0.P.B	1.470622	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+936	Etv4	ETV4.H12CORE.1.SM.B	1.639306	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+937	Etv5	ETV5.H12CORE.0.PS.A	1.641352	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+938	Etv5	ETV5.H12CORE.1.PM.A	1.578149	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+939	Etv6	ETV6.H12CORE.0.PS.A	1.524273	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+940	Etv6	ETV6.H12CORE.1.P.B	1.195618	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+941	Fev	FEV.H12CORE.0.S.B	1.716287	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+942	Fli1	FLI1.H12CORE.0.PSM.A	1.608855	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+943	Fli1	FLI1.H12CORE.1.P.B	0.841108	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+944	Gabpa	GABPA.H12CORE.0.PSM.A	1.659586	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+945	Spdef	SPDEF.H12CORE.0.PSM.A	1.626074	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+946	Spdef	SPDEF.H12CORE.1.SM.B	1.333777	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+947	Spi1	SPI1.H12CORE.0.P.B	1.337514	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+948	Spi1	SPI1.H12CORE.1.S.B	1.183307	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+949	Spib	SPIB.H12CORE.0.P.B	1.224473	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+950	Spib	SPIB.H12CORE.1.S.C	1.317132	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+951	Spib	SPIB.H12CORE.2.SM.B	1.243997	Tryptophan cluster factors {3.5}	Ets-related {3.5.2}
+952	Irf1	IRF1.H12CORE.0.P.B	1.155101	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+953	Irf2	IRF2.H12CORE.0.PSM.A	1.510397	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+954	Irf3	IRF3.H12CORE.0.PS.A	1.215109	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+955	Irf3	IRF3.H12CORE.1.SM.B	1.749795	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+956	Irf4	IRF4.H12CORE.0.P.B	1.181645	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+957	Irf4	IRF4.H12CORE.1.S.B	1.549399	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+958	Irf4	IRF4.H12CORE.2.SM.B	1.686252	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+959	Irf5	IRF5.H12CORE.0.SM.B	1.542835	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+960	Irf5	IRF5.H12CORE.1.S.B	1.862050	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+961	Irf6	IRF6.H12CORE.0.SM.B	1.757430	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+962	Irf6	IRF6.H12CORE.1.S.C	1.714642	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+963	Irf7	IRF7.H12CORE.0.S.B	1.416377	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+964	Irf7	IRF7.H12CORE.1.SM.B	1.303907	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+965	Irf8	IRF8.H12CORE.0.P.B	1.018221	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+966	Irf8	IRF8.H12CORE.1.SM.B	1.525908	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+967	Irf8	IRF8.H12CORE.2.SM.B	1.506530	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+968	Irf9	IRF9.H12CORE.0.PSM.A	1.536753	Tryptophan cluster factors {3.5}	IRF {3.5.3}
+969	Tead1	TEAD1.H12CORE.0.PSM.A	1.558107	TEA domain factors {3.6}	TEF1-related {3.6.1}
+970	Tead1	TEAD1.H12CORE.1.P.C	1.406906	TEA domain factors {3.6}	TEF1-related {3.6.1}
+971	Tead1	TEAD1.H12CORE.2.S.C	1.460912	TEA domain factors {3.6}	TEF1-related {3.6.1}
+972	Tead2	TEAD2.H12CORE.0.PSM.A	1.516370	TEA domain factors {3.6}	TEF1-related {3.6.1}
+973	Tead3	TEAD3.H12CORE.0.PS.A	1.614835	TEA domain factors {3.6}	TEF1-related {3.6.1}
+974	Tead3	TEAD3.H12CORE.1.S.B	1.355679	TEA domain factors {3.6}	TEF1-related {3.6.1}
+975	Tead4	TEAD4.H12CORE.0.PS.A	1.516971	TEA domain factors {3.6}	TEF1-related {3.6.1}
+976	Tead4	TEAD4.H12CORE.1.P.B	1.375437	TEA domain factors {3.6}	TEF1-related {3.6.1}
+977	Arid1a	ARI1A.H12CORE.0.P.C	1.330666	ARID domain factors {3.7}	ARID-related {3.7.1}
+978	Sox1	SOX1.H12CORE.0.S.B	1.410194	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+979	Sox1	SOX1.H12CORE.1.S.B	1.462386	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+980	Sox10	SOX10.H12CORE.0.PSM.A	1.665794	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+981	Sox10	SOX10.H12CORE.1.PSM.A	1.427370	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+982	Sox10	SOX10.H12CORE.2.S.C	2.055073	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+983	Sox11	SOX11.H12CORE.0.P.B	1.281027	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+984	Sox11	SOX11.H12CORE.1.S.B	1.969337	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+985	Sox12	SOX12.H12CORE.0.SM.B	1.464112	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+986	Sox13	SOX13.H12CORE.0.P.B	1.346473	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+987	Sox14	SOX14.H12CORE.0.SM.B	1.322226	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+988	Sox17	SOX17.H12CORE.0.PS.A	1.454744	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+989	Sox17	SOX17.H12CORE.1.P.B	1.321186	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+990	Sox17	SOX17.H12CORE.2.S.C	1.208522	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+991	Sox18	SOX18.H12CORE.0.SM.B	1.465702	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+992	Sox2	SOX2.H12CORE.0.P.B	1.284835	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+993	Sox2	SOX2.H12CORE.1.P.B	1.330548	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+994	Sox2	SOX2.H12CORE.2.S.B	1.544959	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+995	Sox2	SOX2.H12CORE.3.S.B	1.526706	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+996	Sox21	SOX21.H12CORE.0.S.B	1.402625	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+997	Sox3	SOX3.H12CORE.0.PM.A	1.397385	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+998	Sox3	SOX3.H12CORE.1.S.C	1.441375	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+999	Sox30	SOX30.H12CORE.0.P.C	1.534248	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1000	Sox30	SOX30.H12CORE.1.SM.B	1.521393	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1001	Sox4	SOX4.H12CORE.0.PSM.A	1.366158	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1002	Sox5	SOX5.H12CORE.0.P.B	1.541758	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1003	Sox6	SOX6.H12CORE.0.P.B	1.389557	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1004	Sox7	SOX7.H12CORE.0.PS.A	1.611060	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1005	Sox7	SOX7.H12CORE.1.SM.B	1.410080	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1006	Sox8	SOX8.H12CORE.0.PSM.A	1.576324	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1007	Sox8	SOX8.H12CORE.1.PS.A	1.478848	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1008	Sox9	SOX9.H12CORE.0.PS.A	1.488071	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1009	Sox9	SOX9.H12CORE.1.PS.A	1.409980	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1010	Sox9	SOX9.H12CORE.2.S.B	1.411295	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1011	Sry	SRY.H12CORE.0.S.B	1.507370	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1012	Sry	SRY.H12CORE.1.S.B	1.448352	High-mobility group (HMG) domain factors {4.1}	SOX-related {4.1.1}
+1013	Lef1	LEF1.H12CORE.0.PSM.A	1.435575	High-mobility group (HMG) domain factors {4.1}	TCF7-related {4.1.3}
+1014	Lef1	LEF1.H12CORE.1.P.B	1.318979	High-mobility group (HMG) domain factors {4.1}	TCF7-related {4.1.3}
+1015	Taf1	TAF1.H12CORE.0.P.B	1.751299	High-mobility group (HMG) domain factors {4.1}	TCF7-related {4.1.3}
+1016	Tcf7	TCF7.H12CORE.0.PSM.A	1.534759	High-mobility group (HMG) domain factors {4.1}	TCF7-related {4.1.3}
+1017	Tcf7l1	TF7L1.H12CORE.0.PM.A	1.418634	High-mobility group (HMG) domain factors {4.1}	TCF7-related {4.1.3}
+1018	Tcf7l1	TF7L1.H12CORE.1.P.C	1.606758	High-mobility group (HMG) domain factors {4.1}	TCF7-related {4.1.3}
+1019	Tcf7l1	TF7L1.H12CORE.2.S.C	1.439333	High-mobility group (HMG) domain factors {4.1}	TCF7-related {4.1.3}
+1020	Tcf7l2	TF7L2.H12CORE.0.P.B	1.425222	High-mobility group (HMG) domain factors {4.1}	TCF7-related {4.1.3}
+1021	Nfya	NFYA.H12CORE.0.P.B	1.623194	Heteromeric CCAAT-binding factors {4.2}	Heteromeric CCAAT-binding {4.2.1}
+1022	Nfyb	NFYB.H12CORE.0.P.B	1.639269	Heteromeric CCAAT-binding factors {4.2}	Heteromeric CCAAT-binding {4.2.1}
+1023	Nfyc	NFYC.H12CORE.0.P.B	1.605471	Heteromeric CCAAT-binding factors {4.2}	Heteromeric CCAAT-binding {4.2.1}
+1024	Mef2a	MEF2A.H12CORE.0.P.B	1.479475	MADS box factors {5.1}	Regulators of differentiation {5.1.1}
+1025	Mef2b	MEF2B.H12CORE.0.PS.A	1.378893	MADS box factors {5.1}	Regulators of differentiation {5.1.1}
+1026	Mef2b	MEF2B.H12CORE.1.SM.B	1.915087	MADS box factors {5.1}	Regulators of differentiation {5.1.1}
+1027	Mef2c	MEF2C.H12CORE.0.P.B	1.543519	MADS box factors {5.1}	Regulators of differentiation {5.1.1}
+1028	Mef2c	MEF2C.H12CORE.1.SM.B	1.856615	MADS box factors {5.1}	Regulators of differentiation {5.1.1}
+1029	Mef2d	MEF2D.H12CORE.0.PS.A	1.530707	MADS box factors {5.1}	Regulators of differentiation {5.1.1}
+1030	Mef2d	MEF2D.H12CORE.1.M.C	1.939641	MADS box factors {5.1}	Regulators of differentiation {5.1.1}
+1031	Srf	SRF.H12CORE.0.PSM.A	1.505595	MADS box factors {5.1}	Responders to external signals {5.1.2}
+1032	Gmeb1	GMEB1.H12CORE.0.P.C	1.601366	SAND domain factors {5.3}	GMEB {5.3.3}
+1033	Gmeb1	GMEB1.H12CORE.1.P.C	0.959131	SAND domain factors {5.3}	GMEB {5.3.3}
+1034	Gmeb1	GMEB1.H12CORE.2.SM.B	1.296837	SAND domain factors {5.3}	GMEB {5.3.3}
+1035	Gmeb2	GMEB2.H12CORE.0.P.C	1.270802	SAND domain factors {5.3}	GMEB {5.3.3}
+1036	Gmeb2	GMEB2.H12CORE.1.P.C	1.469058	SAND domain factors {5.3}	GMEB {5.3.3}
+1037	Gmeb2	GMEB2.H12CORE.2.SM.B	1.368616	SAND domain factors {5.3}	GMEB {5.3.3}
+1038	Nfkb1	NFKB1.H12CORE.0.PS.A	1.300385	Rel homology region (RHR) factors {6.1}	NFkappaB-related {6.1.1}
+1039	Nfkb2	NFKB2.H12CORE.0.PSM.A	1.019242	Rel homology region (RHR) factors {6.1}	NFkappaB-related {6.1.1}
+1040	Rel	REL.H12CORE.0.P.B	1.361265	Rel homology region (RHR) factors {6.1}	NFkappaB-related {6.1.1}
+1041	Rela	TF65.H12CORE.0.P.B	1.621696	Rel homology region (RHR) factors {6.1}	NFkappaB-related {6.1.1}
+1042	Relb	RELB.H12CORE.0.P.B	1.524811	Rel homology region (RHR) factors {6.1}	NFkappaB-related {6.1.1}
+1043	Nfat5	NFAT5.H12CORE.0.SM.B	1.860864	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1044	Nfat5	NFAT5.H12CORE.1.PS.A	1.859467	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1045	Nfatc1	NFAC1.H12CORE.0.P.B	1.705454	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1046	Nfatc1	NFAC1.H12CORE.1.PS.A	2.028002	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1047	Nfatc1	NFAC1.H12CORE.2.SM.B	2.029336	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1048	Nfatc1	NFAC1.H12CORE.3.SM.B	1.940466	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1049	Nfatc2	NFAC2.H12CORE.0.P.B	1.434877	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1050	Nfatc2	NFAC2.H12CORE.1.PS.A	1.662873	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1051	Nfatc2	NFAC2.H12CORE.2.S.C	1.904861	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1052	Nfatc2	NFAC2.H12CORE.3.M.C	2.019446	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1053	Nfatc2	NFAC2.H12CORE.4.M.B	1.990122	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1054	Nfatc3	NFAC3.H12CORE.0.SM.B	2.080531	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1055	Nfatc3	NFAC3.H12CORE.1.P.C	1.350375	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1056	Nfatc4	NFAC4.H12CORE.0.P.C	1.755743	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1057	Nfatc4	NFAC4.H12CORE.1.SM.B	2.062057	Rel homology region (RHR) factors {6.1}	NFAT-related {6.1.3}
+1058	Rbpj	SUH.H12CORE.0.P.B	2.123979	Rel homology region (RHR) factors {6.1}	CSL-related {6.1.4}
+1059	Ebf1	COE1.H12CORE.0.P.B	1.399231	Rel homology region (RHR) factors {6.1}	EBF-related {6.1.5}
+1060	Ebf2	COE2.H12CORE.0.P.B	1.180931	Rel homology region (RHR) factors {6.1}	EBF-related {6.1.5}
+1061	Ebf3	COE3.H12CORE.0.P.B	1.291026	Rel homology region (RHR) factors {6.1}	EBF-related {6.1.5}
+1062	Stat1	STAT1.H12CORE.0.P.B	1.604652	STAT domain factors {6.2}	STAT {6.2.1}
+1063	Stat1	STAT1.H12CORE.1.P.B	1.132296	STAT domain factors {6.2}	STAT {6.2.1}
+1064	Stat2	STAT2.H12CORE.0.P.B	1.059979	STAT domain factors {6.2}	STAT {6.2.1}
+1065	Stat3	STAT3.H12CORE.0.P.B	1.786456	STAT domain factors {6.2}	STAT {6.2.1}
+1066	Stat4	STAT4.H12CORE.0.P.B	1.938765	STAT domain factors {6.2}	STAT {6.2.1}
+1067	Stat5a	STA5A.H12CORE.0.P.B	1.882785	STAT domain factors {6.2}	STAT {6.2.1}
+1068	Stat5b	STA5B.H12CORE.0.P.B	1.782294	STAT domain factors {6.2}	STAT {6.2.1}
+1069	Stat6	STAT6.H12CORE.0.P.B	1.687965	STAT domain factors {6.2}	STAT {6.2.1}
+1070	Tp53	P53.H12CORE.0.P.B	1.372750	p53 domain factors {6.3}	p53-related {6.3.1}
+1071	Tp53	P53.H12CORE.1.S.C	1.480392	p53 domain factors {6.3}	p53-related {6.3.1}
+1072	Tp63	P63.H12CORE.0.PS.A	1.592449	p53 domain factors {6.3}	p53-related {6.3.1}
+1073	Tp63	P63.H12CORE.1.PS.A	1.912040	p53 domain factors {6.3}	p53-related {6.3.1}
+1074	Tp73	P73.H12CORE.0.PS.A	1.516693	p53 domain factors {6.3}	p53-related {6.3.1}
+1075	Tp73	P73.H12CORE.1.P.B	1.784525	p53 domain factors {6.3}	p53-related {6.3.1}
+1076	Runx1	RUNX1.H12CORE.0.P.B	1.640465	Runt domain factors {6.4}	Runt-related {6.4.1}
+1077	Runx2	RUNX2.H12CORE.0.P.B	1.688284	Runt domain factors {6.4}	Runt-related {6.4.1}
+1078	Runx2	RUNX2.H12CORE.1.S.B	1.476897	Runt domain factors {6.4}	Runt-related {6.4.1}
+1079	Runx2	RUNX2.H12CORE.2.M.C	1.227092	Runt domain factors {6.4}	Runt-related {6.4.1}
+1080	Runx3	RUNX3.H12CORE.0.P.B	1.654961	Runt domain factors {6.4}	Runt-related {6.4.1}
+1081	Runx3	RUNX3.H12CORE.1.S.B	1.261852	Runt domain factors {6.4}	Runt-related {6.4.1}
+1082	Runx3	RUNX3.H12CORE.2.S.B	1.472207	Runt domain factors {6.4}	Runt-related {6.4.1}
+1083	Tbx19	TBX19.H12CORE.0.PS.A	1.612482	T-Box factors {6.5}	Brachyury-related {6.5.1}
+1084	Tbx19	TBX19.H12CORE.1.SM.B	1.754422	T-Box factors {6.5}	Brachyury-related {6.5.1}
+1085	Tbxt	TBXT.H12CORE.0.PS.A	1.784434	T-Box factors {6.5}	Brachyury-related {6.5.1}
+1086	Tbxt	TBXT.H12CORE.1.PSM.A	1.684475	T-Box factors {6.5}	Brachyury-related {6.5.1}
+1087	Eomes	EOMES.H12CORE.0.PSM.A	1.516369	T-Box factors {6.5}	TBrain-related {6.5.2}
+1088	Tbr1	TBR1.H12CORE.0.PS.A	1.525132	T-Box factors {6.5}	TBrain-related {6.5.2}
+1089	Tbx21	TBX21.H12CORE.0.PSM.A	1.464367	T-Box factors {6.5}	TBrain-related {6.5.2}
+1090	Tbx1	TBX1.H12CORE.0.S.B	1.228873	T-Box factors {6.5}	TBX1-related {6.5.3}
+1091	Tbx15	TBX15.H12CORE.0.SM.B	1.435738	T-Box factors {6.5}	TBX1-related {6.5.3}
+1092	Tbx18	TBX18.H12CORE.0.M.C	1.379769	T-Box factors {6.5}	TBX1-related {6.5.3}
+1093	Tbx20	TBX20.H12CORE.0.P.C	2.334364	T-Box factors {6.5}	TBX1-related {6.5.3}
+1094	Tbx20	TBX20.H12CORE.1.M.C	1.453524	T-Box factors {6.5}	TBX1-related {6.5.3}
+1095	Tbx20	TBX20.H12CORE.2.SM.B	0.521032	T-Box factors {6.5}	TBX1-related {6.5.3}
+1096	Tbx2	TBX2.H12CORE.0.SM.B	1.503075	T-Box factors {6.5}	TBX2-related {6.5.4}
+1097	Tbx3	TBX3.H12CORE.0.PSM.A	1.378021	T-Box factors {6.5}	TBX2-related {6.5.4}
+1098	Tbx4	TBX4.H12CORE.0.PS.A	2.830426	T-Box factors {6.5}	TBX2-related {6.5.4}
+1099	Tbx4	TBX4.H12CORE.1.S.B	1.437567	T-Box factors {6.5}	TBX2-related {6.5.4}
+1100	Tbx5	TBX5.H12CORE.0.PS.A	1.676387	T-Box factors {6.5}	TBX2-related {6.5.4}
+1101	Tbx5	TBX5.H12CORE.1.P.B	2.533616	T-Box factors {6.5}	TBX2-related {6.5.4}
+1102	Tbx5	TBX5.H12CORE.2.S.B	1.248629	T-Box factors {6.5}	TBX2-related {6.5.4}
+1103	Tbx6	TBX6.H12CORE.0.PSM.A	1.563249	T-Box factors {6.5}	TBX6-related {6.5.5}
+1104	Grhl1	GRHL1.H12CORE.0.PSM.A	1.843712	Grainyhead domain factors {6.7}	Grainyhead-related {6.7.1}
+1105	Grhl1	GRHL1.H12CORE.1.PS.A	1.791338	Grainyhead domain factors {6.7}	Grainyhead-related {6.7.1}
+1106	Grhl2	GRHL2.H12CORE.0.P.B	2.004388	Grainyhead domain factors {6.7}	Grainyhead-related {6.7.1}
+1107	Grhl2	GRHL2.H12CORE.1.P.B	2.122715	Grainyhead domain factors {6.7}	Grainyhead-related {6.7.1}
+1108	Tfcp2	TFCP2.H12CORE.0.SM.B	1.700806	Grainyhead domain factors {6.7}	CP2-related {6.7.2}
+1109	Tfcp2	TFCP2.H12CORE.1.SM.B	1.708630	Grainyhead domain factors {6.7}	CP2-related {6.7.2}
+1110	Tfcp2	TFCP2.H12CORE.2.S.C	1.678277	Grainyhead domain factors {6.7}	CP2-related {6.7.2}
+1111	Tfcp2l1	TF2L1.H12CORE.0.PSM.A	1.766823	Grainyhead domain factors {6.7}	CP2-related {6.7.2}
+1112	Tfcp2l1	TF2L1.H12CORE.1.P.B	2.506243	Grainyhead domain factors {6.7}	CP2-related {6.7.2}
+1113	Ubp1	UBIP1.H12CORE.0.SM.B	1.830229	Grainyhead domain factors {6.7}	CP2-related {6.7.2}
+1114	Smad2	SMAD2.H12CORE.0.P.B	2.056166	SMAD/NF-1 DNA-binding domain factors {7.1}	SMAD {7.1.1}
+1115	Smad2	SMAD2.H12CORE.1.P.B	2.086168	SMAD/NF-1 DNA-binding domain factors {7.1}	SMAD {7.1.1}
+1116	Smad3	SMAD3.H12CORE.0.S.B	1.944632	SMAD/NF-1 DNA-binding domain factors {7.1}	SMAD {7.1.1}
+1117	Smad3	SMAD3.H12CORE.1.P.B	1.993607	SMAD/NF-1 DNA-binding domain factors {7.1}	SMAD {7.1.1}
+1118	Smad3	SMAD3.H12CORE.2.P.C	2.428536	SMAD/NF-1 DNA-binding domain factors {7.1}	SMAD {7.1.1}
+1119	Smad4	SMAD4.H12CORE.1.P.B	2.263687	SMAD/NF-1 DNA-binding domain factors {7.1}	SMAD {7.1.1}
+1120	Smad5	SMAD5.H12CORE.0.M.C	2.087014	SMAD/NF-1 DNA-binding domain factors {7.1}	SMAD {7.1.1}
+1121	Nfia	NFIA.H12CORE.1.PS.A	2.694288	SMAD/NF-1 DNA-binding domain factors {7.1}	NF-1 {7.1.2}
+1122	Nfib	NFIB.H12CORE.0.PSM.A	2.648397	SMAD/NF-1 DNA-binding domain factors {7.1}	NF-1 {7.1.2}
+1123	Nfib	NFIB.H12CORE.1.PS.A	3.040236	SMAD/NF-1 DNA-binding domain factors {7.1}	NF-1 {7.1.2}
+1124	Nfic	NFIC.H12CORE.0.PSM.A	3.018149	SMAD/NF-1 DNA-binding domain factors {7.1}	NF-1 {7.1.2}
+1125	Nfix	NFIX.H12CORE.0.SM.B	3.072511	SMAD/NF-1 DNA-binding domain factors {7.1}	NF-1 {7.1.2}
+1126	Nfix	NFIX.H12CORE.1.S.B	2.784667	SMAD/NF-1 DNA-binding domain factors {7.1}	NF-1 {7.1.2}
+1127	Gcm1	GCM1.H12CORE.0.S.B	1.760007	GCM domain factors {7.2}	GCM {7.2.1}
+1128	Gcm2	GCM2.H12CORE.0.SM.B	1.506570	GCM domain factors {7.2}	GCM {7.2.1}
+1129	Tbp	TBP.H12CORE.0.P.B	1.305923	TATA-binding proteins {8.1}	TBP-related {8.1.1}
+1130	Hmga1	HMGA1.H12CORE.0.P.B	1.009715	A.T hook factors {8.2}	HMGA {8.2.1}
+1131	Ybx1	YBOX1.H12CORE.0.SM.B	1.251133	Cold-shock domain factors {9.1}	Dbp {9.1.1}
+1132	Nrf1	NRF1.H12CORE.0.PS.A	1.203040	Uncharacterized {0.0}	NRF {0.0.6}
+1133	Cenpb	CENPB.H12CORE.0.S.B	1.442149	Uncharacterized {0.0}	Unannotated {0.0.9}
+1134	Cpeb1	CPEB1.H12CORE.1.S.B	0.439032	Uncharacterized {0.0}	Unannotated {0.0.9}
+1135	Dpf1	DPF1.H12CORE.0.SM.B	1.892752	Uncharacterized {0.0}	Unannotated {0.0.9}
+1136	Mbnl2	MBNL2.H12CORE.0.S.C	1.527816	Uncharacterized {0.0}	Unannotated {0.0.9}
+1137	Skor1	SKOR1.H12CORE.0.M.C	1.172866	Uncharacterized {0.0}	Unannotated {0.0.9}
+1138	Skor1	SKOR1.H12CORE.1.S.C	1.241645	Uncharacterized {0.0}	Unannotated {0.0.9}
+1139	Skor2	SKOR2.H12CORE.0.SM.B	1.232662	Uncharacterized {0.0}	Unannotated {0.0.9}
+1140	Zn704	ZN704.H12CORE.0.SM.B	1.435654	Uncharacterized {0.0}	Unannotated {0.0.9}
+1141	Zn821	ZN821.H12CORE.0.SM.B	1.306355	Uncharacterized {0.0}	Unannotated {0.0.9}
+1142	Lrrfip1	LRRF1.H12CORE.0.P.B	1.475330	Leucine-rich repeat flightless-interacting proteins {0.3}	LRRFIP {0.3.1}
