@@ -66,8 +66,20 @@ The cases of full or partial overlaps imply that joined FP rate possesses the be
 7. output file log2, list of pAUC values for all pairs of motifs formed by top-scored M motifs, [example]
 
 # Command line examples
-- [pwm_sga](https://github.com/parthian-sterlet/metarea/blob/main/run/pwm_sga) command line for PWM and SiteGA motif models for [the peaks dataset PEAKS039234 for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa). Two models derived from this dataset with _de novo_ motif search.
-- [pwm_pwm](https://github.com/parthian-sterlet/metarea/blob/main/run/pwm_pwm) command line for two PWM models [BHA15.H12CORE.0.P.B.pcm](https://github.com/parthian-sterlet/metarea/blob/main/examples/pwm_pwm/BHA15.H12CORE.0.P.B.pcm) and [BHA15.H12CORE.1.SM.B.pcm](https://github.com/parthian-sterlet/metarea/blob/main/examples/pwm_pwm/BHA15.H12CORE.1.SM.B.pcm) respecting two structurally distinct motif types from [Hocomoco v12](http://hocomoco12.autosome.ru/) for the same murine BHLHA15 TF and [the peaks dataset PEAKS039234 for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa)
-- [anc_lib](https://github.com/parthian-sterlet/metarea/blob/main/run/anc_lib) command line for PWM motif model derived by _de novo_ motif search for [the peaks dataset PEAKS039234 for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) and the collection of motifs for murine TFs from [Hocomoco v12](http://hocomoco12.autosome.ru/)
-- [lib_lib](https://github.com/parthian-sterlet/metarea/blob/main/run/anc_lib) command line to test [the peaks dataset PEAKS039234 for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) for top-scoring pairwise combiantaion of motifs from the [Hocomoco v12](http://hocomoco12.autosome.ru/) collection for known murine TFs.
+
+- One PWM motif model vs. another PWM motif model, [pauc_forback_2motifs_only.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_2motifs_only.cpp)
+
+[pwm_sga](https://github.com/parthian-sterlet/metarea/blob/main/run/pwm_sga) command line for PWM and SiteGA motif models for [the peaks dataset PEAKS039234 for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa). Two models derived from this dataset with _de novo_ motif search.
+
+- Traditional PWM vs. alternative SiteGA motif models, [pauc_forback_pwm_sga_only.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_pwm_sga_only.cpp)
+ 
+[pwm_pwm](https://github.com/parthian-sterlet/metarea/blob/main/run/pwm_pwm) command line for two PWM models [BHA15.H12CORE.0.P.B.pcm](https://github.com/parthian-sterlet/metarea/blob/main/examples/pwm_pwm/BHA15.H12CORE.0.P.B.pcm) and [BHA15.H12CORE.1.SM.B.pcm](https://github.com/parthian-sterlet/metarea/blob/main/examples/pwm_pwm/BHA15.H12CORE.1.SM.B.pcm) respecting two structurally distinct motif types from [Hocomoco v12](http://hocomoco12.autosome.ru/) for the same murine BHLHA15 TF and [the peaks dataset PEAKS039234 for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa)
+
+- One PWM motif model vs. all motifs for known TFs from a given collection, [pauc_forback_anc_lib.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_anc_lib.cpp)
+ 
+[anc_lib](https://github.com/parthian-sterlet/metarea/blob/main/run/anc_lib) command line for PWM motif model derived by _de novo_ motif search for [the peaks dataset PEAKS039234 for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) and the collection of motifs for murine TFs from [Hocomoco v12](http://hocomoco12.autosome.ru/)
+
+- One PWM motif model vs. all motifs for known TFs from a given collection, [pauc_forback_anc_lib.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_anc_lib.cpp)
+
+[lib_lib](https://github.com/parthian-sterlet/metarea/blob/main/run/anc_lib) command line to test [the peaks dataset PEAKS039234 for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) for top-scoring pairwise combiantaion of motifs from the [Hocomoco v12](http://hocomoco12.autosome.ru/) collection for known murine TFs.
 All fasta files are represented by ID and RF names from [GTRD](https://gtrd.biouml.org/#!)
