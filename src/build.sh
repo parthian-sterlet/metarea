@@ -15,6 +15,9 @@ chmod a+x sitega_thr_dist_mat.exe
 chmod a+x pfm_to_pwm_mat.exe
 chmod a+x pwm_iz_pwm_thr_dist0.exe
 chmod a+x run_pwm_sga
+chmod a+x run_pwm_pwm
+chmod a+x run_anc_lib
+chmod a+x run_lib_lib
 
 cd ../partners
 cat h12core_hg38.binary.tar.gz.part* > h12core_hg38.binary.tar.gz
