@@ -1,5 +1,5 @@
-./pfm_to_pwm_mat.exe ../examples/BHA15.H12CORE.0.P.B.pcm ./examples/BHA15.H12CORE.0.P.B.pwm
-./pfm_to_pwm_mat.exe ../examples/BHA15.H12CORE.1.SM.B.pcm ./examples/BHA15.H12CORE.1.SM.B.pwm
-./pwm_iz_pwm_thr_dist0.exe ../examples/PEAKS039234_BHLHA15.pfm ../examples/BHA15.H12CORE.0.P.B.pwm ../genomes/mm10/mm_ups2kb.seq BHA15.H12CORE.0.P.B.dist BHA15.H12CORE.0.P.B.binary 0.002 0.0000005 pwm.log 0.00002 0 wb
-./pwm_iz_pwm_thr_dist0.exe ../examples/PEAKS039234_BHLHA15.pfm ../examples/BHA15.H12CORE.1.SM.B.pwm ../genomes/mm10/mm_ups2kb.seq BHA15.H12CORE.1.SM.B.dist BHA15.H12CORE.1.SM.B.binary 0.002 0.0000005 pwm.log 0.00002 0 wb
-./pauc_forback_2motifs_only.exe  ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2_pb.fa BHA15.H12CORE.0.P.B.binary BHA15.H12CORE.1.SM.B.binary pwm_pwm.roc pwm_pwm.pauc pwm_pwm.log  
+./pfm_to_pwm_mat.exe ../examples/pwm_pwm/BHA15.H12CORE.0.P.B.pcm ../examples/pwm_pwm/BHA15.H12CORE.0.P.B.pwm
+./pfm_to_pwm_mat.exe ../examples/pwm_pwm/BHA15.H12CORE.1.SM.B.pcm ../examples/pwm_pwm/BHA15.H12CORE.1.SM.B.pwm
+./pwm_iz_pwm_thr_dist0.exe ../examples/pwm_pwm/PEAKS039234_BHLHA15.pfm ../examples/pwm_pwm/BHA15.H12CORE.0.P.B.pwm ../genomes/mm/mm_ups2kb.seq BHA15.H12CORE.0.P.B.dist BHA15.H12CORE.0.P.B.binary 0.002 0.0000005 pwm.log 0.00002 0 wb
+./pwm_iz_pwm_thr_dist0.exe ../examples/pwm_pwm/PEAKS039234_BHLHA15.pfm ../examples/pwm_pwm/BHA15.H12CORE.1.SM.B.pwm ../genomes/mm/mm_ups2kb.seq BHA15.H12CORE.1.SM.B.dist BHA15.H12CORE.1.SM.B.binary 0.002 0.0000005 pwm.log 0.00002 0 wb
+./pauc_forback_2motifs_only.exe  ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2_pb.fa ../examples/pwm_pwm/BHA15.H12CORE.0.P.B.binary ../examples/pwm_pwm/BHA15.H12CORE.1.SM.B.binary pwm_pwm.roc pwm_pwm.pauc pwm_pwm.log  
