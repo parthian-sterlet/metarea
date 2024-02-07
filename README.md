@@ -23,12 +23,14 @@ The cases of full or partial overlaps imply that joined FP rate possesses the be
 - Two lists of recognition thresholds for two motif models. These lists are computated as recognition score distribution for the set of whole-genome promoter sequences selected for respective species, as it was described earlier for [MCOT](https://webmcot.sysbio.cytogen.ru/) [(Levitsky et al., 2019)](https://doi.org/10.1093/nar/gkz800) and [SiteGA](https://github.com/parthian-sterlet/sitega) [(Tsukanov et al., 2022)](https://doi.org/10.3389/fpls.2022.938545). 
 
 # Running modes
-1. One PWM motif model vs. another PWM motif model.
-2. Traditional PWM motif model vs. alternative [SiteGA](https://github.com/parthian-sterlet/sitega) motif model. The SiteGA model was chosen as the most methodologically different from the tradiotional PWM.
-3. One PWM motif model vs. all motifs for known TFs from a given collection [Hocomoco v12](http://hocomoco12.autosome.ru/) or [JASPAR2024](https://jaspar.elixir.no/).
-4. Best performed motifs from the collection of PWM motifs for known TFs for certain taxon or species. The performances of all motifs from a given collection are estimated by pAUC, then all possible {N * (N - 1)/2} pairwise combinations of motifs for the top-scored M motifs of all N motifs in the collection. Available options includes the collections of 1420/1142 motifs for 942/713 human/mouse TFs from [Hocomoco v12](http://hocomoco12.autosome.ru/) ([Vorontsov et al., 2024](https://doi.org/10.1093/nar/gkad1077)), of 556/151 motifs for 555/148 plant/insect TFs from [JASPAR2024](https://jaspar.elixir.no/) [Rauluseviciute et al., 2024](https://doi.org/10.1093/nar/gkad1059).
+
+- One PWM motif model vs. another PWM motif model.
+- Traditional PWM motif model vs. alternative [SiteGA](https://github.com/parthian-sterlet/sitega) motif model. The SiteGA model was chosen as the most methodologically different from the tradiotional PWM.
+- One PWM motif model vs. all motifs for known TFs from a given collection [Hocomoco v12](http://hocomoco12.autosome.ru/) or [JASPAR2024](https://jaspar.elixir.no/).
+- Best performed motifs from the collection of PWM motifs for known TFs for certain taxon or species. The performances of all motifs from a given collection are estimated by pAUC, then all possible {N * (N - 1)/2} pairwise combinations of motifs for the top-scored M motifs of all N motifs in the collection. Available options includes the collections of 1420/1142 motifs for 942/713 human/mouse TFs from [Hocomoco v12](http://hocomoco12.autosome.ru/) ([Vorontsov et al., 2024](https://doi.org/10.1093/nar/gkad1077)), of 556/151 motifs for 555/148 plant/insect TFs from [JASPAR2024](https://jaspar.elixir.no/) [Rauluseviciute et al., 2024](https://doi.org/10.1093/nar/gkad1059).
 
 # Source code and command line arguments
+
 - One PWM motif model vs. another PWM motif model, [pauc_forback_2motifs_only.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_2motifs_only.cpp)
 1. input FASTA file,foreground set pf sequences, peaks, example - [top1000 peaks for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) from [GTRD](https://gtrd.biouml.org/#!)
 2. input FASTA file, background set of sequences, genomic sequences, [example](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2_pb.fa) genomic sequences from promoters extracted by [AntiNoise](https://denovosea.icgbio.ru/antinoise/) 
