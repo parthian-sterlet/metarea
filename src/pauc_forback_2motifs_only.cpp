@@ -54,7 +54,7 @@ char* TransStr(char* d)
 	}
 	return(d);
 }
-int CheckStr(char* file, char* d, int n, int print, FILE* out)
+int CheckStr(char* file, char* d, int n, int print)
 {
 	int i, len, ret;
 	len = (int)strlen(d);
@@ -67,7 +67,7 @@ int CheckStr(char* file, char* d, int n, int print, FILE* out)
 		{
 			ret = 0; continue;
 		}
-		if (print == 1)fprintf(out, "File %s; sequence %d position %d (%c) bad. Sequence deleted!\n", file, n, i + 1, d[i]);
+		if (print == 1)printf("File %s; sequence %d position %d (%c) bad. Sequence deleted!\n", file, n, i + 1, d[i]);
 		ret = -1;
 		break;
 	}
@@ -86,7 +86,7 @@ int IdeLet(char c)
 	}
 	return(ret);
 }
-void EvalSeq(char* file, int& nseq, int olen, int len_peak_max, FILE* outlog)
+void EvalSeq(char* file, int& nseq, int olen, int len_peak_max)
 {
 	char l[SEQLEN], d[SEQLEN], head[400];
 	int fl = 0;
@@ -108,7 +108,7 @@ void EvalSeq(char* file, int& nseq, int olen, int len_peak_max, FILE* outlog)
 		if (((*l == symbol) || (fl == -1)) && (fl != 0))
 		{
 			int lenx = (int)strlen(d);
-			int check = CheckStr(file, d, n, 1, outlog);
+			int check = CheckStr(file, d, n, 1);
 			if ((lenx >= olen && lenx <= len_peak_max) && check != -1)nseq++;
 			if (fl == -1)
 			{
@@ -142,7 +142,7 @@ void EvalSeq(char* file, int& nseq, int olen, int len_peak_max, FILE* outlog)
 		strcat(d, l);
 	}
 }
-void EvalLen(char* file, int* len, int olen, int len_peak_max, FILE* outlog)
+void EvalLen(char* file, int* len, int olen, int len_peak_max)
 {
 	char l[SEQLEN], d[SEQLEN], head[400];
 	int fl = 0;
@@ -164,7 +164,7 @@ void EvalLen(char* file, int* len, int olen, int len_peak_max, FILE* outlog)
 		if (((*l == symbol) || (fl == -1)) && (fl != 0))
 		{
 			int lenx = (int)strlen(d);
-			int check = CheckStr(file, d, nn, 0, outlog);
+			int check = CheckStr(file, d, nn, 0);
 			if ((lenx >= olen && lenx <= len_peak_max) && check != -1)len[n++] = lenx;
 			nn++;
 			if (fl == -1)
@@ -218,7 +218,7 @@ int ComplStr(char* d)
 	}
 	return 1;
 }
-void ReadSeq(char* file, int nseq, int* len, char*** seq_real, int olen, int len_peak_max, FILE* outlog)
+void ReadSeq(char* file, int nseq, int* len, char*** seq_real, int olen, int len_peak_max)
 {
 	char l[SEQLEN], d[2][SEQLEN], head[400];
 	int fl = 0, i, j;
@@ -240,7 +240,7 @@ void ReadSeq(char* file, int nseq, int* len, char*** seq_real, int olen, int len
 		if (((*l == symbol) || (fl == -1)) && (fl != 0))
 		{
 			int lenx = (int)strlen(d[0]);
-			int check = CheckStr(file, d[0], nn, 0, outlog);
+			int check = CheckStr(file, d[0], nn, 0);
 			nn++;
 			if ((lenx >= olen && lenx <= len_peak_max) && check != -1)
 			{
@@ -679,11 +679,11 @@ int main(int argc, char* argv[])
 	char*** seq_real, *** seq_back;
 	char file_for[ARGLEN], file_back[ARGLEN], partner_db[2][ARGLEN];//path_fasta[ARGLEN], pfile_for[ARGLEN], pfile_back[ARGLEN],
 	char file_roc[ARGLEN], file_auc[ARGLEN], file_log[ARGLEN];
-	FILE* outlog, * out_roc, * out_auc, * in_pwm[2];
+	FILE * out_roc, * out_auc, * in_pwm[2];
 
-	if (argc != 8)
+	if (argc != 7)
 	{
-		printf("%s 1,2input fasta foreground,background fasta 3,4input binary files library1,2 5,6,7file output ROC,pAUC,log", argv[0]);
+		printf("%s 1,2input fasta foreground,background fasta 3,4input binary files library1,2 5,6output files ROC,pAUC", argv[0]);
 		return -1;
 	}
 	//strcpy(path_fasta, argv[1]);
@@ -704,21 +704,21 @@ int main(int argc, char* argv[])
 	double fp2 = 0.001; //FPR threshold for pAUC	
 	double fp2_lg = -log10(fp2);
 
-	if ((outlog = fopen(file_log, "at")) == NULL)
+	/*if ((outlog = fopen(file_log, "at")) == NULL)
 	{
 		fprintf(outlog, "Input file %s can't be opened!\n", file_log);
 		exit(1);
-	}
+	}*/
 	//	printf("EvalSeq\n");
-	EvalSeq(file_for, nseq_real, olen_min, len_peak_max, outlog);
-	EvalSeq(file_back, nseq_back, olen_min, len_peak_max, outlog);
+	EvalSeq(file_for, nseq_real, olen_min, len_peak_max);
+	EvalSeq(file_back, nseq_back, olen_min, len_peak_max);
 	len_real = new int[nseq_real];
 	if (len_real == NULL) { puts("Out of memory..."); exit(1); }
 	len_back = new int[nseq_back];
 	if (len_back == NULL) { puts("Out of memory..."); exit(1); }
 	//printf("EvalLen\n");
-	EvalLen(file_for, len_real, olen_min, len_peak_max, outlog);
-	EvalLen(file_back, len_back, olen_min, len_peak_max, outlog);
+	EvalLen(file_for, len_real, olen_min, len_peak_max);
+	EvalLen(file_back, len_back, olen_min, len_peak_max);
 	seq_real = new char** [2];
 	if (seq_real == NULL) { puts("Out of memory..."); exit(1); }
 	for (i = 0; i < 2; i++)
@@ -743,8 +743,8 @@ int main(int argc, char* argv[])
 			if (seq_back[i][j] == NULL) { puts("Out of memory..."); exit(1); }
 		}
 	}
-	ReadSeq(file_for, nseq_real, len_real, seq_real, olen_min, len_peak_max, outlog);
-	ReadSeq(file_back, nseq_back, len_back, seq_back, olen_min, len_peak_max, outlog);
+	ReadSeq(file_for, nseq_real, len_real, seq_real, olen_min, len_peak_max);
+	ReadSeq(file_back, nseq_back, len_back, seq_back, olen_min, len_peak_max);
 	//motif library
 	for (i = 0; i < 2; i++)
 	{
@@ -959,7 +959,7 @@ int main(int argc, char* argv[])
 		}
 	}
 	printf("%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_db[0], partner_db[1], auc_one[0], auc_one[1], auc_two);
-	fprintf(outlog, "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_db[0], partner_db[1], auc_one[0], auc_one[1], auc_two);
+//	fprintf(outlog, "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_db[0], partner_db[1], auc_one[0], auc_one[1], auc_two);
 	if ((out_auc = fopen(file_auc, "wt")) == NULL)
 	{
 		fprintf(out_auc, "Input file %s can't be opened!\n", file_auc);
@@ -988,7 +988,7 @@ int main(int argc, char* argv[])
 		if (fp_here[i] == fp2)break;
 	}
 	fclose(out_roc);
-	fclose(outlog);
+	//fclose(outlog);
 	for (k = 0; k < 2; k++)fclose(in_pwm[k]);
 	//printf("All\t");
 	delete[] thr_all;
