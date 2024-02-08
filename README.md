@@ -13,8 +13,8 @@ For a combination of two motif models, the joint TP rate is determined in the sa
 - two sites have only a partial overlap, this means that when two sites overlap, neither site can be completely located within the other site.
 
 Correspondingly, MetArea proposes the following approach to correct the joint FP rate for the joint motif model:
-- if two sites of two models do not overlap, then the joint FP rate increases additively by the impact of two, dFP = 2. Two distinct sites in a sequence are detected.
-- if these two sites possess the full overlap, then the joint FP rate increases only by the impact of one, dFP = 1. Only one site in a sequence is detected.
+- if two sites of two models do not overlap, then the joint FP rate increases additively by the impact of two, dFP = 2, two distinct sites in a sequence are detected;
+- if these two sites possess the full overlap, then the joint FP rate increases only by the impact of one, dFP = 1, only one site in a sequence is detected;
 - if two sites show the partial overlap, then the joint FP rate increases the non-integer impact between one and two (1 < dFP < 2), depending on the ratios between the overlap length (L) of two motifs, and the lengths of motifs W1 and W2, dFP = (L/W1 + L/W2)/2 = L*(W1 + W2)/(W1*W2)/2.
 
 The cases of full or partial overlaps imply that joined FP rate possesses the best estimate of ERR for two sites, -Log10(ERR1&2) = Max( -Log10(ERR1),  -Log10(ERR2)).
