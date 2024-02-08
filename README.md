@@ -43,7 +43,7 @@ The cases of full or partial overlaps imply that joined FP rate possesses the be
 5. output file, pAUC values for the motifs models PWM1 and PWM2 and for the joint model PWM1&PWM2, [example, pAUC values for PWM1, PWM2 and joint PWM1&PWM2 models](https://github.com/parthian-sterlet/metarea/blob/main/examples/pwm_pwm/BHA15.H12CORE.0.P.B_BHA15.H12CORE.1.SM.B.pauc)
 6. output file, ROC curve for the motif model PWM1
 7. output file, ROC curve for the motif model PWM2
-8. output file, ROC curve for the joint model PWM1&PWM2, [example, ROC curves for PWM, SiteGA and joint PWM&SiteGA models](https://github.com/parthian-sterlet/metarea/blob/main/examples/pwm_sga/PEAKS039234_BHLHA15_pwm_sga.roc)
+8. output file, ROC curve for the joint model PWM1&PWM2, [example, ROC curve for joint PWM1&PWM2 model](https://github.com/parthian-sterlet/metarea/blob/main/examples/pwm_pwm/BHA15.H12CORE.0.P.B_BHA15.H12CORE.1.SM.B.roc)
    
 - One traditional motif model PWM vs. one alternative motif model [SiteGA](https://github.com/parthian-sterlet/sitega), [pauc_forback_pwm_sga_only.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_pwm_sga_only.cpp)
 1. input FASTA file,foreground set pf sequences, peaks, example - [top 1000 peaks for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) from [GTRD](https://gtrd.biouml.org/#!)
@@ -53,7 +53,7 @@ The cases of full or partial overlaps imply that joined FP rate possesses the be
 5. output file, pAUC values for the motif models PWM and SiteGA and for the joint model PWM&SiteGA, [example, pAUC values for PWM, SiteGA and joint PWM&SiteGA models](https://github.com/parthian-sterlet/metarea/blob/main/examples/pwm_sga/PEAKS039234_BHLHA15_pwm_sga.pauc)
 6. output file, ROC curve for the motif model PWM
 7. output file, ROC curve for the motif model SiteGA
-8. output file, ROC curve for the joint model PWM&SiteGA, [example, ROC curves for PWM, SiteGA and joint PWM&SiteGA models](https://github.com/parthian-sterlet/metarea/blob/main/examples/pwm_sga/PEAKS039234_BHLHA15_pwm_sga.roc)
+8. output file, ROC curve for the joint model PWM&SiteGA, [example, ROC curve PWM&SiteGA model](https://github.com/parthian-sterlet/metarea/blob/main/examples/pwm_sga/PEAKS039234_BHLHA15_pwm_sga.roc)
 
 - One PWM motif model vs. all motifs for known TFs from a given collection, [pauc_forback_anc_lib.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_anc_lib.cpp)
 1. input FASTA file,foreground set pf sequences, peaks, example - [top 1000 peaks for mouse BHLHA15 TF](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) from [GTRD](https://gtrd.biouml.org/#!)
