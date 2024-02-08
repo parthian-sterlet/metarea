@@ -1036,12 +1036,12 @@ int main(int argc, char* argv[])
 	int i, j, k, n;
 	char*** seq_real, *** seq_back;
 	char file_for[ARGLEN], file_back[ARGLEN], partner_pwm[ARGLEN], partner_sga[ARGLEN];// path_fasta[ARGLEN], pfile_for[ARGLEN], pfile_back[ARGLEN]
-	char file_roc[ARGLEN], file_auc[ARGLEN], file_log[ARGLEN];
-	FILE * out_roc, * out_auc, * in_pwm, *in_sga;
+	char file_roc[3][ARGLEN], file_auc[ARGLEN];
+	FILE * out_roc[3], * out_auc, * in_pwm, * in_sga;
 
-	if (argc != 7)
+	if (argc != 9)
 	{
-		printf("%s 1,2input fasta foreground,background  3,4input pwm,sga binary files 5,6output files ROC, pAUC_list", argv[0]);
+		printf("%s 1,2input fasta foreground,background  3,4input pwm,sga binary files 5output file pAUC 6,7,8output files ROC", argv[0]);
 		return -1;
 	}
 	//strcpy(path_fasta, argv[1]);
@@ -1053,9 +1053,10 @@ int main(int argc, char* argv[])
 //	strcat(pfile_back, file_back);
 	strcpy(partner_pwm, argv[3]); //h12hs, h12mm
 	strcpy(partner_sga, argv[4]); //h12hs, h12mm
-	strcpy(file_roc, argv[5]);
-	strcpy(file_auc, argv[6]);
-	strcpy(file_log, argv[7]);
+	strcpy(file_auc, argv[5]);
+	strcpy(file_roc[0], argv[6]);
+	strcpy(file_roc[1], argv[7]);
+	strcpy(file_roc[2], argv[8]);
 	int* len_real, * len_back, nseq_real = 0, nseq_back = 0;
 	int olen_min = 8;
 	int len_peak_max = 3000;
@@ -1352,28 +1353,31 @@ int main(int argc, char* argv[])
 	}
 	fprintf(out_auc, "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_pwm, partner_sga, auc_one[0], auc_one[1], auc_two);
 	fclose(out_auc);
-	if ((out_roc = fopen(file_roc, "wt")) == NULL)
+	for (n = 0; n < 3; n++)
 	{
-		fprintf(out_roc, "Input file %s can't be opened!\n", file_roc);
-		exit(1);
+		if ((out_roc[n] = fopen(file_roc[n], "wt")) == NULL)
+		{
+			fprintf(out_roc[n], "Input file %s can't be opened!\n", file_roc[n]);
+			exit(1);
+		}
 	}
 	for (n = 0; n < 2; n++)
 	{
-		if(n==0)fprintf(out_roc, "%s\t%s\t%s\t%g\n", file_for, file_back, partner_pwm, auc_one[n]);
-		else fprintf(out_roc, "%s\t%s\t%s\t%g\n", file_for, file_back, partner_sga, auc_one[n]);
+		if(n==0)fprintf(out_roc[n], "%s\t%s\t%s\t%g\n", file_for, file_back, partner_pwm, auc_one[n]);
+		else fprintf(out_roc[n], "%s\t%s\t%s\t%g\n", file_for, file_back, partner_sga, auc_one[n]);
 		for (i = 0; i < n_here1[n]; i++)
 		{
-			fprintf(out_roc, "%g\t%f\n", fp_here1[n][i], tp_here1[n][i]);
+			fprintf(out_roc[n], "%g\t%f\n", fp_here1[n][i], tp_here1[n][i]);
 			if (fp_here1[n][i] == fp2)break;
 		}
 	}
-	fprintf(out_roc, "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_pwm, partner_sga, auc_one[0], auc_one[1], auc_two);
+	fprintf(out_roc[2], "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_pwm, partner_sga, auc_one[0], auc_one[1], auc_two);
 	for (i = 0; i < n_here; i++)
 	{
-		fprintf(out_roc, "%g\t%f\n", fp_here[i], tp_here[i]);
+		fprintf(out_roc[2], "%g\t%f\n", fp_here[i], tp_here[i]);
 		if (fp_here[i] == fp2)break;
 	}
-	fclose(out_roc);
+	for (n = 0; n < 3; n++)fclose(out_roc[n]);
 	//fclose(outlog);
 	fclose(in_pwm);
 	fclose(in_sga);
