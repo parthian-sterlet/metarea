@@ -995,7 +995,15 @@ int main(int argc, char* argv[])
 	//fclose(outlog);
 	for (k = 0; k < 2; k++)fclose(in_pwm[k]);
 	//printf("All\t");
+	for (k = 0; k < 2; k++)
+	{
+		delete[] thr_all[k];
+	}
 	delete[] thr_all;
+	for (k = 0; k < 2; k++)
+	{
+		delete[] fpr_all[k];
+	}
 	delete[] fpr_all;
 	delete[] len_real;
 	delete[] len_back;

@@ -1382,7 +1382,15 @@ int main(int argc, char* argv[])
 	fclose(in_pwm);
 	fclose(in_sga);
 	//printf("All\t");
+	for (k = 0; k < 2; k++)
+	{
+		delete[] thr_all[k];
+	}
 	delete[] thr_all;
+	for (k = 0; k < 2; k++)
+	{
+		delete[] fpr_all[k];
+	}
 	delete[] fpr_all;
 	delete[] len_real;
 	delete[] len_back;
