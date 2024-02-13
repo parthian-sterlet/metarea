@@ -19,7 +19,7 @@ Correspondingly, MetArea proposes the following approach to correct the joint FP
 
 The cases of full or partial overlaps imply that joined FP rate possesses the best estimate of ERR for two sites, -Log10(ERR1&2) = Max( -Log10(ERR1),  -Log10(ERR2)). 
 
-To differentiate significantly similar pairs of motifs among analyzed pairs of PWM motifs, for all pairs of PWM motifs the significance of similarity is estimated by the motif similarity approach from [MCOT, Levitsky et al., 2019](https://doi.org/10.1093/nar/gkz800)
+To differentiate significantly similar pairs of motifs among analyzed pairs of PWM motifs, for all pairs of PWM motifs the significance of similarity is estimated by the motif similarity approach from [MCOT, (Levitsky et al., 2019)](https://doi.org/10.1093/nar/gkz800)
 
 # Input data
 
