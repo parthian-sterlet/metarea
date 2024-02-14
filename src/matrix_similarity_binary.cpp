@@ -217,17 +217,17 @@ int main(int argc, char* argv[])
 			matrix[1].mem_out(len_partner[1]);
 		}	
 		matrix[0].mem_out(len_partner[0]);
+		fwrite(&sim_here, sizeof(int), 1, out_bin);
 		if (sim_here > 0)
 		{
-			sim_tot += sim_here;
-			fwrite(&sim_here, sizeof(int), 1, out_bin);
+			sim_tot += sim_here;			
 			fwrite(simn, sizeof(double), sim_here, out_bin);
 			fwrite(simv, sizeof(double), sim_here, out_bin);			
 			fprintf(out_mat, "%d", mot1 + 1);
 			for (i = 0; i < sim_here; i++)fprintf(out_mat, "\t%d", simn[i]);
 			fprintf(out_pv, "%d", mot1 + 1);
 			for (i = 0; i < sim_here; i++)fprintf(out_pv, "\t%f", simv[i]);
-		}
+		}		
 		fprintf(out_pv,"\n");
 		fprintf(out_mat, "\n");
 		printf("%d\t%d\n", mot1 + 1, sim_tot);
