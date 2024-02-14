@@ -30,8 +30,8 @@ To differentiate significantly similar pairs of motifs among analyzed pairs of P
 
 # Output data
 
-- list of performanes pAUC for all motifs
-- list of all pairs of motifs with synergy marks, Ratio > 1 or Ratio < 1
+- list of performanes pAUC for all single motifs
+- list of all pairs of motifs with pAUC of joint models and synergy marks, Ratio > 1 or Ratio < 1
 - esiimation of motifs similarities for all pairs of PWM motif models
 
 # Running modes
