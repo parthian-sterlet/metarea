@@ -17,7 +17,7 @@ Correspondingly, MetArea proposes the following approach to correct the joint FP
 - if these two sites possess the full overlap, then the joint FP rate increases only by the impact of one, dFP = 1, only one site in a sequence is detected;
 - if two sites show the partial overlap, then the joint FP rate increases the non-integer impact between one and two (1 < dFP < 2), depending on the ratios between the overlap length (L) of two motifs, and the lengths of motifs W1 and W2, dFP = (L/W1 + L/W2)/2 = L*(W1 + W2)/(W1*W2)/2.
 
-The cases of full or partial overlaps imply that joined FP rate possesses the best estimate of ERR for two sites, -Log10(ERR1&2) = Max( -Log10(ERR1),  -Log10(ERR2)). 
+The cases of full or partial overlaps imply that the joint FP rate possesses the best estimate of ERR for two sites, -Log10(ERR1&2) = Max( -Log10(ERR1),  -Log10(ERR2)). 
 
 To differentiate significantly similar pairs of motifs among analyzed pairs of PWM motifs, for all pairs of PWM motifs the significance of similarity is estimated by the motif similarity approach from [MCOT, (Levitsky et al., 2019)](https://doi.org/10.1093/nar/gkz800)
 
