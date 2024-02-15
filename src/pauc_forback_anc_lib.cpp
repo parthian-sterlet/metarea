@@ -19,6 +19,7 @@
 struct acc {
 	double auc1;
 	double auc2;
+	double sim;
 	int rank;
 	int num;
 	int best;
@@ -715,7 +716,49 @@ int PWM_rec_back(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 	}*/
 	return 1;
 }
+// position frequency mattrix (PFM), position weight matrix (PWM)
+struct matrices {
+	int len;
+	double** fre;
+	void get_copy(matrices* a);
+	int mem_in(int len);
+	void mem_out(int len);
+	void norm(void);
+};
 
+int matrices::mem_in(int length)
+{
+	int i;
+	len = length;
+	fre = new double* [len];
+	if (fre == NULL) return -1;
+	for (i = 0; i < len; i++)
+	{
+		fre[i] = new double[OLIGNUM];
+		if (fre[i] == NULL) return -1;
+	}
+	return 1;
+}
+void matrices::mem_out(int len)
+{
+	int i;
+	for (i = 0; i < len; i++) delete[] fre[i];
+	delete[] fre;
+}
+void matrices::get_copy(matrices* a)
+{
+	a->mem_in(len);
+	a->len = len;
+	int i, j;
+	for (i = 0; i < len; i++)
+	{
+		for (j = 0; j < OLIGNUM; j++)
+		{
+			a->fre[i][j] = fre[i][j];
+		}
+	}
+}
+#include "pfm_similarity.h" //permutation test for anchor/partner motif comparison (separate task for all algorithm)
 #include "pfm_families.h"
 #include "pfm_classes.h"
 #include "pfm_list.h" //motifs
@@ -751,6 +794,11 @@ int main(int argc, char* argv[])
 	double fp2 = 0.001; //FPR threshold for pAUC		
 	double fp2_lg = -log10(fp2);
 	int kauc = 10000;
+	int s_overlap_min = 6, s_ncycle_small = 1000, s_ncycle_large = 10000;//for permutation(motif_comparison) min_length_of_alignment, no. of permutation (test & detailed)
+	double s_granul = 0.001;//for permutation(motif_comparison) okruglenie 4astotnyh matric	
+	double p_crit = 0.05;// threshold for similarity of matrices
+	double pval_sim[4];
+	matrices matrix[2];
 	if ((out_auc = fopen(file_auc, "wt")) == NULL)
 	{
 		fprintf(out_auc, "Input file %s can't be opened!\n", file_auc);
@@ -761,7 +809,7 @@ int main(int argc, char* argv[])
 		fprintf(out_log, "Input file %s can't be opened!\n", file_log);
 		exit(1);
 	}
-	fprintf(out_log, "# Partner motif\tAnchor\tPartner TF\tPartner Motif\tAnchor pAUC\tPartner pAUC\tA&P pAUC\tRatio\t\tPartner Class\tPartner Family\n");
+	fprintf(out_log, "# Partner motif\tAnchor\tPartner TF\tPartner Motif\tAnchor pAUC\tPartner pAUC\tA&P pAUC\tRatio\tSimilarity\t\tPartner Class\tPartner Family\n");
 	//	printf("EvalSeq\n");
 	EvalSeq(file_for, nseq_real, olen_min, len_peak_max);
 	EvalSeq(file_back, nseq_back, olen_min, len_peak_max);
@@ -994,6 +1042,8 @@ int main(int argc, char* argv[])
 		}
 		min[0] = raz[0] = 0;
 		PWMScore(pwm[0], min[0], raz[0], len_partner[0]);
+		matrix[0].mem_in(len_partner[0]);
+		for (i = 0; i < len_partner[0]; i++)for (j = 0; j < OLIGNUM; j++)matrix[0].fre[i][j] = pfm[0][i][j];
 	}
 	fclose(in_pwm[0]);
 	double auc_one[2];
@@ -1073,6 +1123,16 @@ int main(int argc, char* argv[])
 		}		*/
 		min[1] = raz[1] = 0;
 		PWMScore(pwm[1], min[1], raz[1], len_partner[1]);
+		matrix[1].mem_in(len_partner[1]);
+		for (i = 0; i < len_partner[1]; i++)for (j = 0; j < OLIGNUM; j++)matrix[1].fre[i][j] = pfm[1][i][j];
+		for (i = 0; i < 4; i++)pval_sim[i] = 1;
+		double pvalue_similarity_tot = pfm_similarity(&matrix[0], &matrix[1], s_granul, s_overlap_min, s_ncycle_small, s_ncycle_large, pval_sim);
+		if (pvalue_similarity_tot < p_crit)
+		{
+			pvalue_similarity_tot = -log10(pvalue_similarity_tot);
+		}
+		else pvalue_similarity_tot = 1;
+		motifp[mot1].sim = pvalue_similarity_tot;
 		for (j = 0; j <= nthr_dist[1]; j++)
 		{
 			tp_one[j] = fp_one[j] = 0;
@@ -1222,8 +1282,11 @@ int main(int argc, char* argv[])
 			if(ratio<1)motifp[mot1].best = -1;
 			else motifp[mot1].best = 0;
 		}
-		printf("%s\t%s\t%s\t%f\t%f\t%f\t%f\n", anchor, motif_tf[mot1], motif_name[mot1], auc_one[0], auc_one[1], auc_two, ratio);
-		fprintf(out_log, "%d\t%s\t%s\t%s\t%f\t%f\t%f\t%f\t\t%s\t%s\n", mot1 + 1, anchor, motif_tf[mot1], motif_name[mot1], auc_one[0], auc_one[1], auc_two,ratio, motif_class[mot1], motif_family[mot1]);
+		printf("%s\t%s\t%s\t%f\t%f\t%f\t%f", anchor, motif_tf[mot1], motif_name[mot1], auc_one[0], auc_one[1], auc_two, ratio);
+		if (pvalue_similarity_tot != 1)printf("\t%f", pvalue_similarity_tot);
+		printf("\n");
+		fprintf(out_log, "%d\t%s\t%s\t%s\t%f\t%f\t%f\t%f\t%f", mot1 + 1, anchor, motif_tf[mot1], motif_name[mot1], auc_one[0], auc_one[1], auc_two,ratio, pvalue_similarity_tot);
+		fprintf(out_log, "\t\t%s\t%s\n", motif_class[mot1], motif_family[mot1]);
 		/*double auc_max = Max(motifp[mot1].auc, motifp[mot2].auc);		
 		if (auc_two > motifp[mot1].auc && auc_two > motifp[mot2].auc)
 		{
@@ -1243,7 +1306,7 @@ int main(int argc, char* argv[])
 	}
 	qsort(motifp, n_motifs, sizeof(motifp[0]), compare_auc);
 	for (i = 0; i < n_motifs; i++)motifp[i].rank = i + 1;
-	fprintf(out_auc, "Rank\tAnchor motif\tPartner motif\tAnchor pAUC\tPartner AUC\tA&P pAUC\tRatio\t\tPartner Class\tPartner Family\n");
+	fprintf(out_auc, "Rank\tAnchor\tPartner TF\tPartner motif\tAnchor pAUC\tPartner AUC\tA&P pAUC\tRatio\tSimilarity\t\tPartner Class\tPartner Family\n");
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
 	{
 		double auc_max = Max(motifp[mot1].auc1, auc_one[0]);
@@ -1251,15 +1314,16 @@ int main(int argc, char* argv[])
 		if (ratio > 1)
 		{
 			int m1 = motifp[mot1].num;
-			fprintf(out_auc, "%d\t%s\t%s\t%s\t%f\t%f\t%f\t%f\t\t%s\t%s\n", motifp[mot1].rank, anchor, motif_tf[m1], motif_name[m1], auc_one[0], motifp[mot1].auc1, motifp[mot1].auc2, ratio, motif_class[m1], motif_family[m1]);
+			fprintf(out_auc, "%d\t%s\t%s\t%s\t", motifp[mot1].rank, anchor, motif_tf[m1], motif_name[m1]);
+			fprintf(out_auc, "t%f\t%f\t%f\t%f\t%f\t\t%s\t%s", auc_one[0], motifp[mot1].auc1, motifp[mot1].auc2, ratio, motifp[m1].sim, motif_class[m1], motif_family[m1]);
+			fprintf(out_auc, "\n");
+
 		}
 	}
 	fclose(out_auc);
 	fclose(out_log);
 	fclose(in_pwm[1]);
 	//printf("All\t");
-	delete[] thr_all;
-	delete[] fpr_all;
 	delete[] len_real;
 	delete[] len_back;
 	delete[] tp_two;
@@ -1269,6 +1333,16 @@ int main(int argc, char* argv[])
 	delete[] fp_one;	
 	delete[] motifp;
 	delete[] tab;
+	for (k = 0; k < 2; k++)
+	{
+		delete[] thr_all[k];
+	}
+	delete[] thr_all;
+	for (k = 0; k < 2; k++)
+	{
+		delete[] fpr_all[k];
+	}
+	delete[] fpr_all;
 	for (k = 0; k < 2; k++)
 	{
 		delete[] fp_two[k];

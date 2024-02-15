@@ -672,6 +672,49 @@ int PWM_rec_back(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 	}
 	return 1;
 }
+// position frequency mattrix (PFM), position weight matrix (PWM)
+struct matrices {
+	int len;
+	double** fre;
+	void get_copy(matrices* a);
+	int mem_in(int len);
+	void mem_out(int len);
+	void norm(void);
+};
+
+int matrices::mem_in(int length)
+{
+	int i;
+	len = length;
+	fre = new double* [len];
+	if (fre == NULL) return -1;
+	for (i = 0; i < len; i++)
+	{
+		fre[i] = new double[OLIGNUM];
+		if (fre[i] == NULL) return -1;
+	}
+	return 1;
+}
+void matrices::mem_out(int len)
+{
+	int i;
+	for (i = 0; i < len; i++) delete[] fre[i];
+	delete[] fre;
+}
+void matrices::get_copy(matrices* a)
+{
+	a->mem_in(len);
+	a->len = len;
+	int i, j;
+	for (i = 0; i < len; i++)
+	{
+		for (j = 0; j < OLIGNUM; j++)
+		{
+			a->fre[i][j] = fre[i][j];
+		}
+	}
+}
+#include "pfm_similarity.h" //permutation test for anchor/partner motif comparison (separate task for all algorithm)
 
 int main(int argc, char* argv[])
 {
@@ -704,6 +747,11 @@ int main(int argc, char* argv[])
 	int len_peak_max = 3000;
 	double fp2 = 0.001; //FPR threshold for pAUC	
 	double fp2_lg = -log10(fp2);
+	int s_overlap_min = 6, s_ncycle_small = 1000, s_ncycle_large = 10000;//for permutation(motif_comparison) min_length_of_alignment, no. of permutation (test & detailed)
+	double s_granul = 0.001;//for permutation(motif_comparison) okruglenie 4astotnyh matric	
+	double p_crit = 0.05;// threshold for similarity of matrices
+	double pval_sim[4];
+	matrices matrix[2];
 
 	/*if ((outlog = fopen(file_log, "at")) == NULL)
 	{
@@ -828,7 +876,16 @@ int main(int argc, char* argv[])
 			if (fpr_all[n][i] < fp2_lg)break;
 		}
 		fclose(in_pwm[n]);
+		matrix[n].mem_in(len_partner[n]);
+		for (i = 0; i < len_partner[n]; i++)for (j = 0; j < OLIGNUM; j++)matrix[n].fre[i][j] = pfm[n][i][j];
 	}
+	for (i = 0; i < 4; i++)pval_sim[i] = 1;
+	double pvalue_similarity_tot = pfm_similarity(&matrix[0], &matrix[1], s_granul, s_overlap_min, s_ncycle_small, s_ncycle_large, pval_sim);
+	if (pvalue_similarity_tot < p_crit)
+	{
+		pvalue_similarity_tot = -log10(pvalue_similarity_tot);
+	}
+	else pvalue_similarity_tot = 1;
 	double min[2] = { 0, 0 }, raz[2] = { 0,0 };
 	for (n = 0; n < 2; n++)
 	{
@@ -959,14 +1016,14 @@ int main(int argc, char* argv[])
 			fproc_pred = fproc_cur;
 		}
 	}
-	printf("%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_db[0], partner_db[1], auc_one[0], auc_one[1], auc_two);
+	printf("%s\t%s\t%s\t%s\t%g\t%g\t%g\t%f\n", file_for, file_back, partner_db[0], partner_db[1], auc_one[0], auc_one[1], auc_two, pvalue_similarity_tot);
 //	fprintf(outlog, "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_db[0], partner_db[1], auc_one[0], auc_one[1], auc_two);
 	if ((out_auc = fopen(file_auc, "wt")) == NULL)
 	{
 		fprintf(out_auc, "Input file %s can't be opened!\n", file_auc);
 		exit(1);
 	}
-	fprintf(out_auc, "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_db[0], partner_db[1], auc_one[0], auc_one[1], auc_two);
+	fprintf(out_auc, "%s\t%s\t%s\t%s\t%g\t%g\t%g\t%f\n", file_for, file_back, partner_db[0], partner_db[1], auc_one[0], auc_one[1], auc_two, pvalue_similarity_tot);
 	fclose(out_auc);
 	for (n = 0; n < 3; n++)
 	{

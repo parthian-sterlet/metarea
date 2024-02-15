@@ -768,7 +768,7 @@ int main(int argc, char* argv[])
 		fprintf(out_log2, "Input file %s can't be opened!\n", file_log2);
 		exit(1);
 	}
-	fprintf(out_log2, "#Motif 1\t#Motif 2\tTF 1\tTF 2\tMotif 1\tMotif 2\tSimilarity\tpAUC 1\tpAUC 2\tpAUC 1&2\t\tClass\tFamily\n");
+	fprintf(out_log2, "#Motif 1\t#Motif 2\tTF 1\tTF 2\tMotif 1\tMotif 2\tSimilarity\tpAUC 1\tpAUC 2\tpAUC 1&2\t\tClass 1\tFamily 1\t\tClass 2\tFamily 2\n");
 	if ((out_mat = fopen(file_mat, "wt")) == NULL)
 	{
 		fprintf(out_mat, "Input file %s can't be opened!\n", file_mat);
@@ -1324,7 +1324,8 @@ int main(int argc, char* argv[])
 			printf("%s\t%s\t%s\t%s\t%f\t%f\t%f", motif_tf[mot1], motif_tf[mot2], motif_name[mot1], motif_name[mot2], motifp[mot1].auc, motifp[mot2].auc, auc_two);
 			if(sims[mot1c][mot2c]!=1)printf("\t%f", sims[mot1c][mot2c]);
 			printf("\n");			
-			fprintf(out_log2, "%d\t%d\t%s\t%s\t%s\t%s\t%f\t%f\t%f\t%f\t\t%s\t%s\n", mot1 +1, mot2 +1, motif_tf[mot1], motif_tf[mot2], motif_name[mot1], motif_name[mot2], sims[mot1c][mot2c],motifp[mot1].auc, motifp[mot2].auc, auc_two, motif_class[mot1], motif_family[mot1]);
+			fprintf(out_log2, "%d\t%d\t%s\t%s\t%s\t%s\t%f\t%f\t%f\t%f\t\t", mot1 +1, mot2 +1, motif_tf[mot1], motif_tf[mot2], motif_name[mot1], motif_name[mot2], sims[mot1c][mot2c],motifp[mot1].auc, motifp[mot2].auc, auc_two);
+			fprintf(out_log2, "%s\t%s\t\t%s\t%s\n", motif_class[mot1], motif_family[mot1], motif_class[mot2], motif_family[mot2]);
 			double auc_max = Max(motifp[mot1].auc, motifp[mot2].auc);
 			auctwei[mot1c][mot2c] = auc_two / auc_max;
 			if (auc_two > motifp[mot1].auc && auc_two > motifp[mot2].auc)
