@@ -1315,7 +1315,7 @@ int main(int argc, char* argv[])
 		{
 			int m1 = motifp[mot1].num;
 			fprintf(out_auc, "%d\t%s\t%s\t%s\t", motifp[mot1].rank, anchor, motif_tf[m1], motif_name[m1]);
-			fprintf(out_auc, "%f\t%f\t%f\t%f\t%f\t\t%s\t%s", auc_one[0], motifp[mot1].auc1, motifp[mot1].auc2, ratio, motifp[m1].sim, motif_class[m1], motif_family[m1]);
+			fprintf(out_auc, "%f\t%f\t%f\t%f\t%f\t\t%s\t%s", auc_one[0], motifp[mot1].auc1, motifp[mot1].auc2, ratio, motifp[mot1].sim, motif_class[m1], motif_family[m1]);
 			fprintf(out_auc, "\n");
 
 		}
