@@ -1189,7 +1189,7 @@ int main(int argc, char* argv[])
 		}
 	}
 	fprintf(out_mat, "\n");
-	fprintf(out_auc, "Rank 1\tRank 2\tMotif 1\tMotif 2\tTF 1\tTF 2\tSimilarity\tpAUC 1\tpAUC 2\tpAUC 1&2\tRatio\t\tTF class 1\tTF class 2\t\tTF family 1\tTF family 2\n");	
+	fprintf(out_auc, "Rank 1\tRank 2\tTF 1\tTF 2\tMotif 1\tMotif 2\tSimilarity\tpAUC 1\tpAUC 2\tpAUC 1&2\tRatio\t\tTF class 1\tTF class 2\t\tTF family 1\tTF family 2\n");	
 	int mot1c = 0;
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
 	{
