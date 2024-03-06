@@ -1,6 +1,7 @@
 #!/bin/sh
 
 g++ -o pauc_forback_2motifs.exe pauc_forback_2motifs.cpp
+g++ -o pauc_forback_2motifs0.exe pauc_forback_2motifs0.cpp
 g++ -o pauc_forback_anc_lib.exe pauc_forback_anc_lib.cpp
 g++ -o pauc_forback_pwm_sga_only.exe pauc_forback_pwm_sga_only.cpp
 g++ -o pauc_forback_2motifs_only.exe pauc_forback_2motifs_only.cpp
@@ -11,15 +12,18 @@ chmod a+x pauc_forback_pwm_sga_only.exe
 chmod a+x pauc_forback_2motifs_only.exe
 chmod a+x pauc_forback_anc_lib.exe
 chmod a+x pauc_forback_2motifs.exe
+chmod a+x pauc_forback_2motifs0.exe
 chmod a+x sitega_thr_dist_mat.exe
 chmod a+x pfm_to_pwm_mat.exe
 chmod a+x pwm_iz_pwm_thr_dist0.exe
 
 cd ../run
-chmod a+x pwm_sga
-chmod a+x pwm_pwm
-chmod a+x anc_lib
-chmod a+x lib_lib
+chmod a+x com_line_pwm_sga
+chmod a+x com_line_pwm_pwm
+chmod a+x com_line_anc_lib
+chmod a+x com_line_lib_lib
+chmod a+x com_line_de_novo
+chmod a+x den.pl
 
 cd ../partners
 cat h12core_hg38.binary.tar.gz.part* > h12core_hg38.binary.tar.gz
