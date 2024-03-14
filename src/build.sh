@@ -1,7 +1,7 @@
 #!/bin/sh
 
 g++ -o pauc_forback_2motifs.exe pauc_forback_2motifs.cpp
-g++ -o pauc_forback_2motifs0.exe pauc_forback_2motifs0.cpp
+g++ -o pauc_forback_2motif0.exe pauc_forback_2motif0.cpp
 g++ -o pauc_forback_anc_lib.exe pauc_forback_anc_lib.cpp
 g++ -o pauc_forback_pwm_sga_only.exe pauc_forback_pwm_sga_only.cpp
 g++ -o pauc_forback_2motifs_only.exe pauc_forback_2motifs_only.cpp
@@ -12,7 +12,7 @@ chmod a+x pauc_forback_pwm_sga_only.exe
 chmod a+x pauc_forback_2motifs_only.exe
 chmod a+x pauc_forback_anc_lib.exe
 chmod a+x pauc_forback_2motifs.exe
-chmod a+x pauc_forback_2motifs0.exe
+chmod a+x pauc_forback_2motif0.exe
 chmod a+x sitega_thr_dist_mat.exe
 chmod a+x pfm_to_pwm_mat.exe
 chmod a+x pwm_iz_pwm_thr_dist0.exe
