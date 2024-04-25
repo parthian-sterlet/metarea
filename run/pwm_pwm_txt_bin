@@ -1,1 +1,2 @@
+./pfm_to_pwm_mat.exe ../examples/pwm_pwm_txt_bin/streme_bhla15_1.pfm ../examples/pwm_pwm_txt_bin/streme_bhla15_1.pwm
 ./pwm_text_binary_write.exe ../examples/pwm_pwm_txt_bin/streme_bhla15_1.pfm ../examples/pwm_pwm_txt_bin/streme_bhla15_1.pwm ../examples/pwm_pwm_txt_bin/streme_bhla15_1.dist ../examples/pwm_pwm_txt_bin/streme_bhla15_1.bin ../examples/pwm_pwm_txt_bin/log 
