@@ -1011,8 +1011,16 @@ int PWM_SGA_rec_back(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city
 										{
 											if (overlap > 0 && overlap < olenmin)dfpr = koef * overlap;
 										}
-										if (fpr_all[i][psco1] > fpr_all[j][psco2])fpr[j][psco2] -= dfpr;
-										else fpr[i][psco1] -= dfpr;
+										if (fpr_all[i][psco1] > fpr_all[j][psco2])
+										{
+											dfpr = Min(dfpr, fpr[j][psco2]);
+											fpr[j][psco2] -= dfpr;
+										}
+										else
+										{
+											dfpr = Min(dfpr, fpr[i][psco1]);
+											fpr[i][psco1] -= dfpr;
+										}
 										over += dfpr;
 									}
 								}
@@ -1106,16 +1114,6 @@ int main(int argc, char* argv[])
 	ReadSeq(file_back, nseq_back, len_back, seq_back, olen_min, len_peak_max);
 	//motif library
 
-	if ((in_pwm = fopen(partner_pwm, "rb")) == NULL)
-	{
-		printf("Input file %s can't be opened!\n", partner_pwm);
-		return -1;
-	}
-	if ((in_sga = fopen(partner_sga, "rb")) == NULL)
-	{
-		printf("Input file %s can't be opened!\n", partner_sga);
-		return -1;
-	}
 	int len_partner[2], nthr_dist[2];
 	double pwm[MATLEN][OLIGNUM];
 	double pfm[MATLEN][OLIGNUM];
@@ -1174,20 +1172,30 @@ int main(int argc, char* argv[])
 		fp_two[i] = new double[nthr_dist_max];
 		if (fp_two[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	}
-	
+	if ((in_pwm = fopen(partner_pwm, "rb")) == NULL)
 	{
-		fread(&len_partner[0], sizeof(int), 1, in_pwm);
-		fread(pfm[0], sizeof(double), 4 * len_partner[0], in_pwm);
-		fread(pwm[0], sizeof(double), 4 * len_partner[0], in_pwm);
+		printf("Input file %s can't be opened!\n", partner_pwm);
+		return -1;
+	}
+	if ((in_sga = fopen(partner_sga, "rb")) == NULL)
+	{
+		printf("Input file %s can't be opened!\n", partner_sga);
+		return -1;
+	}
+	{
+		int mu = 0;
+		mu = fread(&len_partner[0], sizeof(int), 1, in_pwm);
+		mu = fread(pfm, sizeof(double), 4 * len_partner[0], in_pwm);
+		mu = fread(pwm, sizeof(double), 4 * len_partner[0], in_pwm);
 		int nthr_dist_all[2];
-		fread(&nthr_dist_all[0], sizeof(int), 1, in_pwm);
-		fread(thr_all[0], sizeof(double), nthr_dist_all[0], in_pwm);
-		fread(fpr_all[0], sizeof(double), nthr_dist_all[0], in_pwm);
+		mu = fread(&nthr_dist_all[0], sizeof(int), 1, in_pwm);
+		mu = fread(thr_all[0], sizeof(double), nthr_dist_all[0], in_pwm);
+		mu = fread(fpr_all[0], sizeof(double), nthr_dist_all[0], in_pwm);
 		fclose(in_pwm);
-		fread(&sta, sizeof(sta), 1, in_sga);
-		fread(&nthr_dist_all[1], sizeof(int), 1, in_sga);
-		fread(thr_all[1], sizeof(double), nthr_dist_all[1], in_sga);
-		fread(fpr_all[1], sizeof(double), nthr_dist_all[1], in_sga);
+		mu = fread(&sta, sizeof(sta), 1, in_sga);
+		mu = fread(&nthr_dist_all[1], sizeof(int), 1, in_sga);
+		mu = fread(thr_all[1], sizeof(double), nthr_dist_all[1], in_sga);
+		mu = fread(fpr_all[1], sizeof(double), nthr_dist_all[1], in_sga);
 		fclose(in_sga);
 		len_partner[1] = sta.len;
 		for (n = 0; n < 2; n++)
@@ -1196,6 +1204,7 @@ int main(int argc, char* argv[])
 			for (i = 0; i < nthr_dist_all[n]; i++)
 			{
 				nthr_dist[n]++;
+				fpr_all[n][i] = -log10(fpr_all[n][i]);
 				if (fpr_all[n][i] < fp2_lg)break;
 			}
 		}

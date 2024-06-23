@@ -653,8 +653,16 @@ int PWM_rec_back(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 										{
 											if (overlap > 0 && overlap < olenmin)dfpr = koef * overlap;
 										}
-										if (fpr_all[i][psco1] > fpr_all[j][psco2])fpr[j][psco2] -= dfpr;
-										else fpr[i][psco1] -= dfpr;
+										if (fpr_all[i][psco1] > fpr_all[j][psco2])
+										{
+											dfpr = Min(dfpr, fpr[j][psco2]);
+											fpr[j][psco2] -= dfpr;
+										}
+										else
+										{
+											dfpr = Min(dfpr, fpr[i][psco1]);
+											fpr[i][psco1] -= dfpr;
+										}	
 										over += dfpr;
 									}
 								}
@@ -891,7 +899,6 @@ int main(int argc, char* argv[])
 	{
 		PWMScore(pwm[n], min[n], raz[n], len_partner[n]);
 	}
-	double auc_max = 0;
 	double auc_one[2] = { 0,0 };
 	int n_here1[2] = { 0,0 };
 	for (n = 0; n < 2; n++)
@@ -1023,7 +1030,11 @@ int main(int argc, char* argv[])
 		fprintf(out_auc, "Input file %s can't be opened!\n", file_auc);
 		exit(1);
 	}
-	fprintf(out_auc, "%s\t%s\t%s\t%s\t%g\t%g\t%g\t%f\n", file_for, file_back, partner_db[0], partner_db[1], auc_one[0], auc_one[1], auc_two, pvalue_similarity_tot);
+	double auc_max = Max(auc_one[0], auc_one[1]);
+	int m0, m1;
+	if (auc_one[0] > auc_one[1]) { m0 = 0; m1 = 1; }
+	else { m0 = 1; m1 = 0; }
+	fprintf(out_auc, "%s\t%s\t%s\t%s\t%g\t%g\t%g\t%f\t%f\n", file_for, file_back, partner_db[m0], partner_db[m1], auc_one[m0], auc_one[m1], auc_two, auc_two/auc_max,pvalue_similarity_tot);
 	fclose(out_auc);
 	for (n = 0; n < 3; n++)
 	{

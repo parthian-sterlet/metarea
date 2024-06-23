@@ -688,8 +688,16 @@ int PWM_rec_back(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 										{
 											if (overlap > 0 && overlap < olenmin)dfpr = koef * overlap;
 										}
-										if (fpr_all[i][psco1] > fpr_all[j][psco2])fpr[j][psco2] -= dfpr;
-										else fpr[i][psco1] -= dfpr;
+										if (fpr_all[i][psco1] > fpr_all[j][psco2])
+										{
+											dfpr = Min(dfpr, fpr[j][psco2]);
+											fpr[j][psco2] -= dfpr;
+										}
+										else
+										{
+											dfpr = Min(dfpr, fpr[i][psco1]);
+											fpr[i][psco1] -= dfpr;
+										}
 										over += dfpr;
 									}
 								}
