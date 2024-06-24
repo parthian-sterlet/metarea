@@ -114,7 +114,7 @@ To differentiate significantly similar pairs of motifs among analyzed pairs of P
 
 - Best performed motifs from the collection of PWM motifs for known TFs for certain taxon or species, [pauc_forback_2motifs.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_2motifs.cpp)
 
-[com_line_lib_lib](https://github.com/parthian-sterlet/metarea/blob/main/run/com_line_nc_lib) command line for [ChIP-seq peaks dataset PEAKS039234](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) for [murine BHLHA15 TF](https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:22265) to test top-scoring pairwise combiantaions of motifs from the [Hocomoco v12](http://hocomoco12.autosome.ru/) collection for known murine TFs.
+[com_line_lib_lib](https://github.com/parthian-sterlet/metarea/blob/main/run/com_line_lib_lib) command line for [ChIP-seq peaks dataset PEAKS039234](https://github.com/parthian-sterlet/metarea/blob/main/examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa) for [murine BHLHA15 TF](https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:22265) to test top-scoring pairwise combiantaions of motifs from the [Hocomoco v12](http://hocomoco12.autosome.ru/) collection for known murine TFs.
 
 - Generation of the binary file for the PWM model from the text files of the model matrices PFM/PWM and the table (Thresholds of model vs. ERRs), [pwm_pwm_txt_bin](https://github.com/parthian-sterlet/metarea/blob/main/run/pwm_pwm_txt_bin)
  
