@@ -13,9 +13,22 @@
 #define MATLEN 50 // max length of motives
 #define OLIGNUM 4// di 16 mono 4
 #define ARGLEN 300 //max argv length
-#define MAXPAR 1500 //max no. of motifs
-#define NUM_LIBRARY 7// 4islo bibliotek
 
+struct juxt
+{	
+	double err;
+	int sta;
+	int ind;
+	int mod;
+};
+int compare_juxt(const void* X1, const void* X2)//increase
+{
+	struct juxt* S1 = (struct juxt*)X1;
+	struct juxt* S2 = (struct juxt*)X2;
+	if (S1->err - S2->err > 0)return 1;
+	if (S1->err - S2->err < 0)return -1;
+	return 0;
+}
 struct qbs {
 	double err;//ERR score
 	int nfo;
@@ -552,29 +565,39 @@ int PWM_rec_real(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 int PWM_rec_back(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2], int nthr_dist[2], double** thr_all, double** fpr_all, double** fpr, int* olen, int nseq, char*** seq, int* all_pos_two)
 {
 	int i, j, k, m, n;
-	int compl1, compl2;
+	int compl1;
 	int cod[MATLEN];
 	char d[MATLEN];
 	int word = 1;
 	double koef = (double)(olen[0] + olen[1]) / olen[0] / olen[1] / 2;
 	int nthr_dist1[2], olen1[2];
 	double thr_cr[2];
+	int len_max = 0;
+	for (n = 0; n < nseq; n++)
+	{
+		int len1 = strlen(seq[0][n]);
+		if (len_max < len1)len_max = len1;
+	}
+	juxt* jux;
+	jux = new juxt[len_max * 4];// two models, two strands
+	if (jux == NULL) { puts("Out of memory..."); exit(1); }
 	for (n = 0; n < 2; n++)
 	{
 		nthr_dist1[n] = nthr_dist[n] - 1;
 		olen1[n] = olen[n] - 1;
 		thr_cr[n] = thr_all[n][nthr_dist1[n]];
 	}
-	int olenmin = Min(olen[0], olen[1]);
-	int psco[2][2][SEQLEN];
+	//int olenmin = Min(olen[0], olen[1]);
+	//int psco[2][2][SEQLEN];
 	for (n = 0; n < nseq; n++)
 	{
-		//	int rec_pos[2] = { 0,0 };
-		double over = 0;
+		int rec_pos[2] = { 0,0 };
+		int rec_pos_any = 0;
+		//double over = 0;
 		int len1 = strlen(seq[0][n]);
 		int len21[2];
 		for (i = 0; i < 2; i++)len21[i] = len1 - olen[i];
-		for (i = 0; i < 2; i++)for (j = 0; j < 2; j++)for (k = 0; k <= len21[i]; k++)psco[i][j][k] = nthr_dist[i];
+		//for (i = 0; i < 2; i++)for (j = 0; j < 2; j++)for (k = 0; k <= len21[i]; k++)psco[i][j][k] = nthr_dist[i];
 		for (i = 0; i < 2; i++)
 		{
 			//if ((n+1) % 500 == 0)printf("\b\b\b\b\b\b\b%7d", n+1);					
@@ -599,7 +622,7 @@ int PWM_rec_back(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 					score /= raz[i];
 					int index = nthr_dist[i];
 					if (score >= thr_cr[i])
-					{
+					{						
 						if (score >= thr_all[i][0])
 						{
 							index = 0;
@@ -615,69 +638,109 @@ int PWM_rec_back(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 								}
 							}
 						}
+						rec_pos[i]++;						
+						jux[rec_pos_any].err = fpr_all[i][index];
+						jux[rec_pos_any].ind = index;
+						jux[rec_pos_any].sta = ista;
+						jux[rec_pos_any].mod = i;
+						rec_pos_any++;
 						//	rec_pos[i]++;
 					}
-					psco[i][compl1][k] = index;
+			//		psco[i][compl1][k] = index;
 					fpr[i][index]++;
 				}
 			}
 		}
 		//printf("%d\t%d\t%d\t\t", n + 1, rec_pos[0], rec_pos[1]);
-		for (i = 0; i < 1; i++)
+		if(rec_pos_any>1 && (rec_pos[0]>0 && rec_pos[1]>0))
 		{
-			j = 1 - i;
-			for (k = 0; k <= len21[i]; k++)
+			qsort(jux, rec_pos_any, sizeof(jux[0]), compare_juxt);
+			for (k = 0; k < rec_pos_any - 1; k++)
 			{
-				for (compl1 = 0; compl1 < 2; compl1++)
+				if (fpr[jux[k].mod][jux[k].ind] > 0)
 				{
-					int psco1 = psco[i][compl1][k];
-					if (psco1 != nthr_dist[i])
+					double dfpr = 0;
+					for (m = k + 1; m < rec_pos_any; m++)
 					{
-						int pmin = Max(0, k - olen1[j]);
-						int pmax = Min(k + olen1[i], len21[j]);
-						for (m = pmin; m < pmax; m++)
+						if (jux[k].mod == jux[m].mod)continue;						
+						int left1 = jux[k].sta, left2 = jux[m].sta, right1 = left1 + olen1[jux[k].mod], right2 = left2 + olen1[jux[m].mod];
+						if (right2 < left1 || right1 < left2)continue;// spacer
+						if ((left2 <= left1 && right2 >= right1) || (left1 <= left2 && right1 >= right2))// full overlap
 						{
-							for (compl2 = 0; compl2 < 2; compl2++)
+							dfpr = 1;
+							break;
+						}
+						int right = Min(right1, right2);
+						int left = Max(left1, left2);
+						int overlap = right - left + 1;
+						dfpr += koef * overlap;						
+						if (dfpr >= 1)
+						{
+							dfpr = 1;
+							break;
+						}
+					}
+					fpr[jux[k].mod][jux[k].ind] -= dfpr;
+					if (fpr[jux[k].mod][jux[k].ind] < 0)fpr[jux[k].mod][jux[k].ind] = 0;
+				}
+			}
+			/*for (i = 0; i < 1; i++)
+			{
+				j = 1 - i;
+				for (k = 0; k <= len21[i]; k++)
+				{
+					for (compl1 = 0; compl1 < 2; compl1++)
+					{
+						int psco1 = psco[i][compl1][k];
+						if (psco1 != nthr_dist[i])
+						{
+							int pmin = Max(0, k - olen1[j]);
+							int pmax = Min(k + olen1[i], len21[j]);
+							for (m = pmin; m < pmax; m++)
 							{
-								int psco2 = psco[j][compl2][m];
-								if (psco2 != nthr_dist[j])
+								for (compl2 = 0; compl2 < 2; compl2++)
 								{
-									int right = Min(k + olen1[i], m + olen1[j]);
-									int left = Max(k, m);
-									double dfpr = 0;
-									int overlap = right - left + 1;
-									if (overlap > 0)
+									int psco2 = psco[j][compl2][m];
+									if (psco2 != nthr_dist[j])
 									{
-										if (overlap == olenmin)dfpr = 1;
-										else
+										int right = Min(k + olen1[i], m + olen1[j]);
+										int left = Max(k, m);
+										double dfpr = 0;
+										int overlap = right - left + 1;
+										if (overlap > 0)
 										{
-											if (overlap > 0 && overlap < olenmin)dfpr = koef * overlap;
+											if (overlap == olenmin)dfpr = 1;
+											else
+											{
+												if (overlap > 0 && overlap < olenmin)dfpr = koef * overlap;
+											}
+											if (fpr_all[i][psco1] > fpr_all[j][psco2])
+											{
+												dfpr = Min(dfpr, fpr[j][psco2]);
+												fpr[j][psco2] -= dfpr;
+											}
+											else
+											{
+												dfpr = Min(dfpr, fpr[i][psco1]);
+												fpr[i][psco1] -= dfpr;
+											}
+											over += dfpr;
 										}
-										if (fpr_all[i][psco1] > fpr_all[j][psco2])
-										{
-											dfpr = Min(dfpr, fpr[j][psco2]);
-											fpr[j][psco2] -= dfpr;
-										}
-										else
-										{
-											dfpr = Min(dfpr, fpr[i][psco1]);
-											fpr[i][psco1] -= dfpr;
-										}	
-										over += dfpr;
 									}
 								}
 							}
 						}
 					}
 				}
-			}
+			}*/
+			//		printf("%f\n", over);
+				/*	if ((n + 1) % 50 == 0)
+					{
+						int yy = 0;
+					}*/
 		}
-		//		printf("%f\n", over);
-			/*	if ((n + 1) % 50 == 0)
-				{
-					int yy = 0;
-				}*/
 	}
+	delete[] jux;
 	return 1;
 }
 // position frequency mattrix (PFM), position weight matrix (PWM)
