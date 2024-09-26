@@ -37,6 +37,7 @@ To differentiate significantly similar pairs of motifs among analyzed pairs of P
 # Running modes
 
 - One PWM motif model vs. another PWM motif model.
+- Several PWM motif models at once (list of N PWM motifs from de novo motif search), all possible pairwise combinations {N * (N - 1)/2} are tested.
 - One traditional motif model PWM vs. one alternative motif model [SiteGA](https://github.com/parthian-sterlet/sitega). The SiteGA model was chosen as the most methodologically different from the tradiotional PWM.
 - One PWM motif model vs. all motifs for known TFs from a given collection from [Hocomoco v12](http://hocomoco12.autosome.ru/) or [JASPAR2024](https://jaspar.elixir.no/).
 - Best performed N motifs from the collection of PWM motifs for known TFs for certain taxon or species. The performances of all motifs from a given collection are estimated by pAUC, then all possible {N * (N - 1)/2} pairwise combinations of motifs for the top-scored N motifs are tested. Available options includes the collections of 1420/1142 motifs for 942/713 human/mouse TFs from [Hocomoco v12](http://hocomoco12.autosome.ru/) ([Vorontsov et al., 2024](https://doi.org/10.1093/nar/gkad1077)), of 556/151 motifs for 555/148 plant/insect TFs from [JASPAR2024](https://jaspar.elixir.no/) ([Rauluseviciute et al., 2024](https://doi.org/10.1093/nar/gkad1059)).
