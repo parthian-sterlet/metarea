@@ -915,7 +915,7 @@ int main(int argc, char* argv[])
 	//motif library	
 	char  motif_name[MAXPAR][40], motif_class[MAXPAR][80], motif_family[MAXPAR][80], motif_class_inx[MAXPAR][8], motif_family_inx[MAXPAR][10], motif_tf[MAXPAR][30];
 	int n_motifs, motif_library = -1;
-	{
+	{//                                              0          1                2                 3               4            5               6
 		char library_tag[NUM_LIBRARY][30] = { "h12core_hg38" , "h12core_mm10" , "h11core_hg38" , "h11core_mm10" , "dapseq", "jaspar24_at10", "jaspar24_dm6" };
 		int motif_count_library[NUM_LIBRARY] = { 1420,1142,391,346,510,556,151 };
 		for (i = 0; i < NUM_LIBRARY; i++)
@@ -968,6 +968,7 @@ int main(int argc, char* argv[])
 				strcpy(motif_family[i], jaspar24_plants_families[i]);
 				strcpy(motif_tf[i], jaspar24_plants_tfs[i]);
 			}
+			break;
 		}
 		case 6: {
 			for (i = 0; i < n_motifs; i++)
@@ -977,6 +978,7 @@ int main(int argc, char* argv[])
 				strcpy(motif_family[i], jaspar24_insects_families[i]);
 				strcpy(motif_tf[i], jaspar24_insects_tfs[i]);
 			}
+			break;
 		}
 		default:
 			break;
