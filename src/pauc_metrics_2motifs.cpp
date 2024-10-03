@@ -786,6 +786,7 @@ int main(int argc, char* argv[])
 	delete[] thr_all;
 	delete[] tp_one;
 	delete[] fp_one;
+	delete[] fp_nsites;
 	for (k = 0; k < 2; k++)
 	{
 		delete[] tp_here1[k];
