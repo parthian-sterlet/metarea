@@ -705,22 +705,6 @@ int main(int argc, char* argv[])
 	if (tp_one == NULL) { puts("Out of memory..."); exit(1); }
 	fp_one = new int[nthr_dist_max];
 	if (fp_one == NULL) { puts("Out of memory..."); exit(1); }
-	double** tp_here1;
-	tp_here1 = new double* [2];
-	if (tp_here1 == NULL) { puts("Out of memory..."); exit(1); }
-	for (i = 0; i < 2; i++)
-	{
-		tp_here1[i] = new double[nthr_dist_max];
-		if (tp_here1[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
-	}
-	double** fp_here1;
-	fp_here1 = new double* [2];
-	if (fp_here1 == NULL) { puts("Out of memory..."); exit(1); }
-	for (i = 0; i < 2; i++)
-	{
-		fp_here1[i] = new double[nthr_dist_max];
-		if (fp_here1[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
-	}
 	double** recall_1;
 	recall_1 = new double* [2];
 	if (recall_1 == NULL) { puts("Out of memory..."); exit(1); }
@@ -837,30 +821,8 @@ int main(int argc, char* argv[])
 			printf("%5d %d\t", tp_one[i], fp_one[i]);
 		}*/
 		//printf("ROC %d\n", mot + 1);
-		int tproc_pred = 0;
-		double fproc_pred = 0;
 		int nthr_dist1 = nthr_dist[n] - 1;
-		fp_here1[n][0] = 0, tp_here1[n][0] = 0;
-		n_here1[n] = 1;
 		int index1 = index_thr[n] - 1;
-		for (i = 0; i <= index_thr[n]; i++)
-		{
-			if ((fp_one[i] > fproc_pred && fp_one[i + 1] > fp_one[i]) || (i == index1 || i == index_thr[n]))
-			{
-				int tproc_cur = tp_one[i];
-				double fproc_cur = (double)fp_one[i] / nseq_back, fproc_cur_pauc = fproc_cur;
-				double dauc = (tproc_cur + tproc_pred) * (fproc_cur_pauc - fproc_pred) / nseq_real / 2;
-				tp_here1[n][n_here1[n]] = (double)tp_one[i] / nseq_real;
-				fp_here1[n][n_here1[n]] = fproc_cur_pauc;
-				n_here1[n]++;
-				//fprintf(out,"%d\t%d\t%g\t%g\t%g\n", tproc_cur, tproc_pred, fproc_cur, fproc_pred, dauc);
-				//fprintf(outq, "%g\t%f\n", fproc_cur, (double)tproc_cur / n_cnt_tot);
-				if (i == index_thr[n])dauc *= fp_thr_rest[n];
-				auc_one[n] += dauc;
-				tproc_pred = tproc_cur;
-				fproc_pred = fproc_cur;
-			}
-		}
 		double prec_pred = 1;// (double)tp_one[0] / ((double)tp_one[0] + nseq_fb * fp_one[0]);
 		recall_1[n][0] = 0;//(double)tp_one[0]/nseq_real, 
 		prec_1[n][0] = prec_pred;
@@ -932,46 +894,12 @@ int main(int argc, char* argv[])
 		tab[i].fpr += tab[i1].fpr;
 		//	if (i < 20)printf("%d %d\t%d\n", i, tab[i].nfo, tab[i].fpr);
 	}
-	double* tp_here;
-	tp_here = new double[nthr_dist_two];
-	if (tp_here == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
-	double* fp_here;
-	fp_here = new double[nthr_dist_two];
-	if (fp_here == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	double* recall;
 	recall = new double[nthr_dist_two];
 	if (recall == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	double* prec;
 	prec = new double[nthr_dist_two];
 	if (prec == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
-	int tproc_pred = 0;
-	double fproc_pred = 0;
-	double auc_two = 0;
-	int nthr_dist_two1 = nthr_dist_two - 1;
-	int n_here = 0;
-	for (i = 0; i < nthr_dist_two; i++)
-	{
-		if (tab[i].fpr > fproc_pred && tab[i + 1].fpr > tab[i].fpr)
-		{
-			int tproc_cur = tab[i].nfo;
-			double fproc_cur = (double)tab[i].fpr / nseq_back, fproc_cur_pauc = fproc_cur;
-			double dauc = (tproc_cur + tproc_pred) * (fproc_cur_pauc - fproc_pred) / nseq_real / 2;
-			tp_here[n_here] = (double)tproc_cur / nseq_real;
-			fp_here[n_here] = fproc_cur_pauc;
-			n_here++;
-			//fprintf(out,"%d\t%d\t%g\t%g\t%g\n", tproc_cur, tproc_pred, fproc_cur, fproc_pred, dauc);
-			//fprintf(outq, "%g\t%f\n", fproc_cur, (double)tproc_cur / n_cnt_tot);			
-			if (fproc_cur_pauc >= fp_thr_two)
-			{
-				dauc *= fp_thr_rest2;
-				auc_two += dauc;
-				break;
-			}
-			else auc_two += dauc;
-			tproc_pred = tproc_cur;
-			fproc_pred = fproc_cur;
-		}
-	}
 	double prauc_two = 0;
 	int n_herepr = 1;
 	recall[0] = 0;
@@ -1001,9 +929,9 @@ int main(int argc, char* argv[])
 		}
 	}
 	{
-		double auc_max = Max(auc_one[0], auc_one[1]);
+		//double auc_max = Max(auc_one[0], auc_one[1]);
 		double prauc_max = Max(prauc_one[0], prauc_one[1]);
-		printf("%s\t%s\t%s\t%s\t%g\t%g\t%g\t%g\t%f\n", file_for, file_back, partner_db[0], partner_db[1], auc_two, auc_two / auc_max, prauc_two, prauc_two / prauc_max, pvalue_similarity_tot);
+		printf("%s\t%s\t%s\t%s\t%g\t%g\t%f\n", file_for, file_back, partner_db[0], partner_db[1], prauc_two, prauc_two / prauc_max, pvalue_similarity_tot);
 	}
 	//	fprintf(outlog, "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_db[0], partner_db[1], auc_one[0], auc_one[1], auc_two);
 	if ((out_auc = fopen(file_auc, "wt")) == NULL)
@@ -1011,15 +939,15 @@ int main(int argc, char* argv[])
 		fprintf(out_auc, "Input file %s can't be opened!\n", file_auc);
 		exit(1);
 	}
-	double auc_max = Max(auc_one[0], auc_one[1]);
+//	double auc_max = Max(auc_one[0], auc_one[1]);
 	double prauc_max = Max(prauc_one[0], prauc_one[1]);
 	int m0, m1;
 	m0 = 0; m1 = 1;
 	//if (auc_one[0] > auc_one[1]) { m0 = 0; m1 = 1; }
 	//else { m0 = 1; m1 = 0; }
-	fprintf(out_auc, "%s\t%s\t%s\t%s\t\t", file_for, file_back, partner_db[m0], partner_db[m1]);
-	fprintf(out_auc, "%g\t%g\t%g\t%f\t\t", auc_one[m0], auc_one[m1], auc_two, auc_two / auc_max);
-	fprintf(out_auc, "%g\t%g\t%g\t%f\t\t", prauc_one[m0], prauc_one[m1], prauc_two, prauc_two / prauc_max);
+	fprintf(out_auc, "%s\t%s\t%s\t%s\t", file_for, file_back, partner_db[m0], partner_db[m1]);
+	//fprintf(out_auc, "%g\t%g\t%g\t%f\t\t", auc_one[m0], auc_one[m1], auc_two, auc_two / auc_max);
+	fprintf(out_auc, "%g\t%g\t%g\t%f\t", prauc_one[m0], prauc_one[m1], prauc_two, prauc_two / prauc_max);
 	fprintf(out_auc, "%f\n", pvalue_similarity_tot);
 	fclose(out_auc);
 	for (n = 0; n < 3; n++)
@@ -1076,8 +1004,6 @@ int main(int argc, char* argv[])
 	delete[] tab;
 	delete[] tp_one;
 	delete[] fp_one;
-	delete[] tp_here;
-	delete[] fp_here;
 	delete[] prec;
 	delete[] recall;
 	for (k = 0; k < 2; k++)
@@ -1090,16 +1016,6 @@ int main(int argc, char* argv[])
 		delete[] tp_two[k];
 	}
 	delete[] tp_two;
-	for (k = 0; k < 2; k++)
-	{
-		delete[] tp_here1[k];
-	}
-	delete[] tp_here1;
-	for (k = 0; k < 2; k++)
-	{
-		delete[] fp_here1[k];
-	}
-	delete[] fp_here1;
 	for (k = 0; k < 2; k++)
 	{
 		delete[] fp_nsites[k];
