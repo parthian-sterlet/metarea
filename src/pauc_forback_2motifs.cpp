@@ -14,22 +14,7 @@
 #define OLIGNUM 4// di 16 mono 4
 #define ARGLEN 300 //max argv length
 #define MAXPAR 1500 //max no. of motifs
-
-struct juxt
-{
-	double err;
-	int sta;
-	int ind;
-	int mod;
-};
-int compare_juxt(const void* X1, const void* X2)//increase
-{
-	struct juxt* S1 = (struct juxt*)X1;
-	struct juxt* S2 = (struct juxt*)X2;
-	if (S1->err - S2->err > 0)return 1;
-	if (S1->err - S2->err < 0)return -1;
-	return 0;
-}
+#define NUM_LIBRARY 7// 4islo bibliotek
 
 struct acc {
 	double auc;
@@ -38,7 +23,6 @@ struct acc {
 	int num;
 	long p;
 };
-
 struct qbs {
 	double err;//ERR score
 	int nfo;
@@ -590,61 +574,22 @@ int PWM_rec_real(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 	}*/
 	return 1;
 }
-// position frequency mattrix (PFM), position weight matrix (PWM)
-struct matrices {
-	int len;
-	double** fre;
-	void get_copy(matrices* a);
-	int mem_in(int len);
-	void mem_out(int len);
-	void norm(void);
-};
-
-int matrices::mem_in(int length)
-{
-	int i;
-	len = length;
-	fre = new double* [len];
-	if (fre == NULL) return -1;
-	for (i = 0; i < len; i++)
-	{
-		fre[i] = new double[OLIGNUM];
-		if (fre[i] == NULL) return -1;
-	}
-	return 1;
-}
-void matrices::mem_out(int len)
-{
-	int i;
-	for (i = 0; i < len; i++) delete[] fre[i];
-	delete[] fre;
-}
-void matrices::get_copy(matrices* a)
-{
-	a->mem_in(len);
-	a->len = len;
-	int i, j;
-	for (i = 0; i < len; i++)
-	{
-		for (j = 0; j < OLIGNUM; j++)
-		{
-			a->fre[i][j] = fre[i][j];
-		}
-	}
-}
-#include "pfm_similarity.h" //permutation test for anchor/partner motif comparison (separate task for all algorithm)
+#include "pfm_families.h"
+#include "pfm_classes.h"
+#include "pfm_list.h" //motifs
+#include "pfm_tfs.h" //TFs
 
 int main(int argc, char* argv[])
 {
 	int i, j, k, n, mot1, mot2;
 	char*** seq_real, *** seq_back;
-	char file_for[ARGLEN], file_back[ARGLEN], partner_db[ARGLEN];// , tfclass[80];path_fasta[ARGLEN], pfile_for[ARGLEN], pfile_back[ARGLEN],
-	char file_mat[ARGLEN], file_auc[ARGLEN], file_roc[ARGLEN], file_log1[ARGLEN], file_log2[ARGLEN], file_roc1[ARGLEN];
-	FILE* out_log1, * out_auc, * out_roc, * out_log2, * out_mat, * in_pwm;
+	char file_for[ARGLEN], file_back[ARGLEN], partner_db[ARGLEN], partner_sim[ARGLEN];// , tfclass[80];path_fasta[ARGLEN], pfile_for[ARGLEN], pfile_back[ARGLEN],
+	char file_mat[ARGLEN], file_auc[ARGLEN], file_log1[ARGLEN], file_log2[ARGLEN];
+	FILE* out_log1, * out_auc, * out_log2, * out_mat, * in_pwm;
 
 	if (argc != 10)
 	{
-		printf("%s 1,2input fasta foreground,background 3input binary files pwm_thresholds 4no. of motifs 5,6,7,8,9output files pAUC_matrix, pAUC_list, log1, log2, ROC", argv[0]);
+		printf("%s 1,2input fasta foreground,background 3,4input binary files pwm_thresholds,pwm_similarity 5ntop matrices 6,7,8,9output files pAUC_matrix, pAUC_list, log1, log2", argv[0]);
 		return -1;
 	}
 	//strcpy(path_fasta, argv[1]);
@@ -655,19 +600,13 @@ int main(int argc, char* argv[])
 	//strcat(pfile_for, file_for);
 	//strcat(pfile_back, file_back);	
 	strcpy(partner_db, argv[3]); //h12hs, h12mm
-	int n_motifs = atoi(argv[4]);// no. of top-scoring matrices
-	strcpy(file_mat, argv[5]);
-	strcpy(file_auc, argv[6]);
-	strcpy(file_log1, argv[7]);
-	strcpy(file_log2, argv[8]);	
-	strcpy(file_roc, argv[9]);
-	int s_overlap_min = 6, s_ncycle_small = 1000, s_ncycle_large = 10000;//for permutation(motif_comparison) min_length_of_alignment, no. of permutation (test & detailed)
-	double s_granul = 0.001;//for permutation(motif_comparison) okruglenie 4astotnyh matric	
-	double p_crit = 0.05;// threshold for similarity of matrices
-	double pval_sim[4];
-	matrices matrix[2];
-
-	int* len_real, * len_back, nseq_real = 0, nseq_back = 0;
+	strcpy(partner_sim, argv[4]); //h12hs, h12mm
+	int ntop = atoi(argv[5]);// no. of top-scoring matrices
+	strcpy(file_mat, argv[6]);
+	strcpy(file_auc, argv[7]);
+	strcpy(file_log1, argv[8]);
+	strcpy(file_log2, argv[9]);
+	int* len_real, * len_back, nseq_real=0, nseq_back = 0;
 	int olen_min = 8;
 	int len_peak_max = 3000;
 	double fp2 = 0.001; //FPR threshold for pAUC		
@@ -682,18 +621,25 @@ int main(int argc, char* argv[])
 		fprintf(out_log1, "Input file %s can't be opened!\n", file_log1);
 		exit(1);
 	}
-	fprintf(out_log1, "#Motif\tpAUC\n");
+	fprintf(out_log1, "#Motif\tTF\tMotif\tpAUC\tClass\tFamily\n");
 	if ((out_log2 = fopen(file_log2, "wt")) == NULL)
 	{
 		fprintf(out_log2, "Input file %s can't be opened!\n", file_log2);
 		exit(1);
 	}
-	fprintf(out_log2, "#Motif 1\t#Motif 2\tRank 1\tRank 2\tSimilarity\tpAUC 1\tpAUC 2\tpAUC 1&2\tRatio\n");
+	fprintf(out_log2, "#Motif 1\t#Motif 2\tTF 1\tTF 2\tMotif 1\tMotif 2\tSimilarity\tpAUC 1\tpAUC 2\tpAUC 1&2\t\tClass 1\tFamily 1\t\tClass 2\tFamily 2\n");
 	if ((out_mat = fopen(file_mat, "wt")) == NULL)
 	{
 		fprintf(out_mat, "Input file %s can't be opened!\n", file_mat);
 		exit(1);
 	}
+	FILE* out_sim;
+	if ((out_sim = fopen(partner_sim, "rb")) == NULL)
+	{
+		printf("Out file %s can't be opened!\n", partner_sim);
+		return -1;
+	}
+	//	printf("EvalSeq\n");
 	EvalSeq(file_for, nseq_real, olen_min, len_peak_max);
 	EvalSeq(file_back, nseq_back, olen_min, len_peak_max);
 	len_real = new int[nseq_real];
@@ -729,17 +675,129 @@ int main(int argc, char* argv[])
 	}
 	ReadSeq(file_for, nseq_real, len_real, seq_real, olen_min, len_peak_max);
 	ReadSeq(file_back, nseq_back, len_back, seq_back, olen_min, len_peak_max);
+	//motif library
+	char  motif_name[MAXPAR][40], motif_class[MAXPAR][80], motif_family[MAXPAR][80], motif_class_inx[MAXPAR][8], motif_family_inx[MAXPAR][10], motif_tf[MAXPAR][30];
+	int n_motifs, motif_library = -1;
+	{
+		char library_tag[NUM_LIBRARY][30] = { "h12core_hg38" , "h12core_mm10" , "h11core_hg38" , "h11core_mm10" , "dapseq", "jaspar24_at10", "jaspar24_dm6" };
+		int motif_count_library[NUM_LIBRARY] = { 1420,1142,391,346,510,556,151 };
+		for (i = 0; i < NUM_LIBRARY; i++)
+		{
+			if (strstr(partner_db, library_tag[i]) != NULL)
+			{
+				motif_library = i;
+				n_motifs = motif_count_library[i];
+				break;
+			}
+		}
+		if (motif_library == -1)
+		{
+			printf("Wrong motif library %s\tAllowed motif library options:\n", partner_db);
+			int i1 = NUM_LIBRARY - 1;
+			for (i = 0; i < NUM_LIBRARY; i++)
+			{
+				printf("%s", library_tag[i]);
+				if (i == i1)printf("\n");
+				else printf("\t");
+			}
+			exit(1);
+		}
+		switch (motif_library) {
+		case 0: {
+			for (i = 0; i < n_motifs; i++)
+			{			
+				strcpy(motif_name[i], hs_core_12_names[i]);
+				strcpy(motif_class[i], h12hs_classes[i]);
+				strcpy(motif_family[i], h12hs_families[i]);
+				strcpy(motif_tf[i], h12hs_tfs[i]);
+			}
+			break;
+		}
+		case 1: {
+			for (i = 0; i < n_motifs; i++)
+			{				
+				strcpy(motif_name[i], mm_core_12_names[i]);
+				strcpy(motif_class[i], h12mm_classes[i]);
+				strcpy(motif_family[i], h12mm_families[i]);
+				strcpy(motif_tf[i], h12mm_tfs[i]);
+			}
+			break;
+		}
+		case 5: {
+			for (i = 0; i < n_motifs; i++)
+			{
+				strcpy(motif_name[i], jaspar24_plants_names[i]);
+				strcpy(motif_class[i], jaspar24_plants_classes[i]);
+				strcpy(motif_family[i], jaspar24_plants_families[i]);
+				strcpy(motif_tf[i], jaspar24_plants_tfs[i]);				
+			}
+			break;
+		}
+		case 6: {
+			for (i = 0; i < n_motifs; i++)
+			{
+				strcpy(motif_name[i], jaspar24_insects_names[i]);
+				strcpy(motif_class[i], jaspar24_insects_classes[i]);
+				strcpy(motif_family[i], jaspar24_insects_families[i]);
+				strcpy(motif_tf[i], jaspar24_insects_tfs[i]);				
+			}
+			break;
+		}
+		default:
+			break;
+		}
+	}
+	for (i = 0; i < n_motifs; i++)
+	{
+		int sta, clen;
+		clen = strlen(motif_class[i]);
+		sta = 0;
+		char st = '{', en = '}';
+		for (j = 0; j < clen; j++)
+		{
+			if (motif_class[i][j] == st)
+			{
+				sta = j + 1;
+				break;
+			}
+		}
+		memset(motif_class_inx[i], '\0', sizeof(motif_class_inx[i]));
+		k = 0;
+		for (j = sta; motif_class[i][j] != en; j++)motif_class_inx[i][k++] = motif_class[i][j];
+		motif_family_inx[i][k] = '\0';
+		clen = strlen(motif_family[i]);
+		sta = 0;
+		for (j = 0; j < clen; j++)
+		{
+			if (motif_family[i][j] == st)
+			{
+				sta = j + 1;
+				break;
+			}
+		}
+		if (motif_library <= 1 || motif_library == 6)
+		{
+			memset(motif_family_inx[i], '\0', sizeof(motif_family_inx[i]));
+			k = 0;
+			for (j = sta; motif_family[i][j] != en; j++)motif_family_inx[i][k++] = motif_family[i][j];
+			motif_family_inx[i][k] = '\0';
+		}
+		else
+		{
+			memset(motif_family_inx[i], '\0', sizeof(motif_family_inx[i]));
+		}
+	}
 	if ((in_pwm = fopen(partner_db, "rb")) == NULL)
 	{
 		printf("Input file %s can't be opened!\n", partner_db);
 		return -1;
 	}
-	double nseq_fb = (double)nseq_real / nseq_back;
 	int len_partner[2], nthr_dist[2];
 	double pwm[2][MATLEN][OLIGNUM];
-	double pfm[2][MATLEN][OLIGNUM];
+	double pfm[2][MATLEN][OLIGNUM];	
 	//double pwm1[MATLEN][OLIGNUM];
 	//double pfm1[MATLEN][OLIGNUM];
+
 	int nthr_dist_max = 5000;
 	double** thr_all;
 	thr_all = new double* [2];
@@ -757,36 +815,30 @@ int main(int argc, char* argv[])
 		fpr_all[i] = new double[nthr_dist_max];
 		if (fpr_all[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	}
-	int n_motifs1 = n_motifs - 1;
+	int ntop1 = ntop - 1;
 	double** auctwei;
-	auctwei = new double* [n_motifs1];
+	auctwei = new double* [ntop1];
 	if (auctwei == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
-	for (i = 0; i < n_motifs1; i++)
+	for (i = 0; i < ntop1; i++)
 	{
-		auctwei[i] = new double[n_motifs1 - i];
+		auctwei[i] = new double[ntop1 - i];
 		if (auctwei[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	}
 	double** sims;
-	sims = new double* [n_motifs1];
+	sims = new double*[ntop1];
 	if (sims == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
-	for (i = 0; i < n_motifs1; i++)
+	for (i = 0; i < ntop1; i++)
 	{
-		sims[i] = new double[n_motifs1 - i];
+		sims[i] = new double[ntop1-i];
 		if (sims[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	}
-	for (mot1 = 0; mot1 < n_motifs1; mot1++)for (mot2 = 0; mot2 < n_motifs1 - mot1; mot2++)sims[mot1][mot2] = 1;
-	int* index_thr;
-	index_thr = new int[n_motifs];
-	int* fp_thr;
-	fp_thr = new int[n_motifs];
-	double* fp_thr_rest;
-	fp_thr_rest = new double[n_motifs];
+	for (mot1 = 0; mot1 < ntop1; mot1++)for (mot2 = 0; mot2 < ntop1-mot1; mot2++)sims[mot1][mot2] = 1;
 	//n_motifs = 50;
 	int* tp_one, * fp_one;
 	tp_one = new int[nthr_dist_max];
 	if (tp_one == NULL) { puts("Out of memory..."); exit(1); }
 	fp_one = new int[nthr_dist_max];
-	if (fp_one == NULL) { puts("Out of memory..."); exit(1); }
+	if (fp_one == NULL) { puts("Out of memory..."); exit(1); }	
 	double* recall;
 	recall = new double[nthr_dist_max];
 	if (recall == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
@@ -795,12 +847,21 @@ int main(int argc, char* argv[])
 	if (prec == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	int* fp_nsites;// frequencies
 	fp_nsites = new int[nthr_dist_max];
+	if (fp_nsites == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	int nmot_max = 1500;
 	acc* motifp;
 	motifp = new acc[n_motifs];
-	if (motifp == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
+	if (motifp == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }	
 	double min[2], raz[2];
 	motifp[0].p = ftell(in_pwm);
+	int n_motifs1 = n_motifs - 1;
+	double nseq_fb = (double)nseq_real / nseq_back;
+	int* index_thr;
+	index_thr = new int[n_motifs];
+	int* fp_thr;
+	fp_thr = new int[n_motifs];	
+	double* fp_thr_rest;
+	fp_thr_rest = new double[n_motifs];
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
 	{
 		//printf("%d\t%s\n", mot1 + 1, motif_class[mot1]);
@@ -812,7 +873,7 @@ int main(int argc, char* argv[])
 		fread(&nthr_dist_all, sizeof(int), 1, in_pwm);
 		fread(thr_all[0], sizeof(double), nthr_dist_all, in_pwm);
 		fread(fpr_all[0], sizeof(double), nthr_dist_all, in_pwm);
-		if (mot1 != n_motifs1)motifp[mot1 + 1].p = ftell(in_pwm);
+		if(mot1!=n_motifs1)motifp[mot1+1].p = ftell(in_pwm);
 		nthr_dist[0] = 0;
 		for (i = 0; i < nthr_dist_all; i++)
 		{
@@ -826,34 +887,34 @@ int main(int argc, char* argv[])
 			continue;
 		}		*/
 		min[0] = raz[0] = 0;
-		PWMScore(pwm[0], min[0], raz[0], len_partner[0]);
+		PWMScore(pwm[0], min[0], raz[0], len_partner[0]);		
 		for (j = 0; j <= nthr_dist[0]; j++)
 		{
-			tp_one[j] = fp_one[j] = fp_nsites[j]=0;
+			tp_one[j] = fp_one[j] = fp_nsites[j] = 0;
 		}
 		int all_pos = 0;
 		//printf("Real %d\n",mot + 1);
 		int pwm_check = PWM_rec_real_one(pwm[0], min[0], raz[0], nthr_dist[0], thr_all[0], fpr_all[0], tp_one, len_partner[0], nseq_real, seq_real);
 		if (pwm_check == -1)
 		{
-			printf("One motif recognition error, real motif %d\n", mot1 +1);
+			printf("One motif recognition error, real %s\n", motif_name[mot1]);
 			exit(1);
 		}
 		//printf("Back %d\n", mot + 1);
 		pwm_check = PWM_rec_back_one(pwm[0], min[0], raz[0], nthr_dist[0], thr_all[0], fpr_all[0], fp_one, fp_nsites, len_partner[0], nseq_back, seq_back, all_pos);
 		if (pwm_check == -1)
 		{
-			printf("One motif recognition error, back %d\n", mot1 + 1);
+			printf("One motif recognition error, back %s\n", motif_name[mot1]);
 			exit(1);
 		}
 		/*for (i = 0; i <= nthr_dist[0]; i++)
-		{
-			printf("%f %f %d %d\t", thr_all[0][i],fpr_all[0][i],tp_one[i], fp_one[i]);
+		{			
+			printf("%f %f %d %d\t", thr_all[0][i],fpr_all[0][i],tp_one[i], fp_one[i]);			
 			if ((i + 1) % 4 == 0)printf("%d\n", i + 1);
 		}*/
 		//printf("ROC %d\n", mot + 1);
-		int all_pos_thr = (int)(all_pos * fp2);
-		index_thr[mot1] = nthr_dist[0] - 1;
+		int all_pos_thr = (int)(all_pos * fp2);		
+		index_thr[mot1] = nthr_dist[0] - 1, fp_thr;
 		int count_one = 0;
 		for (i = 0; i < nthr_dist[0]; i++)
 		{
@@ -869,7 +930,7 @@ int main(int argc, char* argv[])
 		}
 		double auc_one = 0;
 		int nthr_dist1 = nthr_dist[0] - 1;
-		double prec_pred = 1;
+		double prec_pred = 1; 		
 		prec[0] = 1, recall[0] = 0;
 		int nthr_here = 1;
 		for (i = 0; i <= index_thr[mot1]; i++)
@@ -887,40 +948,70 @@ int main(int argc, char* argv[])
 				if (i == index_thr[mot1])dauc *= fp_thr_rest[mot1];
 				auc_one += dauc;
 				nthr_here++;
-			}
-		}
-		printf("%d\t%f\n", mot1+1, auc_one);
-		fprintf(out_log1, "%d\t%f\n", mot1 + 1,  auc_one);
+			}			
+		}		
+		printf("%d\t%s\t%s\t%f\n", mot1 + 1, motif_tf[mot1], motif_name[mot1], auc_one);
+		fprintf(out_log1, "%d\t%s\t%s\t%f\t%s\t%s\n", mot1 +1, motif_tf[mot1], motif_name[mot1], auc_one,motif_class[mot1],motif_family[mot1]);
 		//fprintf(out_roc, "%s\t%s\t%d\t%s\t%g\n", file_for, file_back, mot1 + 1, motif_name[mot1], auc_one);
-		motifp[mot1].auc = auc_one;
-		//	motifp[mot1].rank = -1;		
+		motifp[mot1].auc =  auc_one;
+	//	motifp[mot1].rank = -1;		
 		motifp[mot1].num = mot1;
-		{
-			strcpy(file_roc1, file_roc);
-			strcat(file_roc1, "_");
-			char buf[5];
-			sprintf(buf, "%d", mot1 + 1);
-			strcat(file_roc1, buf);
-		}
-		if ((out_roc = fopen(file_roc1, "wt")) == NULL)
-		{
-			fprintf(out_roc, "Input file %s can't be opened!\n", file_roc1);
-			exit(1);
-		}
-		fprintf(out_roc, "%s\t%s\t%d\t%f\n", file_for, file_back, mot1 + 1, motifp[mot1].auc);
-		for (i = 0; i < nthr_here; i++)
+	/*	for (i = 0; i < nthr_here; i++)
 		{
 			fprintf(out_roc, "%g\t%f\n", prec[i], recall[i]);
 			if (prec[i] == fp2)break;
-		}
-		fclose(out_roc);
-	}
+		}*/
+	}	
 	qsort(motifp, n_motifs, sizeof(motifp[0]), compare_auc);
 	for (i = 0; i < n_motifs; i++)motifp[i].rank = i + 1;
 	qsort(motifp, n_motifs, sizeof(motifp[0]), compare_num);
+	{
+		int* simn;
+		simn = new int[n_motifs1];
+		if (simn == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
+		double* simv;
+		simv = new double[n_motifs1];
+		if (simv == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }		
+		{
+			int sim_here, mot1k=0;
+			for (mot1 = 0; mot1 < n_motifs; mot1++)
+			{								
+				fread(&sim_here, sizeof(int), 1, out_sim);
+				//printf("%d Rank %d\t%s %s\t%d similar\n", mot1 + 1, motifp[mot1].rank, motif_name[mot1], motif_tf[mot1], sim_here);
+				if (sim_here > 0)
+				{
+					fread(simn, sizeof(double), sim_here, out_sim);
+					fread(simv, sizeof(double), sim_here, out_sim);				
+					if (motifp[mot1].rank <= ntop)
+					{
+						int mot2k = 0, is = 0, isend=sim_here-1;
+						for (mot2 = mot1 + 1; mot2 < n_motifs; mot2++)
+						{
+							if (simn[is] == mot2)
+							{
+								if (motifp[mot2].rank <= ntop)
+								{
+									sims[mot1k][mot2k] = simv[is];
+								}
+								//printf("%d(%d,%d) Rank2nd %d\t%s %s\t%s %s\t%f\n", is+1,mot1k+1,mot2k+1, motifp[mot2].rank,motif_name[mot1], motif_name[mot2], motif_tf[mot1], motif_tf[mot2], simv[i]);
+								if (is == isend)break;
+								is++;
+							}
+							if (motifp[mot2].rank <= ntop)mot2k++;
+						}
+						//int yy = 1;
+					}
+				}				
+				if (motifp[mot1].rank <= ntop)mot1k++;
+			}
+		}
+		delete[] simv;
+		delete[] simn;
+	}
+	fclose(out_sim);
 	int** tp_two;
 	tp_two = new int* [2];
-	if (tp_two == NULL) { puts("Out of memory..."); exit(1); }
+	if (tp_two == NULL) { puts("Out of memory..."); exit(1); }	
 	for (i = 0; i < 2; i++)
 	{
 		tp_two[i] = new int[nthr_dist_max];
@@ -935,68 +1026,98 @@ int main(int argc, char* argv[])
 		if (fp_two[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	}
 	qbs* tab;
-	tab = new qbs[2 * nthr_dist_max];
-	if (tab == NULL) { puts("Out of memory..."); exit(1); }
-	fprintf(out_mat, "%s\t%s\npAUC\t", file_for, file_back);
-	for (mot1 = 0; mot1 < n_motifs; mot1++)
-	{		
-		fprintf(out_mat, "\t%f", motifp[mot1].auc);
-	}
-	fprintf(out_mat, "\n\tRank");
+	tab = new qbs[2*nthr_dist_max];
+	if (tab == NULL) { puts("Out of memory..."); exit(1); }	
+	fprintf(out_mat, "%s\t%s\t\t\t\tpAUC",file_for,file_back);
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
 	{
-		fprintf(out_mat, "\t%d", motifp[mot1].rank);
+		if (motifp[mot1].rank <= ntop)fprintf(out_mat, "\t%f", motifp[mot1].auc);
+	}
+	fprintf(out_mat, "\n\t\t\t\t\tRank");
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)fprintf(out_mat, "\t%d", motifp[mot1].rank);
+	}
+	fprintf(out_mat, "\n\t\t\t\t\tClass index");			
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{			
+			fprintf(out_mat, "\t%s", motif_class_inx[mot1]);
+		}
+	}
+	fprintf(out_mat, "\n\t\t\t\t\tFamily index");
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{
+			fprintf(out_mat, "\t%s", motif_family_inx[mot1]);
+		}
+	}
+	fprintf(out_mat, "\n\t\t\t\t\tTF");
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{
+			fprintf(out_mat, "\t%s", motif_tf[mot1]);
+		}
+	}
+	fprintf(out_mat, "\npAUC\tRank\tClass index\tFamily index\tTF\tMotif");				
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{
+			fprintf(out_mat, "\t%s", motif_name[mot1]);
+		}
 	}
 	fprintf(out_mat, "\n");
-	fprintf(out_auc, "#Motif 1\t#Motif 2\tRank 1\tRank 2\tSimilarity\tpAUC 1\tpAUC 2\tpAUC 1&2\tRatio\n");
+	fprintf(out_auc, "Rank 1\tRank 2\tTF 1\tTF 2\tMotif 1\tMotif 2\tSimilarity\tpAUC 1\tpAUC 2\tpAUC 1&2\tRatio\t\tTF class 1\tTF class 2\t\tTF family 1\tTF family 2\n");	
 	int mot1c = 0;
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
-	{		
+	{
+		if (motifp[mot1].rank > ntop)continue;
 		fseek(in_pwm, motifp[mot1].p, SEEK_SET);
 		fread(&len_partner[0], sizeof(int), 1, in_pwm);
 		int len_partner40 = len_partner[0] * 4;
 		fread(pfm[0], sizeof(double), len_partner40, in_pwm);
 		fread(pwm[0], sizeof(double), len_partner40, in_pwm);
 		int nthr_dist_all1;
-		fread(&nthr_dist_all1, sizeof(int), 1, in_pwm);
+		fread(&nthr_dist_all1, sizeof(int), 1, in_pwm);		
 		fread(thr_all[0], sizeof(double), nthr_dist_all1, in_pwm);
 		fread(fpr_all[0], sizeof(double), nthr_dist_all1, in_pwm);
 		//if (strstr(motif_class[mot1], tfclass) == NULL)continue;	
 		nthr_dist[0] = motifp[mot1].nth;
-		{
-			fprintf(out_mat, "%f\t%d\t", motifp[mot1].auc, motifp[mot1].rank);
+		{			
+			fprintf(out_mat, "%f\t%d\t%s\t%s\t%s\t%s\t", motifp[mot1].auc, motifp[mot1].rank, motif_class_inx[mot1], motif_family_inx[mot1], motif_tf[mot1], motif_name[mot1]);
 		}
-		for (i = 0; i < mot1c; i++)fprintf(out_mat, "\t");
+		for(i=0;i<mot1c;i++)fprintf(out_mat, "\t");
 		min[0] = raz[0] = 0;
 		PWMScore(pwm[0], min[0], raz[0], len_partner[0]);
-		matrix[0].mem_in(len_partner[0]);
-		for (i = 0; i < len_partner[0]; i++)for (j = 0; j < OLIGNUM; j++)matrix[0].fre[i][j] = pfm[0][i][j];
-		fprintf(out_auc, "\n");
 		int mot2c = 0;
-		for (mot2 = mot1 + 1; mot2 < n_motifs; mot2++)
+		for (mot2 = mot1+1; mot2 < n_motifs; mot2++)
 		{
+			if (motifp[mot2].rank > ntop)continue;
 			fseek(in_pwm, motifp[mot2].p, SEEK_SET);
 			fread(&len_partner[1], sizeof(int), 1, in_pwm);
 			int len_partner41 = len_partner[1] * 4;
 			fread(pfm[1], sizeof(double), len_partner41, in_pwm);
 			fread(pwm[1], sizeof(double), len_partner41, in_pwm);
+			/*for (i = 0; i < len_partner[1]; i++)
+			{
+				for (j = 0; j < OLIGNUM; j++)
+				{
+					pfm[1][i][j] = pfm1[i][j];
+					pwm[1][i][j] = pwm1[i][j];
+				}
+			}*/
 			int nthr_dist_all2;
-			fread(&nthr_dist_all2, sizeof(int), 1, in_pwm);
+			fread(&nthr_dist_all2, sizeof(int), 1, in_pwm);			
 			fread(thr_all[1], sizeof(double), nthr_dist_all2, in_pwm);
 			fread(fpr_all[1], sizeof(double), nthr_dist_all2, in_pwm);
-			nthr_dist[1] = motifp[mot2].nth;
+			//if (strstr(motif_class[mot2], tfclass) == NULL)continue;			
+			nthr_dist[1] = motifp[mot2].nth;					
 			min[1] = raz[1] = 0;
 			PWMScore(pwm[1], min[1], raz[1], len_partner[1]);
-			matrix[1].mem_in(len_partner[1]);
-			for (i = 0; i < len_partner[1]; i++)for (j = 0; j < OLIGNUM; j++)matrix[1].fre[i][j] = pfm[1][i][j];
-			for (i = 0; i < 4; i++)pval_sim[i] = 1;
-			double pvalue_similarity_tot = pfm_similarity(&matrix[0], &matrix[1], s_granul, s_overlap_min, s_ncycle_small, s_ncycle_large, pval_sim);
-			if (pvalue_similarity_tot < p_crit)
-			{
-				pvalue_similarity_tot = -log10(pvalue_similarity_tot);
-			}			
-			else pvalue_similarity_tot = 1;
-			sims[mot1c][mot2c] = pvalue_similarity_tot;
 			for (n = 0; n < 2; n++)
 			{
 				for (j = 0; j <= nthr_dist[n]; j++)
@@ -1006,10 +1127,10 @@ int main(int argc, char* argv[])
 				}
 			}
 			//printf("Real %d\n",mot + 1);
-			int pwm_check = PWM_rec_real(pwm, min, raz, nthr_dist, thr_all, fpr_all, tp_two, len_partner, nseq_real, seq_real);
+			int pwm_check = PWM_rec_real(pwm, min,raz,nthr_dist, thr_all, fpr_all, tp_two, len_partner, nseq_real, seq_real);
 			if (pwm_check == -1)
 			{
-				printf("Two motifs recognition error, real %d %d\n", mot1+1, mot2+1);
+				printf("Two motifs recognition error, real %s %s\n", motif_name[mot1], motif_name[mot2]);
 				exit(1);
 			}
 			//printf("Back %d\n", mot + 1);	
@@ -1017,15 +1138,13 @@ int main(int argc, char* argv[])
 			pwm_check = PWM_rec_real(pwm, min, raz, nthr_dist, thr_all, fpr_all, fp_two, len_partner, nseq_back, seq_back);
 			if (pwm_check == -1)
 			{
-				printf("Two motifs recognition error, back %d %d\n", mot1 + 1, mot2 + 1);
+				printf("Two motifs recognition error, back %s %s\n", motif_name[mot1], motif_name[mot2]);
 				exit(1);
 			}
-			int all_pos;
-			if (all_pos_two[0] > all_pos_two[1])all_pos = all_pos_two[0];
-			else all_pos = all_pos_two[1];
-			int nthr_dist_two = nthr_dist[0] + nthr_dist[1];
 			double fp_thr_two = (double)(fp_thr[mot1] + fp_thr[mot2]) / nseq_back / 2;
 			double fp_thr_rest2 = (fp_thr_rest[mot1] + fp_thr_rest[mot2]) / 2;
+			int all_pos = all_pos_two[0] + all_pos_two[1];
+			int nthr_dist_two = nthr_dist[0] + nthr_dist[1];
 			for (j = 0; j < nthr_dist_two; j++) { tab[j].nfo = 0; tab[j].fpr = 0; }
 			k = 0;
 			for (j = 0; j < 2; j++)
@@ -1074,7 +1193,7 @@ int main(int argc, char* argv[])
 					double prec_cur = dtpi / (dtpi + nseq_fb * tab[i].fpr);
 					double dauc = dtp * (prec_pred + prec_cur) / 2;
 					recall[n_here] = dtpi / nseq_real;
-					prec[n_here] = prec_cur;
+					prec[n_here] = prec_cur;					
 					n_here++;
 					double fproc_cur = (double)tab[i].fpr / nseq_back;
 					if (fproc_cur >= fp_thr_two)
@@ -1084,43 +1203,32 @@ int main(int argc, char* argv[])
 						break;
 					}
 					else auc_two += dauc;
-				}
-			}
-			{
-				strcpy(file_roc1, file_roc);
-				strcat(file_roc1, "_");
-				char buf[5];
-				sprintf(buf, "%d", mot1 + 1);
-				strcat(file_roc1, buf);
-				strcat(file_roc1, "&");
-				sprintf(buf, "%d", mot2 + 1);
-				strcat(file_roc1, buf);
-			}
-			if ((out_roc = fopen(file_roc1, "wt")) == NULL)
-			{
-				fprintf(out_roc, "Input file %s can't be opened!\n", file_roc1);
-				exit(1);
-			}
-			fprintf(out_roc,"%s\t%s\t%d\t%d\t%f\t%f\t%f\n", file_for, file_back,mot1 + 1, mot2 + 1, motifp[mot1].auc, motifp[mot2].auc, auc_two);
-			for (i = 0; i < n_here; i++)
-			{
-				fprintf(out_roc, "%g\t%f\n", prec[i], recall[i]);
-				if (prec[i] == fp2)break;
-			}
-			fclose(out_roc);
-			printf("%d\t%d\t%f\t%f\t%f", mot1+1, mot2+1, motifp[mot1].auc, motifp[mot2].auc, auc_two);
-			if (sims[mot1c][mot2c] != 1)printf("\t%f", sims[mot1c][mot2c]);
-			printf("\n");
-			fprintf(out_log2, "%d\t%d\t%d\t%d\t%f\t%f\t%f\t%f\n", mot1 + 1, mot2 + 1, motifp[mot1].rank, motifp[mot2].rank,sims[mot1c][mot2c], motifp[mot1].auc, motifp[mot2].auc, auc_two);
+				}				
+			}			
+			printf("%s\t%s\t%s\t%s\t%f\t%f\t%f", motif_tf[mot1], motif_tf[mot2], motif_name[mot1], motif_name[mot2], motifp[mot1].auc, motifp[mot2].auc, auc_two);
+			if(sims[mot1c][mot2c]!=1)printf("\t%f", sims[mot1c][mot2c]);
+			printf("\n");			
+			fprintf(out_log2, "%d\t%d\t%s\t%s\t%s\t%s\t%f\t%f\t%f\t%f\t\t", mot1 +1, mot2 +1, motif_tf[mot1], motif_tf[mot2], motif_name[mot1], motif_name[mot2], sims[mot1c][mot2c],motifp[mot1].auc, motifp[mot2].auc, auc_two);
+			fprintf(out_log2, "%s\t%s\t\t%s\t%s\n", motif_class[mot1], motif_family[mot1], motif_class[mot2], motif_family[mot2]);
 			double auc_max = Max(motifp[mot1].auc, motifp[mot2].auc);
 			auctwei[mot1c][mot2c] = auc_two / auc_max;
-			//if (auc_two > motifp[mot1].auc && auc_two > motifp[mot2].auc)
+			if (auc_two > motifp[mot1].auc && auc_two > motifp[mot2].auc)
 			{
-				fprintf(out_auc, "%d\t%d\t%d\t%d\t", mot1+1, mot2+1, motifp[mot1].rank, motifp[mot2].rank);
-				fprintf(out_auc, "%f\t%f\t%f\t%f\t%f\n", sims[mot1c][mot2c], motifp[mot1].auc, motifp[mot2].auc, auc_two, auctwei[mot1c][mot2c]);				
+				int mot1x, mot2x;
+				if (motifp[mot1].auc >= motifp[mot2].auc) 
+				{ 
+					mot1x = mot1; mot2x = mot2; 					
+				}
+				else 
+				{ 
+					mot1x = mot2; mot2x = mot1; 
+				}
+				fprintf(out_auc, "%d\t%d\t%s\t%s\t%s\t%s\t", motifp[mot1x].rank, motifp[mot2x].rank, motif_tf[mot1x], motif_tf[mot2x], motif_name[mot1x], motif_name[mot2x]);
+				fprintf(out_auc, "%f\t%f\t%f\t%f\t%f\t", sims[mot1c][mot2c], motifp[mot1x].auc, motifp[mot2x].auc, auc_two, auctwei[mot1c][mot2c]);
+				fprintf(out_auc, "\t%s\t%s\t\t%s\t%s\n", motif_class[mot1x], motif_class[mot2x], motif_family[mot1x], motif_family[mot2x]);
 			}
 			mot2c++;
-			//	else fprintf(out_auc, "\t");
+		//	else fprintf(out_auc, "\t");
 			fprintf(out_mat, "\t%f", auc_two);
 			/*if (auc_two > motifp[mot1].auc && auc_two > motifp[mot2].auc)
 			{
@@ -1136,51 +1244,123 @@ int main(int argc, char* argv[])
 		fprintf(out_mat, "\n");		
 	}
 	fprintf(out_mat, "\n");
-	fprintf(out_mat, "pAUC\t");
+	fprintf(out_mat, "%s\t%s\t\t\t\tpAUC", file_for, file_back);
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
 	{
-		fprintf(out_mat, "\t%f", motifp[mot1].auc);
+		if (motifp[mot1].rank <= ntop)fprintf(out_mat, "\t%f", motifp[mot1].auc);
 	}
-	fprintf(out_mat, "\n\tRank");
+	fprintf(out_mat, "\n\t\t\t\t\tRank");
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
 	{
-		fprintf(out_mat, "\t%d", motifp[mot1].rank);
+		if (motifp[mot1].rank <= ntop)fprintf(out_mat, "\t%d", motifp[mot1].rank);
+	}
+	fprintf(out_mat, "\n\t\t\t\t\tClass index");
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{			
+			fprintf(out_mat, "\t%s", motif_class_inx[mot1]);
+		}
+	}
+	fprintf(out_mat, "\n\t\t\t\t\tFamily index");
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{
+			fprintf(out_mat, "\t%s", motif_family_inx[mot1]);
+		}
+	}
+	fprintf(out_mat, "\n\t\t\t\t\tTF");
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{
+			fprintf(out_mat, "\t%s", motif_tf[mot1]);
+		}
+	}
+	fprintf(out_mat, "\npAUC\tRank\tClass index\tFamily index\tTF\tMotif");
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{
+			fprintf(out_mat, "\t%s", motif_name[mot1]);
+		}
 	}
 	fprintf(out_mat, "\n");
 	k = 0;
 	mot1c = 0;
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
-	{				
-		fprintf(out_mat, "%f\t%d\t", motifp[mot1].auc, motifp[mot1].rank);		
-		for (i = 0; i < mot1c; i++)fprintf(out_mat, "\t");
+	{
+		if (motifp[mot1].rank > ntop)continue;
+		{
+			fprintf(out_mat, "%f\t%d\t%s\t%s\t%s\t%s\t", motifp[mot1].auc, motifp[mot1].rank, motif_class_inx[mot1], motif_family_inx[mot1], motif_tf[mot1], motif_name[mot1]);
+		}
+		for (i = 0; i < mot1c; i++)fprintf(out_mat, "\t");	
 		int mot2c = 0;
 		for (mot2 = mot1 + 1; mot2 < n_motifs; mot2++)
 		{
-			fprintf(out_mat, "\t%f", auctwei[mot1c][mot2c++]);			
+			if (motifp[mot2].rank <= ntop)
+			{
+				fprintf(out_mat, "\t%f", auctwei[mot1c][mot2c++]);
+			}
 		}
 		mot1c++;
 		fprintf(out_mat, "\n");
 	}
-	fprintf(out_mat, "pAUC\t");
+	fprintf(out_mat, "%s\t%s\t\t\t\tpAUC", file_for, file_back);
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
 	{
-		fprintf(out_mat, "\t%f", motifp[mot1].auc);
+		if (motifp[mot1].rank <= ntop)fprintf(out_mat, "\t%f", motifp[mot1].auc);
 	}
-	fprintf(out_mat, "\n\tRank");
+	fprintf(out_mat, "\n\t\t\t\t\tRank");
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
 	{
-		fprintf(out_mat, "\t%d", motifp[mot1].rank);
-	}	
+		if (motifp[mot1].rank <= ntop)fprintf(out_mat, "\t%d", motifp[mot1].rank);
+	}
+	fprintf(out_mat, "\n\t\t\t\t\tClass index");
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{
+			fprintf(out_mat, "\t%s", motif_class_inx[mot1]);
+		}
+	}
+	fprintf(out_mat, "\n\t\t\t\t\tFamily index");
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{
+			fprintf(out_mat, "\t%s", motif_family_inx[mot1]);
+		}
+	}
+	fprintf(out_mat, "\n\t\t\t\t\tTF");
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{
+			fprintf(out_mat, "\t%s", motif_tf[mot1]);
+		}
+	}
+	fprintf(out_mat, "\npAUC\tRank\tClass index\tFamily index\tTF\tMotif");
+	for (mot1 = 0; mot1 < n_motifs; mot1++)
+	{
+		if (motifp[mot1].rank <= ntop)
+		{
+			fprintf(out_mat, "\t%s", motif_name[mot1]);
+		}
+	}
 	fprintf(out_mat, "\n");
 	mot1c = 0;
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
 	{
+		if (motifp[mot1].rank <= ntop)
 		{
-			fprintf(out_mat, "%f\t%d\t", motifp[mot1].auc, motifp[mot1].rank);
+			fprintf(out_mat, "%f\t%d\t%s\t%s\t%s\t%s\t", motifp[mot1].auc, motifp[mot1].rank, motif_class_inx[mot1], motif_family_inx[mot1], motif_tf[mot1], motif_name[mot1]);
 			for (i = 0; i < mot1c; i++)fprintf(out_mat, "\t");
 			int mot2c = 0;
 			for (mot2 = mot1 + 1; mot2 < n_motifs; mot2++)
 			{
+				if (motifp[mot2].rank <= ntop)
 				{
 					fprintf(out_mat, "\t");
 					if (sims[mot1c][mot2c] != 1)fprintf(out_mat, "%f", sims[mot1c][mot2c]);
@@ -1207,22 +1387,22 @@ int main(int argc, char* argv[])
 	}
 	delete[] fpr_all;
 	delete[] len_real;
-	delete[] len_back;
+	delete[] len_back;	
 	delete[] tp_two;
 	delete[] recall;
 	delete[] prec;
 	delete[] tp_one;
+	delete[] fp_one;
+	delete[] fp_nsites;
 	delete[] index_thr;
 	delete[] fp_thr;
 	delete[] fp_thr_rest;
-	delete[] fp_one;
-	delete[] fp_nsites;
-	for (k = 0; k < n_motifs1; k++)
+	for (k = 0; k < ntop1; k++)
 	{
 		delete[] auctwei[k];
 	}
 	delete[] auctwei;
-	for (k = 0; k < n_motifs1; k++)
+	for (k = 0; k < ntop1; k++)
 	{
 		delete[] sims[k];
 	}
