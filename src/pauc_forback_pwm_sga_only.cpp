@@ -17,21 +17,6 @@
 #define NUM_LIBRARY 7// 4islo bibliotek
 #define DIM 100
 
-struct juxt
-{
-	double err;
-	int sta;
-	int ind;
-	int mod;
-};
-int compare_juxt(const void* X1, const void* X2)//increase
-{
-	struct juxt* S1 = (struct juxt*)X1;
-	struct juxt* S2 = (struct juxt*)X2;
-	if (S1->err - S2->err > 0)return 1;
-	if (S1->err - S2->err < 0)return -1;
-	return 0;
-}
 int StrNStr(char* str, char c, int n)
 {
 	int i, len = strlen(str);
@@ -669,7 +654,7 @@ int SGA_rec_real_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all,
 	}
 	return 1;
 }
-int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int nthr_dist, double* thr_all, double* fpr_all, int* fpr, int olen, int nseq, char*** seq, int& all_pos)
+int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int nthr_dist, double* thr_all, double* fpr_all, int* fpr, int* fp_nsites, int olen, int nseq, char*** seq, int& all_pos)
 {
 	int i, j, n;
 	int compl1;
@@ -684,6 +669,7 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 		//if ((n+1) % 500 == 0)printf("\b\b\b\b\b\b\b%7d", n+1);
 		int len_pro1 = strlen(seq[0][n]);
 		int len21 = len_pro1 - olen;
+		int index_best = nthr_dist;
 		for (i = 0; i <= len21; i++)
 		{
 			for (compl1 = 0; compl1 < 2; compl1++)
@@ -722,13 +708,15 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 						}
 					}
 				}
-				for (j = nthr_dist; j >= index; j--)fpr[j]++;
+				for (j = nthr_dist; j >= index; j--)fp_nsites[j]++;
+				if (index < index_best)index_best = index;
 			}
 		}
+		for (j = index_best; j <= nthr_dist; j++)fpr[j]++;
 	}
 	return 1;
 }
-int SGA_rec_back_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all, int* fpr, int nseq, char*** seq, int& all_pos)
+int SGA_rec_back_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all, int* fpr, int* fp_nsites, int nseq, char*** seq, int& all_pos)
 {
 	int i, j, n, m;
 	int compl1;
@@ -741,6 +729,7 @@ int SGA_rec_back_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all,
 		//if ((n+1) % 500 == 0)printf("\b\b\b\b\b\b\b%7d", n+1);
 		int len_pro1 = strlen(seq[0][n]);
 		int len21 = len_pro1 - sta->len;
+		int index_best = nthr_dist;
 		for (i = 0; i <= len21; i++)
 		{
 			for (compl1 = 0; compl1 < 2; compl1++)
@@ -788,9 +777,11 @@ int SGA_rec_back_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all,
 						}
 					}
 				}
-				for (j = nthr_dist; j >= index; j--)fpr[j]++;
+				for (j = nthr_dist; j >= index; j--)fp_nsites[j]++;
+				if (index < index_best)index_best = index;				
 			}
 		}
+		for (j = index_best; j <= nthr_dist; j++)fpr[j]++;
 	}
 	return 1;
 }
@@ -898,158 +889,6 @@ int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city
 	}*/
 	return 1;
 }
-
-int PWM_SGA_rec_back(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city *sta, int nthr_dist[2], double** thr_all, double** fpr_all, double** fpr, int* olen, int nseq, char*** seq, int* all_pos_two)
-{
-	int i, j, k, m, n;
-	int compl1;
-	int cod[MATLEN];
-	char d[MATLEN];
-	int word = 1;
-	double koef = (double)(olen[0] + olen[1]) / olen[0] / olen[1] / 2;
-	int nthr_dist1[2], olen1[2];
-	double thr_cr[2];
-	for (n = 0; n < 2; n++)
-	{
-		nthr_dist1[n] = nthr_dist[n] - 1;
-		olen1[n] = olen[n] - 1;
-		thr_cr[n] = thr_all[n][nthr_dist1[n]];
-	}
-	int len_max = 0;
-	for (n = 0; n < nseq; n++)
-	{
-		int len1 = strlen(seq[0][n]);
-		if (len_max < len1)len_max = len1;
-	}
-	juxt* jux;
-	jux = new juxt[len_max * 4];// two models, two strands
-	if (jux == NULL) { puts("Out of memory..."); exit(1); }
-
-	//int olenmin = Min(olen[0], olen[1]);
-	//int psco[2][2][SEQLEN];
-	for (n = 0; n < nseq; n++)
-	{
-		int rec_pos_any = 0;
-		int rec_pos[2] = { 0,0 };
-		//double over = 0;
-		int len1 = strlen(seq[0][n]);
-		int len21[2];
-		for (i = 0; i < 2; i++)len21[i] = len1 - olen[i];
-		//for (i = 0; i < 2; i++)for (j = 0; j < 2; j++)for (k = 0; k <= len21[i]; k++)psco[i][j][k] = nthr_dist[i];
-		for (i = 0; i < 2; i++)
-		{
-			//if ((n+1) % 500 == 0)printf("\b\b\b\b\b\b\b%7d", n+1);					
-			for (k = 0; k <= len21[i]; k++)
-			{
-				for (compl1 = 0; compl1 < 2; compl1++)
-				{
-					int ista;
-					if (compl1 == 0)ista = k;
-					else ista = len21[i] - k;
-					strncpy(d, &seq[compl1][n][ista], olen[i]);
-					d[olen[i]] = '\0';
-					if (strstr(d, "n") != NULL) { continue; }
-					all_pos_two[i]++;
-					double score = 0;
-					if (i == 0)
-					{
-						GetSostPro(d, word, cod);
-						for (j = 0; j < olen[i]; j++)
-						{
-							score += pwm[j][cod[j]];
-						}
-						score -= min;
-						score /= raz;
-					}
-					else
-					{
-						score += sta->c;
-						for (j = 0; j < sta->size; j++)
-						{
-							int rlenj = (sta->tot[j].end - sta->tot[j].sta + 1);
-							double fm = 0;
-							for (m = sta->tot[j].sta; m <= sta->tot[j].end; m++)
-							{
-								int cod = 4 * IdeLet(d[m]) + IdeLet(d[m + 1]);
-								if (sta->tot[j].num == cod) { fm++; }
-							}
-							if (fm != 0)
-							{
-								fm /= rlenj;
-								score += sta->tot[j].buf * fm;
-							}
-						}
-						score = 1 - fabs(score - 1);
-					}
-					int index = nthr_dist[i];
-					if (score >= thr_cr[i])
-					{
-						if (score >= thr_all[i][0])
-						{
-							index = 0;
-						}
-						else
-						{
-							for (j = 1; j < nthr_dist[i]; j++)
-							{
-								if (score >= thr_all[i][j] && score < thr_all[i][j - 1])
-								{
-									index = j;
-									break;
-								}
-							}
-						}
-						rec_pos[i]++;
-						jux[rec_pos_any].err = fpr_all[i][index];
-						jux[rec_pos_any].ind = index;
-						jux[rec_pos_any].sta = ista;
-						jux[rec_pos_any].mod = i;
-						rec_pos_any++;						
-					}
-				//	psco[i][compl1][k] = index;
-					fpr[i][index]++;
-				}
-			}
-		}
-		if (rec_pos_any > 1 && (rec_pos[0] > 0 && rec_pos[1] > 0))
-		{
-			qsort(jux, rec_pos_any, sizeof(jux[0]), compare_juxt);
-			for (k = 0; k < rec_pos_any - 1; k++)
-			{
-				if (fpr[jux[k].mod][jux[k].ind] > 0)
-				{
-					double dfpr = 0;
-					for (m = k + 1; m < rec_pos_any; m++)
-					{
-						if (jux[k].mod == jux[m].mod)continue;
-						int left1 = jux[k].sta, left2 = jux[m].sta, right1 = left1 + olen1[jux[k].mod], right2 = left2 + olen1[jux[m].mod];
-						if (right2 < left1 || right1 < left2)continue;// spacer
-						if ((left2 <= left1 && right2 >= right1) || (left1 <= left2 && right1 >= right2))// full overlap
-						{
-							dfpr = 1;
-							break;
-						}
-						int right = Min(right1, right2);
-						int left = Max(left1, left2);
-						int overlap = right - left + 1;
-						dfpr += koef * overlap;
-						if (dfpr >= 1)
-						{
-							dfpr = 1;
-							break;
-						}
-					}
-					fpr[jux[k].mod][jux[k].ind] -= dfpr;
-					if (fpr[jux[k].mod][jux[k].ind] < 0)fpr[jux[k].mod][jux[k].ind] = 0;
-				}
-			}
-			//printf("%d\t%d\t%d\t\t", n + 1, rec_pos[0], rec_pos[1]);
-		}
-	}
-	delete[] jux;
-	return 1;
-}
-
 int main(int argc, char* argv[])
 {
 	int i, j, k, n;
@@ -1123,8 +962,10 @@ int main(int argc, char* argv[])
 	}
 	ReadSeq(file_for, nseq_real, len_real, seq_real, olen_min, len_peak_max);
 	ReadSeq(file_back, nseq_back, len_back, seq_back, olen_min, len_peak_max);
-	//motif library
-
+	
+	int index_thr[2], fp_thr[2];
+	double fp_thr_rest[2];
+	double nseq_fb = (double)nseq_real / nseq_back;
 	int len_partner[2], nthr_dist[2];
 	double pwm[MATLEN][OLIGNUM];
 	double pfm[MATLEN][OLIGNUM];
@@ -1151,21 +992,21 @@ int main(int argc, char* argv[])
 	if (tp_one == NULL) { puts("Out of memory..."); exit(1); }
 	fp_one = new int[nthr_dist_max];
 	if (fp_one == NULL) { puts("Out of memory..."); exit(1); }
-	double** tp_here1;
-	tp_here1 = new double* [2];
-	if (tp_here1 == NULL) { puts("Out of memory..."); exit(1); }
+	double** recall1;
+	recall1 = new double* [2];
+	if (recall1 == NULL) { puts("Out of memory..."); exit(1); }
 	for (i = 0; i < 2; i++)
 	{
-		tp_here1[i] = new double[nthr_dist_max];
-		if (tp_here1[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
+		recall1[i] = new double[nthr_dist_max];
+		if (recall1[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	}
-	double** fp_here1;
-	fp_here1 = new double* [2];
-	if (fp_here1 == NULL) { puts("Out of memory..."); exit(1); }
+	double** prec1;
+	prec1 = new double* [2];
+	if (prec1 == NULL) { puts("Out of memory..."); exit(1); }
 	for (i = 0; i < 2; i++)
 	{
-		fp_here1[i] = new double[nthr_dist_max];
-		if (fp_here1[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
+		prec1[i] = new double[nthr_dist_max];
+		if (prec1[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	}
 	int** tp_two;
 	tp_two = new int* [2];
@@ -1175,13 +1016,21 @@ int main(int argc, char* argv[])
 		tp_two[i] = new int[nthr_dist_max];
 		if (tp_two[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	}
-	double** fp_two;
-	fp_two = new double* [2];
+	int** fp_two;
+	fp_two = new int* [2];
 	if (fp_two == NULL) { puts("Out of memory..."); exit(1); }
 	for (i = 0; i < 2; i++)
 	{
-		fp_two[i] = new double[nthr_dist_max];
+		fp_two[i] = new int[nthr_dist_max];
 		if (fp_two[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
+	}
+	int** fp_nsites;// frequencies
+	fp_nsites = new int* [2];
+	if (fp_nsites == NULL) { puts("Out of memory..."); exit(1); }
+	for (i = 0; i < 2; i++)
+	{
+		fp_nsites[i] = new int[nthr_dist_max];
+		if (fp_nsites[i] == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	}
 	if ((in_pwm = fopen(partner_pwm, "rb")) == NULL)
 	{
@@ -1227,7 +1076,7 @@ int main(int argc, char* argv[])
 	int n_here1[2] = { 0,0 };	
 	for(n=0;n<2;n++)
 	{
-		for (j = 0; j <= nthr_dist[n]; j++)tp_one[j] = fp_one[j] = 0;
+		for (j = 0; j <= nthr_dist[n]; j++)tp_one[j] = fp_one[j] = fp_nsites[n][j] = 0;
 		int all_pos = 0;
 		if (n == 0)
 		{
@@ -1237,7 +1086,7 @@ int main(int argc, char* argv[])
 				printf("Motif pwm recognition error, real\n");
 				exit(1);
 			}
-			check = PWM_rec_back_one(pwm, min, raz, nthr_dist[0], thr_all[0], fpr_all[0], fp_one, len_partner[0], nseq_back, seq_back, all_pos);
+			check = PWM_rec_back_one(pwm, min, raz, nthr_dist[0], thr_all[0], fpr_all[0], fp_one, fp_nsites[0], len_partner[0], nseq_back, seq_back, all_pos);
 			if (check == -1)
 			{
 				printf("Motif pwm recognition error, real\n");
@@ -1252,11 +1101,26 @@ int main(int argc, char* argv[])
 				printf("Motif sga recognition error, real\n");
 				exit(1);
 			}
-			check = SGA_rec_back_one(&sta, nthr_dist[1], thr_all[1], fpr_all[1], fp_one, nseq_back, seq_back, all_pos);
+			check = SGA_rec_back_one(&sta, nthr_dist[1], thr_all[1], fpr_all[1], fp_one, fp_nsites[1], nseq_back, seq_back, all_pos);
 			if (check == -1)
 			{
 				printf("Motif sga recognition error, real\n");
 				exit(1);
+			}
+		}
+		int all_pos_thr = (int)(all_pos * fp2);
+		index_thr[n] = nthr_dist[n] - 1;
+		int count_one = 0;
+		for (i = 0; i < nthr_dist[n]; i++)
+		{
+			count_one += fp_nsites[n][i];
+			//printf("FPsites %d FPpeak %d TPpeak %d\n", fp_nsites[n][i], fp_one[i],tp_one[i]);
+			if (count_one >= all_pos_thr)
+			{
+				index_thr[n] = i;
+				fp_thr[n] = fp_one[i];
+				fp_thr_rest[n] = 1 - (double)(count_one - all_pos_thr) / fp_nsites[n][i];
+				break;
 			}
 		}
 		/*for (i = 0; i <= nthr_dist[n]; i++)
@@ -1265,28 +1129,26 @@ int main(int argc, char* argv[])
 			printf("%5d %d\t", tp_one[i], fp_one[i]);
 		}*/
 		//printf("ROC %d\n", mot + 1);
-		int tproc_pred = 0;
-		double fproc_pred = 0;
-		int nthr_dist1 = nthr_dist[n] - 1;
-		fp_here1[n][0] = 0, tp_here1[n][0] = 0;
+		double prec_pred = 1;// (double)tp_one[0] / ((double)tp_one[0] + nseq_fb * fp_one[0]);
+		recall1[n][0] = 0;//(double)tp_one[0]/nseq_real, 
+		prec1[n][0] = prec_pred;
 		n_here1[n] = 1;
-		for (i = 0; i < nthr_dist[n]; i++)
+		int index1 = index_thr[n] - 1;
+		for (i = 0; i <= index_thr[n]; i++)
 		{
-			if (fp_one[i] > fproc_pred && (i == nthr_dist1 || fp_one[i + 1] > fp_one[i]))
+			int dtp;
+			if (i > 0)dtp = tp_one[i] - tp_one[i - 1];
+			else dtp = tp_one[i];
+			if (dtp > 0 || (i == index1 || i == index_thr[n]))
 			{
-				int tproc_cur = tp_one[i];
-				double fproc_cur = (double)fp_one[i] / all_pos, fproc_cur_pauc = fproc_cur;
-				if (fproc_cur >= fp2 || i == nthr_dist1)fproc_cur_pauc = fp2;
-				double dauc = (tproc_cur + tproc_pred) * (fproc_cur_pauc - fproc_pred) / nseq_real / 2;
-				tp_here1[n][n_here1[n]] = (double)tp_one[i] / nseq_real;
-				fp_here1[n][n_here1[n]] = fproc_cur_pauc;
+				double dtpi = (double)tp_one[i];
+				double prec_cur = dtpi / (dtpi + nseq_fb * fp_one[i]);
+				double dauc = dtp * (prec_pred + prec_cur) / 2;
+				recall1[n][n_here1[n]] = dtpi / nseq_real;
+				prec1[n][n_here1[n]] = prec_cur;
+				if (i == index_thr[n])dauc *= fp_thr_rest[n];
+				auc_one[n] += dauc;
 				n_here1[n]++;
-				//fprintf(out,"%d\t%d\t%g\t%g\t%g\n", tproc_cur, tproc_pred, fproc_cur, fproc_pred, dauc);
-				//fprintf(outq, "%g\t%f\n", fproc_cur, (double)tproc_cur / n_cnt_tot);
-				if (fproc_cur <= fp2)auc_one[n] += dauc;
-				if (fproc_cur >= fp2)break;
-				tproc_pred = tproc_cur;
-				fproc_pred = fproc_cur;
 			}
 		}
 		if(n==0)printf("%s\t%s\t%d\t%s\t%g\n", file_for, file_back, n + 1, partner_pwm, auc_one[n]);
@@ -1303,12 +1165,14 @@ int main(int argc, char* argv[])
 	}
 	//printf("Back %d\n", mot + 1);	
 	int all_pos_two[2] = { 0,0 };
-	check = PWM_SGA_rec_back(pwm, min, raz, &sta, nthr_dist, thr_all, fpr_all, fp_two, len_partner, nseq_back, seq_back, all_pos_two);
+	check = PWM_SGA_rec_real(pwm, min, raz, &sta, nthr_dist, thr_all, fpr_all, fp_two, len_partner, nseq_back, seq_back);
 	if (check == -1)
 	{
 		printf("Motifs pwm&sga recognition error, back\n");
 		exit(1);
 	}
+	double fp_thr_two = (double)(fp_thr[0] + fp_thr[1]) / nseq_back / 2;
+	double fp_thr_rest2 = (fp_thr_rest[0] + fp_thr_rest[1]) / 2;
 	int all_pos;
 	if (all_pos_two[0] > all_pos_two[1])all_pos = all_pos_two[0];
 	else all_pos = all_pos_two[1];
@@ -1334,34 +1198,38 @@ int main(int argc, char* argv[])
 		tab[i].nfo += tab[i1].nfo;
 		tab[i].fpr += tab[i1].fpr;
 	}
-	double* tp_here;
-	tp_here = new double[nthr_dist_two];
-	if (tp_here == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
-	double* fp_here;
-	fp_here = new double[nthr_dist_two];
-	if (fp_here == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
-	int tproc_pred = 0;
-	double fproc_pred = 0;
+	double* recall;
+	recall = new double[nthr_dist_two];
+	if (recall == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
+	double* prec;
+	prec = new double[nthr_dist_two];
+	if (prec == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	double auc_two = 0;
-	int nthr_dist_two1 = nthr_dist_two - 1;
-	int n_here = 0;
+	int n_here = 1;
+	recall[0] = 0;
+	prec[0] = 1;
+	double prec_pred = 1;
 	for (i = 0; i < nthr_dist_two; i++)
 	{
-		if (tab[i].fpr > fproc_pred && (i == nthr_dist_two1 || tab[i + 1].fpr > tab[i].fpr))
+		int dtp;
+		if (i > 0)dtp = tab[i].nfo - tab[i - 1].nfo;
+		else dtp = tab[i].nfo;
+		if (dtp > 0)
 		{
-			int tproc_cur = tab[i].nfo;
-			double fproc_cur = tab[i].fpr / all_pos, fproc_cur_pauc = fproc_cur;
-			if (fproc_cur >= fp2 || i == nthr_dist_two1)fproc_cur_pauc = fp2;
-			double dauc = (tproc_cur + tproc_pred) * (fproc_cur_pauc - fproc_pred) / nseq_real / 2;
-			tp_here[n_here] = (double)tproc_cur / nseq_real;
-			fp_here[n_here] = fproc_cur_pauc;
+			double dtpi = (double)tab[i].nfo;
+			double prec_cur = dtpi / (dtpi + nseq_fb * tab[i].fpr);
+			double dauc = dtp * (prec_pred + prec_cur) / 2;
+			recall[n_here] = dtpi / nseq_real;
+			prec[n_here] = prec_cur;
 			n_here++;
-			//fprintf(out,"%d\t%d\t%g\t%g\t%g\n", tproc_cur, tproc_pred, fproc_cur, fproc_pred, dauc);
-			//fprintf(outq, "%g\t%f\n", fproc_cur, (double)tproc_cur / n_cnt_tot);
-			if (fproc_cur <= fp2)auc_two += dauc;
-			if (fproc_cur >= fp2)break;
-			tproc_pred = tproc_cur;
-			fproc_pred = fproc_cur;
+			double fproc_cur = (double)tab[i].fpr / nseq_back;
+			if (fproc_cur >= fp_thr_two)
+			{
+				dauc *= fp_thr_rest2;
+				auc_two += dauc;
+				break;
+			}
+			else auc_two += dauc;
 		}
 	}
 	printf("%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_pwm, partner_sga, auc_one[0], auc_one[1], auc_two);
@@ -1387,15 +1255,15 @@ int main(int argc, char* argv[])
 		else fprintf(out_roc[n], "%s\t%s\t%s\t%g\n", file_for, file_back, partner_sga, auc_one[n]);
 		for (i = 0; i < n_here1[n]; i++)
 		{
-			fprintf(out_roc[n], "%g\t%f\n", fp_here1[n][i], tp_here1[n][i]);
-			if (fp_here1[n][i] == fp2)break;
+			fprintf(out_roc[n], "%g\t%f\n", prec1[n][i], recall1[n][i]);
+			if (prec1[n][i] == fp2)break;
 		}
 	}
 	fprintf(out_roc[2], "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_pwm, partner_sga, auc_one[0], auc_one[1], auc_two);
 	for (i = 0; i < n_here; i++)
 	{
-		fprintf(out_roc[2], "%g\t%f\n", fp_here[i], tp_here[i]);
-		if (fp_here[i] == fp2)break;
+		fprintf(out_roc[2], "%g\t%f\n", prec[i], recall[i]);
+		if (prec[i] == fp2)break;
 	}
 	for (n = 0; n < 3; n++)fclose(out_roc[n]);
 	//fclose(outlog);
@@ -1417,8 +1285,8 @@ int main(int argc, char* argv[])
 	delete[] tab;
 	delete[] tp_one;
 	delete[] fp_one;
-	delete[] tp_here;
-	delete[] fp_here;
+	delete[] recall;
+	delete[] prec;
 	for (k = 0; k < 2; k++)
 	{
 		delete[] fp_two[k];
@@ -1431,14 +1299,14 @@ int main(int argc, char* argv[])
 	delete[] tp_two;
 	for (k = 0; k < 2; k++)
 	{
-		delete[] tp_here1[k];
+		delete[] recall1[k];
 	}
-	delete[] tp_here1;
+	delete[] recall1;
 	for (k = 0; k < 2; k++)
 	{
-		delete[] fp_here1[k];
+		delete[] prec1[k];
 	}
-	delete[] fp_here1;
+	delete[] prec1;
 	for (k = 0; k < 2; k++)
 	{
 		for (i = 0; i < nseq_back; i++)
