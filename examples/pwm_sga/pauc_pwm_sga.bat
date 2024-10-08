@@ -1,0 +1,1 @@
+﻿pauc_forback_pwm_sga_only.exe PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa PEAKS039234_BHLHA15_Q9QYC3_MACS2_gb.fa PEAKS039234_BHLHA15.pfm.binary PEAKS039234_BHLHA15_sga.binary pwm_sga.pauc pwm.prc sga.prc pwm_sga.prc
