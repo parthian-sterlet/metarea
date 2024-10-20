@@ -587,9 +587,9 @@ int main(int argc, char* argv[])
 	char file_mat[ARGLEN], file_auc[ARGLEN], file_log1[ARGLEN], file_log2[ARGLEN];
 	FILE* out_log1, * out_auc, * out_log2, * out_mat, * in_pwm;
 
-	if (argc != 10)
+	if (argc != 11)
 	{
-		printf("%s 1,2input fasta foreground,background 3,4input binary files pwm_thresholds,pwm_similarity 5ntop matrices 6,7,8,9output files pAUC_matrix, pAUC_list, log1, log2", argv[0]);
+		printf("%s 1,2input fasta foreground,background 3,4input binary files pwm_thresholds,pwm_similarity 5ntop matrices 6double ERRthresh 7,8,9,10output files pAUC_matrix, pAUC_list, log1, log2", argv[0]);
 		return -1;
 	}
 	//strcpy(path_fasta, argv[1]);
@@ -602,14 +602,15 @@ int main(int argc, char* argv[])
 	strcpy(partner_db, argv[3]); //h12hs, h12mm
 	strcpy(partner_sim, argv[4]); //h12hs, h12mm
 	int ntop = atoi(argv[5]);// no. of top-scoring matrices
-	strcpy(file_mat, argv[6]);
-	strcpy(file_auc, argv[7]);
-	strcpy(file_log1, argv[8]);
-	strcpy(file_log2, argv[9]);
+	double fp2 = atof(argv[6]); //ERR threshold for pAUC-PR		
+	strcpy(file_mat, argv[7]);
+	strcpy(file_auc, argv[8]);
+	strcpy(file_log1, argv[9]);
+	strcpy(file_log2, argv[10]);
 	int* len_real, * len_back, nseq_real=0, nseq_back = 0;
 	int olen_min = 8;
 	int len_peak_max = 3000;
-	double fp2 = 0.001; //FPR threshold for pAUC		
+	//double fp2 = 0.005; //FPR threshold for pAUC		
 	double fp2_lg = -log10(fp2);	
 	if ((out_auc = fopen(file_auc, "wt")) == NULL)
 	{
@@ -798,7 +799,7 @@ int main(int argc, char* argv[])
 	//double pwm1[MATLEN][OLIGNUM];
 	//double pfm1[MATLEN][OLIGNUM];
 
-	int nthr_dist_max = 5000;
+	int nthr_dist_max = 20000;
 	double** thr_all;
 	thr_all = new double* [2];
 	if (thr_all == NULL) { puts("Out of memory..."); exit(1); }
@@ -840,10 +841,10 @@ int main(int argc, char* argv[])
 	fp_one = new int[nthr_dist_max];
 	if (fp_one == NULL) { puts("Out of memory..."); exit(1); }	
 	double* recall;
-	recall = new double[nthr_dist_max];
+	recall = new double[2*nthr_dist_max];
 	if (recall == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	double* prec;
-	prec = new double[nthr_dist_max];
+	prec = new double[2*nthr_dist_max];
 	if (prec == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	int* fp_nsites;// frequencies
 	fp_nsites = new int[nthr_dist_max];
@@ -856,6 +857,7 @@ int main(int argc, char* argv[])
 	motifp[0].p = ftell(in_pwm);
 	int n_motifs1 = n_motifs - 1;
 	double nseq_fb = (double)nseq_real / nseq_back;
+	double prec_exp = 0.5;
 	int* index_thr;
 	index_thr = new int[n_motifs];
 	int* fp_thr;
@@ -942,7 +944,8 @@ int main(int argc, char* argv[])
 			{
 				double dtpi = (double)tp_one[i];
 				double prec_cur = dtpi / (dtpi + nseq_fb * fp_one[i]);
-				double dauc = dtp * (prec_pred + prec_cur) / 2;
+				double prec_av = (prec_pred + prec_cur) / 2;
+				double dauc = dtp * (prec_av - prec_exp);
 				recall[nthr_here] = dtpi / nseq_real;
 				prec[nthr_here] = prec_cur;
 				if (i == index_thr[mot1])dauc *= fp_thr_rest[mot1];
@@ -950,6 +953,8 @@ int main(int argc, char* argv[])
 				nthr_here++;
 			}			
 		}		
+		auc_one *= 2;
+		auc_one /= nseq_real;
 		printf("%d\t%s\t%s\t%f\n", mot1 + 1, motif_tf[mot1], motif_name[mot1], auc_one);
 		fprintf(out_log1, "%d\t%s\t%s\t%f\t%s\t%s\n", mot1 +1, motif_tf[mot1], motif_name[mot1], auc_one,motif_class[mot1],motif_family[mot1]);
 		//fprintf(out_roc, "%s\t%s\t%d\t%s\t%g\n", file_for, file_back, mot1 + 1, motif_name[mot1], auc_one);
@@ -1191,7 +1196,8 @@ int main(int argc, char* argv[])
 				{
 					double dtpi = (double)tab[i].nfo;
 					double prec_cur = dtpi / (dtpi + nseq_fb * tab[i].fpr);
-					double dauc = dtp * (prec_pred + prec_cur) / 2;
+					double prec_av = (prec_pred + prec_cur) / 2;
+					double dauc = dtp * (prec_av - prec_exp);
 					recall[n_here] = dtpi / nseq_real;
 					prec[n_here] = prec_cur;					
 					n_here++;
@@ -1204,7 +1210,9 @@ int main(int argc, char* argv[])
 					}
 					else auc_two += dauc;
 				}				
-			}			
+			}		
+			auc_two *= 2;
+			auc_two /= nseq_real;
 			printf("%s\t%s\t%s\t%s\t%f\t%f\t%f", motif_tf[mot1], motif_tf[mot2], motif_name[mot1], motif_name[mot2], motifp[mot1].auc, motifp[mot2].auc, auc_two);
 			if(sims[mot1c][mot2c]!=1)printf("\t%f", sims[mot1c][mot2c]);
 			printf("\n");			

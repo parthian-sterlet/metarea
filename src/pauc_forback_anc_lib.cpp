@@ -633,9 +633,9 @@ int main(int argc, char* argv[])
 	char file_auc[ARGLEN];
 	FILE* out_log, * out_auc, * in_pwm[2];
 
-	if (argc != 7)
+	if (argc != 8)
 	{
-		printf("%s 1,2input fasta foreground,background  3,4input model's binary files anchor,library 5,6files out pAUC_list log", argv[0]);
+		printf("%s 1,2input fasta foreground,background  3,4input model's binary files anchor,library 5double ERRthresh 6,7files out pAUC_list log", argv[0]);
 		return -1;
 	}
 //	strcpy(path_fasta, argv[1]);
@@ -647,12 +647,13 @@ int main(int argc, char* argv[])
 //	strcat(pfile_back, file_back);
 	strcpy(anchor, argv[3]);
 	strcpy(partner_db, argv[4]); //h12hs, h12mm	
-	strcpy(file_auc, argv[5]);
-	strcpy(file_log, argv[6]);
+	double fp2 = atof(argv[5]); //ERR threshold for pAUC-PR	
+	strcpy(file_auc, argv[6]);
+	strcpy(file_log, argv[7]);
 	int* len_real, * len_back, nseq_real = 0, nseq_back = 0;
 	int olen_min = 8;
 	int len_peak_max = 3000;
-	double fp2 = 0.001; //FPR threshold for pAUC		
+//	double fp2 = 0.005; //FPR threshold for pAUC		
 	double fp2_lg = -log10(fp2);	
 	int s_overlap_min = 6, s_ncycle_small = 1000, s_ncycle_large = 10000;//for permutation(motif_comparison) min_length_of_alignment, no. of permutation (test & detailed)
 	double s_granul = 0.001;//for permutation(motif_comparison) okruglenie 4astotnyh matric	
@@ -834,7 +835,7 @@ int main(int argc, char* argv[])
 	//double pwm1[MATLEN][OLIGNUM];
 	//double pfm1[MATLEN][OLIGNUM];
 
-	int nthr_dist_max = 5000;
+	int nthr_dist_max = 20000;
 	double** thr_all;
 	thr_all = new double* [2];
 	if (thr_all == NULL) { puts("Out of memory..."); exit(1); }
@@ -889,6 +890,7 @@ int main(int argc, char* argv[])
 	motifp = new acc[n_motifs];
 	if (motifp == NULL) { fprintf(stderr, "Error: Out of memory..."); return -1; }
 	double nseq_fb = (double)nseq_real / nseq_back;
+	double prec_exp = 0.5;
 	double min[2], raz[2];
 	{
 		fread(&len_partner[0], sizeof(int), 1, in_pwm[0]);
@@ -945,7 +947,7 @@ int main(int argc, char* argv[])
 		for (i = 0; i < nthr_dist[0]; i++)
 		{
 			count_one += fp_nsites[i];
-			//printf("FPsites %d FPpeak %d TPpeak %d\n", fp_nsites[n][i], fp_one[i],tp_one[i]);
+		//	printf("FPsites %d FPpeak %d TPpeak %d\n", fp_nsites[i], fp_one[i],tp_one[i]);
 			if (count_one >= all_pos_thr[0])
 			{
 				index_thr[0] = i;
@@ -969,14 +971,17 @@ int main(int argc, char* argv[])
 			{
 				double dtpi = (double)tp_one[i];
 				double prec_cur = dtpi / (dtpi + nseq_fb * fp_one[i]);
-				double dauc = dtp * (prec_pred + prec_cur) / 2;
+				double prec_av = (prec_pred + prec_cur) / 2;
+				double dauc = dtp * (prec_av - prec_exp);
 		//		recall_1[n][n_here] = dtpi / nseq_real;
 		//		prec_1[n][n_here] = prec_cur;
 				if (i == index_thr[0])dauc *= fp_thr_rest[0];
 				auc_one[0] += dauc;
 				n_here++;
 			}
-		}		
+		}	
+		auc_one[0] *= 2;
+		auc_one[0] /= nseq_real;
 	}
 	int n_motifs1 = n_motifs - 1;
 	for (mot1 = 0; mot1 < n_motifs; mot1++)
@@ -1046,7 +1051,7 @@ int main(int argc, char* argv[])
 		for (i = 0; i < nthr_dist[1]; i++)
 		{
 			count_two += fp_nsites[i];
-			//printf("FPsites %d FPpeak %d TPpeak %d\n", fp_nsites[n][i], fp_one[i],tp_one[i]);
+			//printf("FPsites %d FPpeak %d TPpeak %d\n", fp_nsites[i], fp_one[i],tp_one[i]);
 			if (count_two >= all_pos_thr[1])
 			{
 				index_thr[1] = i;
@@ -1059,6 +1064,10 @@ int main(int argc, char* argv[])
 		double prec_pred = 1;// (double)tp_one[1] / ((double)tp_one[1] + nseq_fb * fp_one[1]);
 		//	recall_1[n][1] = 0;//(double)tp_one[1]/nseq_real, 
 		//	prec_1[n][1] = prec_pred;
+		if (mot1 == 29)
+		{
+			int y = 0;
+		}
 		int n_here = 1;
 		int index_thr01 = index_thr[1] - 1;
 		for (i = 0; i <= index_thr[1]; i++)
@@ -1070,7 +1079,8 @@ int main(int argc, char* argv[])
 			{
 				double dtpi = (double)tp_one[i];
 				double prec_cur = dtpi / (dtpi + nseq_fb * fp_one[i]);
-				double dauc = dtp * (prec_pred + prec_cur) / 2;
+				double prec_av = (prec_pred + prec_cur) / 2;
+				double dauc = dtp * (prec_av - prec_exp);
 				//		recall_1[n][n_here] = dtpi / nseq_real;
 				//		prec_1[n][n_here] = prec_cur;
 				if (i == index_thr[1])dauc *= fp_thr_rest[1];
@@ -1078,6 +1088,8 @@ int main(int argc, char* argv[])
 				n_here++;
 			}
 		}
+		auc_one[1] *= 2;
+		auc_one[1] /= nseq_real;
 		//printf("%d\t%s\t%g\n", mot1 + 1, motif_name[mot1], auc_one[1]);
 		//fprintf(out_log, "%d\t%s\t%g\t%s\t%s\n", mot1 + 1, motif_name[mot1], auc_one, motif_class[mot1], motif_family[mot1]);
 		//fprintf(out_roc, "%s\t%s\t%d\t%s\t%g\n", file_for, file_back, mot1 + 1, motif_name[mot1], auc_one);
@@ -1155,8 +1167,9 @@ int main(int argc, char* argv[])
 			if (dtp > 0)
 			{
 				double dtpi = (double)tab[i].nfo;
-				double prec_cur = dtpi / (dtpi + nseq_fb * tab[i].fpr);
-				double dauc = dtp * (prec_pred + prec_cur) / 2;
+				double prec_cur = dtpi / (dtpi + nseq_fb * tab[i].fpr);				
+				double prec_av = (prec_pred + prec_cur) / 2;
+				double dauc = dtp * (prec_av - prec_exp);
 				//recall[n_here_two] = dtpi / nseq_real;
 				//prec[n_here_two] = prec_cur;
 				n_here_two++;
@@ -1170,6 +1183,8 @@ int main(int argc, char* argv[])
 				else auc_two += dauc;
 			}
 		}
+		auc_two *= 2;
+		auc_two /= nseq_real;
 		motifp[mot1].auc2 = auc_two;		
 		double auc_max = Max(motifp[mot1].auc1, auc_one[0]);
 		double ratio = motifp[mot1].auc2 / auc_max;

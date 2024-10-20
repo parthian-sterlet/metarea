@@ -601,9 +601,9 @@ int main(int argc, char* argv[])
 	char file_roc[3][ARGLEN], file_auc[ARGLEN];
 	FILE* out_roc[3], * out_auc, * in_pwm[2];
 
-	if (argc != 9)
+	if (argc != 10)
 	{
-		printf("%s 1,2input fasta foreground,background fasta 3,4input binary files library1,2 5output files pAUC 6,7,8 ROC curves PWM1, PWM2, PWM1&PWM2", argv[0]);
+		printf("%s 1,2input fasta foreground,background fasta 3,4input binary files library1,2 5double ERRthresh 6,7,8,9output files pAUC, PR curves PWM1, PWM2, PWM1&PWM2", argv[0]);
 		return -1;
 	}
 	//strcpy(path_fasta, argv[1]);
@@ -615,14 +615,15 @@ int main(int argc, char* argv[])
 	//strcat(pfile_back, file_back);
 	strcpy(partner_db[0], argv[3]); //h12hs, h12mm
 	strcpy(partner_db[1], argv[4]); //h12hs, h12mm	
-	strcpy(file_auc, argv[5]);
-	strcpy(file_roc[0], argv[6]);
-	strcpy(file_roc[1], argv[7]);
-	strcpy(file_roc[2], argv[8]);
+	double fp2 = atof(argv[5]); //ERR threshold for pAUC-PR	
+	strcpy(file_auc, argv[6]);
+	strcpy(file_roc[0], argv[7]);
+	strcpy(file_roc[1], argv[8]);
+	strcpy(file_roc[2], argv[9]);
 	int* len_real, * len_back, nseq_real = 0, nseq_back = 0;
 	int olen_min = 8;
 	int len_peak_max = 3000;
-	double fp2 = 0.001; //FPR threshold for pAUC	
+	//double fp2 = 0.01; //FPR threshold for pAUC	
 	double fp2_lg = -log10(fp2);
 	int s_overlap_min = 6, s_ncycle_small = 1000, s_ncycle_large = 10000;//for permutation(motif_comparison) min_length_of_alignment, no. of permutation (test & detailed)
 	double s_granul = 0.001;//for permutation(motif_comparison) okruglenie 4astotnyh matric	
@@ -683,7 +684,7 @@ int main(int argc, char* argv[])
 	int len_partner[2], nthr_dist[2];
 	double pwm[2][MATLEN][OLIGNUM];
 	double pfm[2][MATLEN][OLIGNUM];
-	int nthr_dist_max = 5000;
+	int nthr_dist_max = 20000;
 	double** thr_all;
 	thr_all = new double* [2];
 	if (thr_all == NULL) { puts("Out of memory..."); exit(1); }
@@ -782,6 +783,8 @@ int main(int argc, char* argv[])
 	int index_thr[2], fp_thr[2];
 	double fp_thr_rest[2];
 	double nseq_fb = (double)nseq_real / nseq_back;
+	double prec_exp = 0.5;
+//	int nseq_real_thr = nseq_real / 2;
 	for (n = 0; n < 2; n++)
 	{
 		for (j = 0; j <= nthr_dist[n]; j++)tp_one[j] = fp_one[j] = fp_nsites[0][j] = fp_nsites[1][j] = 0;
@@ -802,12 +805,12 @@ int main(int argc, char* argv[])
 		}
 		int all_pos_thr = (int)(all_pos * fp2);
 		index_thr[n] = nthr_dist[n] - 1;
-		int count_one = 0;
+		int count_one = 0;		
 		for (i = 0; i < nthr_dist[n]; i++)
 		{
 			count_one += fp_nsites[n][i];
-			//printf("FPsites %d FPpeak %d TPpeak %d\n", fp_nsites[n][i], fp_one[i],tp_one[i]);
-			if (count_one >= all_pos_thr)
+			printf("FPsites %d FPpeak %d TPpeak %d\n", fp_nsites[n][i], fp_one[i],tp_one[i]);
+			if (count_one >= all_pos_thr) //|| tp_one[i] >= nseq_real_thr
 			{
 				index_thr[n] = i;
 				fp_thr[n] = fp_one[i];
@@ -832,11 +835,12 @@ int main(int argc, char* argv[])
 			int dtp;
 			if (i > 0)dtp = tp_one[i] - tp_one[i - 1];
 			else dtp = tp_one[i];
-			if (dtp > 0 || (i == index1 || i == index_thr[n]))
+			if (dtp > 0)
 			{
 				double dtpi = (double)tp_one[i];
 				double prec_cur = dtpi / (dtpi + nseq_fb * fp_one[i]);
-				double dauc = dtp * (prec_pred + prec_cur) / 2;
+				double prec_av = (prec_pred + prec_cur)/2;
+				double dauc = dtp * (prec_av - prec_exp);
 				recall_1[n][n_here2[n]] = dtpi / nseq_real;
 				prec_1[n][n_here2[n]] = prec_cur;
 				if (i == index_thr[n])dauc *= fp_thr_rest[n];
@@ -844,6 +848,8 @@ int main(int argc, char* argv[])
 				n_here2[n]++;
 			}
 		}
+		prauc_one[n] *= 2;
+		prauc_one[n] /= nseq_real;
 		printf("%s\t%s\t%d\t%s\t%g\t%g\n", file_for, file_back, n + 1, partner_db[n], auc_one[n], prauc_one[n]);
 	}
 	double fp_thr_two = (double)(fp_thr[0] + fp_thr[1]) / nseq_back / 2;
@@ -914,12 +920,13 @@ int main(int argc, char* argv[])
 		{
 			double dtpi = (double)tab[i].nfo;
 			double prec_cur = dtpi / (dtpi + nseq_fb * tab[i].fpr);
-			double dauc = dtp * (prec_pred + prec_cur) / 2;
+			double prec_av = (prec_pred + prec_cur) / 2;
+			double dauc = dtp * (prec_av - prec_exp);
 			recall[n_herepr] = dtpi / nseq_real;
 			prec[n_herepr] = prec_cur;
 			n_herepr++;
 			double fproc_cur = (double)tab[i].fpr / nseq_back;
-			if (fproc_cur >= fp_thr_two)
+			if (fproc_cur >= fp_thr_two) // || tab[i].nfo >= nseq_real_thr
 			{
 				dauc *= fp_thr_rest2;
 				prauc_two += dauc;
@@ -928,6 +935,8 @@ int main(int argc, char* argv[])
 			else prauc_two += dauc;
 		}
 	}
+	prauc_two *= 2;
+	prauc_two /= nseq_real;
 	{
 		//double auc_max = Max(auc_one[0], auc_one[1]);
 		double prauc_max = Max(prauc_one[0], prauc_one[1]);

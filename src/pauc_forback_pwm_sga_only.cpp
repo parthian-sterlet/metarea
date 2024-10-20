@@ -586,6 +586,68 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 	}
 	return 1;
 }
+int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int nthr_dist, double* thr_all, double* fpr_all, int* fpr, int* fp_nsites, int olen, int nseq, char*** seq, int& all_pos)
+{
+	int i, j, n;
+	int compl1;
+	int cod[MATLEN];
+	char d[MATLEN];
+	int word = 1;
+	int nthr_dist1 = nthr_dist - 1;
+	double thr_cr = thr_all[nthr_dist1];
+
+	for (n = 0; n < nseq; n++)
+	{
+		//if ((n+1) % 500 == 0)printf("\b\b\b\b\b\b\b%7d", n+1);
+		int len_pro1 = strlen(seq[0][n]);
+		int len21 = len_pro1 - olen;
+		int index_best = nthr_dist;
+		for (i = 0; i <= len21; i++)
+		{
+			for (compl1 = 0; compl1 < 2; compl1++)
+			{
+				int ista;
+				if (compl1 == 0)ista = i;
+				else ista = len21 - i;
+				strncpy(d, &seq[compl1][n][ista], olen);
+				d[olen] = '\0';
+				if (strstr(d, "n") != NULL) { continue; }
+				all_pos++;
+				GetSostPro(d, word, cod);
+				double score = 0;
+				for (j = 0; j < olen; j++)
+				{
+					score += pwm[j][cod[j]];
+				}
+				score -= min;
+				score /= raz;
+				int index = nthr_dist;
+				if (score >= thr_cr)
+				{
+					if (score >= thr_all[0])
+					{
+						index = 0;
+					}
+					else
+					{
+						for (j = 1; j < nthr_dist; j++)
+						{
+							if (score >= thr_all[j] && score < thr_all[j - 1])
+							{
+								index = j;
+								break;
+							}
+						}
+					}
+				}
+				for (j = nthr_dist; j >= index; j--)fp_nsites[j]++;
+				if (index < index_best)index_best = index;
+			}
+		}
+		for (j = index_best; j <= nthr_dist; j++)fpr[j]++;
+	}
+	return 1;
+}
 int SGA_rec_real_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all, int* tpr, int nseq, char*** seq)
 {
 	int i, j, n, m;
@@ -651,68 +713,6 @@ int SGA_rec_real_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all,
 			if (index == 0)break;
 		}
 		for (j = index; j <= nthr_dist; j++)tpr[j]++;
-	}
-	return 1;
-}
-int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int nthr_dist, double* thr_all, double* fpr_all, int* fpr, int* fp_nsites, int olen, int nseq, char*** seq, int& all_pos)
-{
-	int i, j, n;
-	int compl1;
-	int cod[MATLEN];
-	char d[MATLEN];
-	int word = 1;
-	int nthr_dist1 = nthr_dist - 1;
-	double thr_cr = thr_all[nthr_dist1];
-
-	for (n = 0; n < nseq; n++)
-	{
-		//if ((n+1) % 500 == 0)printf("\b\b\b\b\b\b\b%7d", n+1);
-		int len_pro1 = strlen(seq[0][n]);
-		int len21 = len_pro1 - olen;
-		int index_best = nthr_dist;
-		for (i = 0; i <= len21; i++)
-		{
-			for (compl1 = 0; compl1 < 2; compl1++)
-			{
-				int ista;
-				if (compl1 == 0)ista = i;
-				else ista = len21 - i;
-				strncpy(d, &seq[compl1][n][ista], olen);
-				d[olen] = '\0';
-				if (strstr(d, "n") != NULL) { continue; }
-				all_pos++;
-				GetSostPro(d, word, cod);
-				double score = 0;
-				for (j = 0; j < olen; j++)
-				{
-					score += pwm[j][cod[j]];
-				}
-				score -= min;
-				score /= raz;
-				int index = nthr_dist;
-				if (score >= thr_cr)
-				{
-					if (score >= thr_all[0])
-					{
-						index = 0;
-					}
-					else
-					{
-						for (j = 1; j < nthr_dist; j++)
-						{
-							if (score >= thr_all[j] && score < thr_all[j - 1])
-							{
-								index = j;
-								break;
-							}
-						}
-					}
-				}
-				for (j = nthr_dist; j >= index; j--)fp_nsites[j]++;
-				if (index < index_best)index_best = index;
-			}
-		}
-		for (j = index_best; j <= nthr_dist; j++)fpr[j]++;
 	}
 	return 1;
 }
@@ -894,12 +894,12 @@ int main(int argc, char* argv[])
 	int i, j, k, n;
 	char*** seq_real, *** seq_back;
 	char file_for[ARGLEN], file_back[ARGLEN], partner_pwm[ARGLEN], partner_sga[ARGLEN];// path_fasta[ARGLEN], pfile_for[ARGLEN], pfile_back[ARGLEN]
-	char file_roc[3][ARGLEN], file_auc[ARGLEN];
+	char file_prc[3][ARGLEN], file_auc[ARGLEN];
 	FILE * out_roc[3], * out_auc, * in_pwm, * in_sga;
 
-	if (argc != 9)
+	if (argc != 10)
 	{
-		printf("%s 1,2input fasta foreground,background  3,4input pwm,sga binary files 5output file pAUC 6,7,8output files ROC", argv[0]);
+		printf("%s 1,2input fasta foreground,background  3,4input pwm,sga binary files 5double ERRthresh 6output file pAUC 7,8,9output files PR curves", argv[0]);
 		return -1;
 	}
 	//strcpy(path_fasta, argv[1]);
@@ -911,14 +911,15 @@ int main(int argc, char* argv[])
 //	strcat(pfile_back, file_back);
 	strcpy(partner_pwm, argv[3]); //h12hs, h12mm
 	strcpy(partner_sga, argv[4]); //h12hs, h12mm
-	strcpy(file_auc, argv[5]);
-	strcpy(file_roc[0], argv[6]);
-	strcpy(file_roc[1], argv[7]);
-	strcpy(file_roc[2], argv[8]);
+	double fp2 = atof(argv[5]); //ERR threshold for pAUC-PR		
+	strcpy(file_auc, argv[6]);
+	strcpy(file_prc[0], argv[7]);
+	strcpy(file_prc[1], argv[8]);
+	strcpy(file_prc[2], argv[9]);
 	int* len_real, * len_back, nseq_real = 0, nseq_back = 0;
 	int olen_min = 8;
 	int len_peak_max = 3000;
-	double fp2 = 0.001; //FPR threshold for pAUC	
+//	double fp2 = 0.005; //FPR threshold for pAUC	
 	double fp2_lg = -log10(fp2);
 	/*if ((outlog = fopen(file_log, "wt")) == NULL)
 	{
@@ -966,11 +967,12 @@ int main(int argc, char* argv[])
 	int index_thr[2], fp_thr[2];
 	double fp_thr_rest[2];
 	double nseq_fb = (double)nseq_real / nseq_back;
+	double prec_exp = 0.5;
 	int len_partner[2], nthr_dist[2];
 	double pwm[MATLEN][OLIGNUM];
 	double pfm[MATLEN][OLIGNUM];
 	city sta;
-	int nthr_dist_max = 5000;
+	int nthr_dist_max = 20000;
 	double** thr_all;
 	thr_all = new double* [2];
 	if (thr_all == NULL) { puts("Out of memory..."); exit(1); }
@@ -1070,8 +1072,7 @@ int main(int argc, char* argv[])
 		}
 	}
 	double min = 0, raz = 0;
-	PWMScore(pwm, min, raz, len_partner[0]);	
-	double auc_max = 0;
+	PWMScore(pwm, min, raz, len_partner[0]);		
 	double auc_one[2] = { 0,0 };
 	int n_here1[2] = { 0,0 };	
 	for(n=0;n<2;n++)
@@ -1114,7 +1115,7 @@ int main(int argc, char* argv[])
 		for (i = 0; i < nthr_dist[n]; i++)
 		{
 			count_one += fp_nsites[n][i];
-			//printf("FPsites %d FPpeak %d TPpeak %d\n", fp_nsites[n][i], fp_one[i],tp_one[i]);
+			printf("FPsites %d FPpeak %d TPpeak %d\n", fp_nsites[n][i], fp_one[i],tp_one[i]);
 			if (count_one >= all_pos_thr)
 			{
 				index_thr[n] = i;
@@ -1143,7 +1144,8 @@ int main(int argc, char* argv[])
 			{
 				double dtpi = (double)tp_one[i];
 				double prec_cur = dtpi / (dtpi + nseq_fb * fp_one[i]);
-				double dauc = dtp * (prec_pred + prec_cur) / 2;
+				double prec_av = (prec_pred + prec_cur) / 2;
+				double dauc = dtp * (prec_av - prec_exp);
 				recall1[n][n_here1[n]] = dtpi / nseq_real;
 				prec1[n][n_here1[n]] = prec_cur;
 				if (i == index_thr[n])dauc *= fp_thr_rest[n];
@@ -1151,6 +1153,8 @@ int main(int argc, char* argv[])
 				n_here1[n]++;
 			}
 		}
+		auc_one[n] *= 2;
+		auc_one[n] /= nseq_real;
 		if(n==0)printf("%s\t%s\t%d\t%s\t%g\n", file_for, file_back, n + 1, partner_pwm, auc_one[n]);
 		else printf("%s\t%s\t%d\t%s\t%g\n", file_for, file_back, n + 1, partner_sga, auc_one[n]);
 	}
@@ -1218,7 +1222,8 @@ int main(int argc, char* argv[])
 		{
 			double dtpi = (double)tab[i].nfo;
 			double prec_cur = dtpi / (dtpi + nseq_fb * tab[i].fpr);
-			double dauc = dtp * (prec_pred + prec_cur) / 2;
+			double prec_av = (prec_pred + prec_cur) / 2;
+			double dauc = dtp * (prec_av - prec_exp);
 			recall[n_here] = dtpi / nseq_real;
 			prec[n_here] = prec_cur;
 			n_here++;
@@ -1232,20 +1237,24 @@ int main(int argc, char* argv[])
 			else auc_two += dauc;
 		}
 	}
-	printf("%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_pwm, partner_sga, auc_one[0], auc_one[1], auc_two);
+	auc_two *= 2;
+	auc_two /= nseq_real;
+	double auc_max = Max(auc_one[0], auc_one[1])
+	double rat = auc_two / auc_max;
+	printf("%s\t%s\t%s\t%s\t%f\t%f\t%f\t%f\n", file_for, file_back, partner_pwm, partner_sga, auc_one[0], auc_one[1], auc_two,rat);
 	//fprintf(outlog, "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_pwm, partner_sga, auc_one[0], auc_one[1], auc_two);
 	if ((out_auc = fopen(file_auc, "wt")) == NULL)
 	{
 		fprintf(out_auc, "Input file %s can't be opened!\n", file_auc);
 		exit(1);
 	}
-	fprintf(out_auc, "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_pwm, partner_sga, auc_one[0], auc_one[1], auc_two);
+	fprintf(out_auc, "%s\t%s\t%s\t%s\t%f\t%f\t%f\t%f\n", file_for, file_back, partner_pwm, partner_sga, auc_one[0], auc_one[1], auc_two,rat);
 	fclose(out_auc);
 	for (n = 0; n < 3; n++)
 	{
-		if ((out_roc[n] = fopen(file_roc[n], "wt")) == NULL)
+		if ((out_roc[n] = fopen(file_prc[n], "wt")) == NULL)
 		{
-			fprintf(out_roc[n], "Input file %s can't be opened!\n", file_roc[n]);
+			fprintf(out_roc[n], "Input file %s can't be opened!\n", file_prc[n]);
 			exit(1);
 		}
 	}
@@ -1255,14 +1264,14 @@ int main(int argc, char* argv[])
 		else fprintf(out_roc[n], "%s\t%s\t%s\t%g\n", file_for, file_back, partner_sga, auc_one[n]);
 		for (i = 0; i < n_here1[n]; i++)
 		{
-			fprintf(out_roc[n], "%g\t%f\n", prec1[n][i], recall1[n][i]);
+			fprintf(out_roc[n], "%f\t%f\n", recall1[n][i], prec1[n][i]);
 			if (prec1[n][i] == fp2)break;
 		}
 	}
 	fprintf(out_roc[2], "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_pwm, partner_sga, auc_one[0], auc_one[1], auc_two);
 	for (i = 0; i < n_here; i++)
 	{
-		fprintf(out_roc[2], "%g\t%f\n", prec[i], recall[i]);
+		fprintf(out_roc[2], "%f\t%f\n", recall[i], prec[i]);
 		if (prec[i] == fp2)break;
 	}
 	for (n = 0; n < 3; n++)fclose(out_roc[n]);
