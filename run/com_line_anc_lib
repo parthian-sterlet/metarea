@@ -1,4 +1,4 @@
 ./pfm_to_pwm_mat.exe ../examples/pwm_sga/PEAKS039234_BHLHA15.pfm ./examples/anc_lib/PEAKS039234_BHLHA15.pwm
 ./pwm_iz_pwm_thr_dist0.exe ../examples/pwm_sga/PEAKS039234_BHLHA15.pfm ../examples/anc_lib/PEAKS039234_BHLHA15.pwm ../genomes/mm/mm_ups2kb.seq ../examples/anc_lib/PEAKS039234_BHLHA15.dist ../examples/anc_lib/PEAKS039234_BHLHA15.binary 0.002 0.0000005 ../examples/anc_lib/pwm.log 0.00002 0 wb
-./pauc_forback_anc_lib.exe  ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2_pb.fa ../examples/anc_lib/PEAKS039234_BHLHA15.binary ../partners/h12core_mm10.binary ../partners/h12core_mm10_sim.binary ../examples/anc_lib/anc_lib.pauc ../examples/anc_lib/anc_lib.log  
+./pauc_forback_anc_lib.exe  ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2_pb.fa ../examples/anc_lib/PEAKS039234_BHLHA15.binary ../partners/h12core_mm10.binary 0.005 ../examples/anc_lib/anc_lib.pauc ../examples/anc_lib/anc_lib.log  
 
