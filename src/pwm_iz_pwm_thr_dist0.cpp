@@ -318,7 +318,7 @@ void Mix(double *a, double *b)
 int main(int argc, char *argv[])
 {
 	int i, j, k, n;
-	char head[1000], d1[SEQLEN], file_out_distt[300], file_out_distb[300], file_out_distb_one[300], letter[5], binary_ext[] = ".binary";
+	char head[1000], d1[SEQLEN], file_out_distt[300], file_out_distb[300], letter[5], binary_ext[] = ".binary";
 	//char file_out_cpp_arr[80], file_out_cpp_struct_many[80], name[20];
 	char file_pfm[300], file_pwm[300], file_seq[300], file_sta[300];
 	FILE *in,* in_pfm, *in_pwm, * out_distt, * out_distb;// , * out_cpp_arr;
@@ -752,24 +752,25 @@ int main(int argc, char *argv[])
 	}
 	if ((check_bad == 1 && fpr1st > log_thr_best_pval) || check_bad == 0)
 	{
-		if ((out_distb = fopen(file_out_distb, "ab")) == NULL)
+		int lenp4 = 4 * lenp;
+		/*if ((out_distb = fopen(file_out_distb, "ab")) == NULL)
 		{
 			printf("Out file %s can't be opened!\n", file_out_distb);
 			return -1;
 		}
-		fwrite(&lenp, sizeof(int), 1, out_distb);
-		int lenp4 = 4 * lenp;
+		fwrite(&lenp, sizeof(int), 1, out_distb);		
 		fwrite(pfm, sizeof(double), lenp4, out_distb);
 		fwrite(pwm, sizeof(double), lenp4, out_distb);
 		fwrite(&count, sizeof(int), 1, out_distb);
 		fwrite(thr_dist, sizeof(double), count, out_distb);
 		fwrite(fpr_dist, sizeof(double), count, out_distb);
-		fclose(out_distb);
-		strcpy(file_out_distb_one, file_pfm);
-		strcat(file_out_distb_one, binary_ext);
-		if ((out_distb = fopen(file_out_distb_one, "wb")) == NULL)
+		fclose(out_distb);*/
+		//char  file_out_distb_one[300];
+	//	strcpy(file_out_distb_one, file_pfm);
+	//	strcat(file_out_distb_one, binary_ext);
+		if ((out_distb = fopen(file_out_distb, "wb")) == NULL)
 		{
-			printf("Out file %s can't be opened!\n", file_out_distb_one);
+			printf("Out file %s can't be opened!\n", file_out_distb);
 			return -1;
 		}
 		fwrite(&lenp, sizeof(int), 1, out_distb);		

@@ -421,7 +421,7 @@ int main(int argc, char *argv[])
 	double *thr;
 	thr = new double[nthr];
 	if (thr == NULL) { puts("Out of memory..."); return -1; }
-	for (i = 0; i < nthr; i++)thr[i] = 0;
+	for (i = 0; i < nthr; i++)thr[i] = -100;
 	int nthr_max = nthr - 1;
 	char *dp;
 	dp = new char[len_pro + 10];
@@ -444,7 +444,7 @@ int main(int argc, char *argv[])
 	for (j = 0; j < sta.size; j++)rlen[j] = (sta.tot[j].end - sta.tot[j].sta + 1);
 	for (n = 0; n < nseq_pro; n++)
 	{
-		if (n % 100 == 0)printf("%5d %f\n", n, thr[nthr_max]);
+		if (n % 500 == 0)printf("%5d %f\n", n, thr[nthr_max]);
 		fgets(head, sizeof(head), in);
 		memset(dp, 0, len_pro + 1);
 		fgets(dp, len_pro + 2, in);
