@@ -780,7 +780,7 @@ int main(int argc, char* argv[])
 		PWMScore(pwm[n], min[n], raz[n], len_partner[n]);
 	}
 	double auc_one[2] = { 0,0 }, prauc_one[2] = { 0,0 };
-	int n_here1[2] = { 0,0 }, n_here2[2] = { 0,0 };
+	int n_here1[2] = { 0,0 };
 	int index_thr[2] = { 0,0 }, index_thr_two=0;
 	double fp_thr_rest[2], fp_rest_two =0;
 	double nseq_fb = (double)nseq_real / nseq_back;
@@ -830,7 +830,7 @@ int main(int argc, char* argv[])
 		double prec_pred = 1;// (double)tp_one[0] / ((double)tp_one[0] + nseq_fb * fp_one[0]);
 		recall_1[n][0] = 0;//(double)tp_one[0]/nseq_real, 
 		prec_1[n][0] = prec_pred;
-		n_here2[n] = 1;
+		n_here1[n] = 1;
 		for (i = 0; i <= index_thr[n]; i++)
 		{
 			int dtp = tp_one[i];
@@ -860,11 +860,11 @@ int main(int argc, char* argv[])
 				double prec_cur = tp_onec / (tp_onec + nseq_fb * fp_onec);
 				double prec_av = (prec_pred + prec_cur)/2;
 				double dauc = dtpi * (prec_av - prec_exp);
-				recall_1[n][n_here2[n]] = tp_onec / nseq_real;
-				prec_1[n][n_here2[n]] = prec_cur;				
+				recall_1[n][n_here1[n]] = tp_onec / nseq_real;
+				prec_1[n][n_here1[n]] = prec_cur;				
 				prec_pred = prec_cur;
 				prauc_one[n] += dauc;
-				n_here2[n]++;
+				n_here1[n]++;
 			}
 		}
 		prauc_one[n] *= 2;
@@ -912,9 +912,6 @@ int main(int argc, char* argv[])
 	int nthr_dist_two1 = nthr_dist_two - 1;
 	for (i = 0; i < nthr_dist_two; i++)
 	{		
-		//tab[i].tpr += tab[i1].tpr;
-		//tab[i].fpr += tab[i1].fpr;
-		//tab[i].fps += tab[i1].fps;		
 		count_two += tab[i].fps;
 		if (tab[i].fps > 0 && (i == nthr_dist_two1 || tab[i+1].err != tab[i].err))
 		{
@@ -1010,7 +1007,7 @@ int main(int argc, char* argv[])
 	for (n = 0; n < 2; n++)
 	{
 		fprintf(out_roc[n], "%s\t%s\t%s\t%g\n", file_for, file_back, partner_db[n], prauc_one[n]);
-		for (i = 0; i < n_here2[n]; i++)
+		for (i = 0; i < n_here1[n]; i++)
 		{
 			fprintf(out_roc[n], "%g\t%f\n", recall_1[n][i], prec_1[n][i]);
 		}
