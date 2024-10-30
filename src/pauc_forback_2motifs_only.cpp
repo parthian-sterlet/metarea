@@ -789,7 +789,7 @@ int main(int argc, char* argv[])
 	int all_pos_thr[2];
 	for (n = 0; n < 2; n++)
 	{
-		for (j = 0; j <= nthr_dist[n]; j++)tp_one[j] = fp_one[j] = fp_nsites[0][j] = fp_nsites[1][j] = 0;		
+		for (j = 0; j <= nthr_dist[n]; j++)tp_one[j] = fp_one[j] = fp_nsites[n][j] = 0;		
 		//printf("Real %d\n",mot + 1);
 		int pwm_check = PWM_rec_real_one(pwm[n], min[n], raz[n], nthr_dist[n], thr_all[n], fpr_all[n], tp_one, len_partner[n], nseq_real, seq_real);
 		if (pwm_check == -1)
@@ -902,7 +902,7 @@ int main(int argc, char* argv[])
 			tab[k].fpr = fp_two[j][i];
 			tab[k].fps = fp_nsites[j][i];
 			tab[k].err = fpr_all[j][i];
-			//	if(i<20)printf("%d %d\t%d\t%d\n", j,i,tab[k].tpr, tab[k].fpr);
+		//	if(i<20)printf("%d\t%d\t%d\t%d\t%f\t%d\n", j,i,tab[k].tpr, tab[k].fpr, tab[k].err, tab[k].fps);
 			k++;
 		}
 	}

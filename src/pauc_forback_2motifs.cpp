@@ -622,8 +622,7 @@ int PWM_rec_back(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 					{
 						if (score >= thr_all[k][0])
 						{
-							index = 0;
-							break;
+							index = 0;							
 						}
 						else
 						{
@@ -1070,7 +1069,6 @@ int main(int argc, char* argv[])
 	/*	for (i = 0; i < nthr_here; i++)
 		{
 			fprintf(out_roc, "%g\t%f\n", prec[i], recall[i]);
-			if (prec[i] == fp2)break;
 		}*/
 	}	
 	qsort(motifp, n_motifs, sizeof(motifp[0]), compare_auc);
@@ -1352,7 +1350,6 @@ int main(int argc, char* argv[])
 				for (i = 0; i < n_here; i++)
 				{
 					fprintf(out_roc, "%g\t%f\n", prec[i], recall[i]);
-					if (prec[i] == fp2)break;
 				}
 			}*/
 		}

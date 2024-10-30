@@ -638,8 +638,7 @@ int PWM_rec_back(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 					{
 						if (score >= thr_all[k][0])
 						{
-							index = 0;
-							break;
+							index = 0;							
 						}
 						else
 						{
@@ -1151,7 +1150,7 @@ int main(int argc, char* argv[])
 					tab[k].fpr = fp_two[j][i];
 					tab[k].fps = fp_nsites[j][i];
 					tab[k].err = fpr_all[j][i];					
-					//	if(i<20)printf("%d %d\t%d\t%d\n", j,i,tab[k].tpr, tab[k].fpr);
+				//	if (i < 20)printf("%d\t%d\t%d\t%d\t%f\t%d\n", j, i, tab[k].tpr, tab[k].fpr, tab[k].err, tab[k].fps);
 					k++;
 				}
 			}
@@ -1165,7 +1164,7 @@ int main(int argc, char* argv[])
 				count_two += tab[i].fps;				
 				if (tab[i].fps > 0 && (i == nthr_dist_two1 || tab[i + 1].err != tab[i].err))
 				{
-				//	printf("ERR %f Count %d FPsites %d FPpeak %d TPpeak %d\n", tab[i].err, count_two, tab[i].fps, tab[i].fpr, tab[i].tpr);
+					//printf("ERR %f Count %d FPsites %d FPpeak %d TPpeak %d\n", tab[i].err, count_two, tab[i].fps, tab[i].fpr, tab[i].tpr);
 					if (count_two >= all_pos_thr_two || i == nthr_dist_two1)
 					{
 						fp_rest_two = (double)(all_pos_thr_two - count_pred) / (count_two - count_pred);
@@ -1248,7 +1247,6 @@ int main(int argc, char* argv[])
 				for (i = 0; i < n_here; i++)
 				{
 					fprintf(out_roc, "%g\t%f\n", prec[i], recall[i]);
-					if (prec[i] == fp2)break;
 				}
 			}*/
 		}
