@@ -952,7 +952,7 @@ int main(int argc, char* argv[])
 		fp_thr_rest[0]= 0;
 		for (i = 0; i < nthr_dist[0]; i++)
 		{
-			count_one += fp_nsites[0][i];
+			count_one = fp_nsites[0][i];
 			//printf("ERR %f Count %d FPsites %d FPpeak %d TPpeak %d\n", fpr_all[0][i], count_one, fp_nsites[0][i], fp_one[i], tp_one[i]);
 			if (count_one >= all_pos_thr[0])
 			{
@@ -1067,7 +1067,7 @@ int main(int argc, char* argv[])
 		fp_thr_rest[1] = 0;
 		for (i = 0; i < nthr_dist[1]; i++)
 		{
-			count_one += fp_nsites[1][i];
+			count_one = fp_nsites[1][i];
 			//printf("ERR %f Count %d FPsites %d FPpeak %d TPpeak %d\n", fpr_all[1][i],count_one, fp_nsites[1][i], fp_one[i],tp_one[i]);
 			if (count_one >= all_pos_thr[1])
 			{

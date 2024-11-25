@@ -809,7 +809,7 @@ int main(int argc, char* argv[])
 		int count_one = 0;		
 		for (i = 0; i < nthr_dist[n]; i++)
 		{
-			count_one += fp_nsites[n][i];
+			count_one = fp_nsites[n][i];
 			//printf("FPsites %d FPpeak %d TPpeak %d\n", fp_nsites[n][i], fp_one[i],tp_one[i]);
 			if (count_one >= all_pos_thr[n]) //|| tp_one[i] >= nseq_real_thr
 			{
@@ -912,7 +912,7 @@ int main(int argc, char* argv[])
 	int nthr_dist_two1 = nthr_dist_two - 1;
 	for (i = 0; i < nthr_dist_two; i++)
 	{		
-		count_two += tab[i].fps;
+		count_two = tab[i].fps;
 		if (tab[i].fps > 0 && (i == nthr_dist_two1 || tab[i+1].err != tab[i].err))
 		{
 			//printf("ERR %f Count %d FPsites %d FPpeak %d TPpeak %d\n", tab[i].err, count_two, tab[i].fps, tab[i].fpr, tab[i].tpr);

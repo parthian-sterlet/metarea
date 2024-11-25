@@ -1008,7 +1008,7 @@ int main(int argc, char* argv[])
 		int count_one = 0;
 		for (i = 0; i < nthr_dist[0]; i++)
 		{
-			count_one += fp_nsites[0][i];
+			count_one = fp_nsites[0][i];
 			//printf("FPsites %d FPpeak %d TPpeak %d\n", fp_nsites[0][i], fp_one[i],tp_one[i]);
 			if (count_one >= all_pos_thr[mot1])
 			{
@@ -1274,7 +1274,7 @@ int main(int argc, char* argv[])
 			double fp_rest_two = 0;
 			for (i = 0; i < nthr_dist_two; i++)
 			{
-				count_two += tab[i].fps;
+				count_two = tab[i].fps;
 				if (tab[i].fps > 0 && (i == nthr_dist_two1 || tab[i + 1].err != tab[i].err))
 				{
 				//	printf("ERR %f Count %d FPsites %d FPpeak %d TPpeak %d\n", tab[i].err, count_two, tab[i].fps, tab[i].fpr, tab[i].tpr);
