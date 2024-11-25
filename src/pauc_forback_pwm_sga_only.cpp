@@ -647,9 +647,10 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 		}
 		for (j = index_best; j <= nthr_dist; j++)fpr[j]++;
 	}
+//	all_pos /= 2;
 	return 1;
 }
-int SGA_rec_real_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all, int* tpr, int nseq, char*** seq)
+int SGA_rec_real_one(city *sta, double sga_min, double sga_raz, int nthr_dist, double* thr_all, double* fpr_all, int* tpr, int nseq, char*** seq)
 {
 	int i, j, n, m;
 	int compl1;	
@@ -688,7 +689,7 @@ int SGA_rec_real_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all,
 						score += sta->tot[j].buf * fm;
 					}
 				}
-				score = 1 - fabs(score - 1);
+				score = (score - sga_min) / sga_raz;
 				if (score >= thr_cr)
 				{
 					if (score >= thr_all[0])
@@ -717,7 +718,7 @@ int SGA_rec_real_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all,
 	}
 	return 1;
 }
-int SGA_rec_back_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all, int* fpr, int* fp_nsites, int nseq, char*** seq, int& all_pos)
+int SGA_rec_back_one(city *sta, double sga_min, double sga_raz, int nthr_dist, double* thr_all, double* fpr_all, int* fpr, int* fp_nsites, int nseq, char*** seq, int& all_pos)
 {
 	int i, j, n, m;
 	int compl1;
@@ -758,7 +759,7 @@ int SGA_rec_back_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all,
 						score += sta->tot[j].buf * fm;
 					}
 				}
-				score = 1 - fabs(score - 1);
+				score = (score - sga_min) / sga_raz;
 				int index = nthr_dist;
 				if (score >= thr_cr)
 				{
@@ -784,9 +785,10 @@ int SGA_rec_back_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all,
 		}
 		for (j = index_best; j <= nthr_dist; j++)fpr[j]++;
 	}
+	//all_pos /= 2;
 	return 1;
 }
-int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city *sta, int nthr_dist[2], double** thr_all, double** fpr_all, int** tp_two, int olen[2], int nseq, char*** seq)
+int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city *sta, double sga_min, double sga_raz, int nthr_dist[2], double** thr_all, double** fpr_all, int** tp_two, int olen[2], int nseq, char*** seq)
 {
 	int i, j, k, n, m;
 	int compl1;
@@ -850,7 +852,7 @@ int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city
 								score += sta->tot[j].buf * fm;
 							}
 						}
-						score = 1 - fabs(score - 1);
+						score = (score - sga_min) / sga_raz;
 					}
 					if (score >= thr_cr[k])
 					{
@@ -1043,6 +1045,7 @@ int main(int argc, char* argv[])
 		printf("Input file %s can't be opened!\n", partner_sga);
 		return -1;
 	}
+	double sga_min=0, sga_max=0, sga_raz =0;
 	{
 		int mu = 0;
 		mu = fread(&len_partner[0], sizeof(int), 1, in_pwm);
@@ -1058,7 +1061,15 @@ int main(int argc, char* argv[])
 		mu = fread(thr_all[1], sizeof(double), nthr_dist_all[1], in_sga);
 		mu = fread(fpr_all[1], sizeof(double), nthr_dist_all[1], in_sga);
 		fclose(in_sga);
+		sga_min = sta.c, sga_max = sta.c;
+		for (j = 0; j < sta.size; j++)
+		{
+			if (sta.tot[j].buf < 0)sga_min += sta.tot[j].buf;
+			else sga_max += sta.tot[j].buf;
+		}
+		sga_raz = sga_max - sga_min;
 		len_partner[1] = sta.len;
+		for (n = 0; n < 2; n++)nthr_dist[n] = nthr_dist_all[n];
 		for (n = 0; n < 2; n++)
 		{
 			nthr_dist[n] = 0;
@@ -1078,9 +1089,10 @@ int main(int argc, char* argv[])
 	double fp_thr_rest[2], fp_rest_two = 0;	
 	int all_pos[2] = { 0,0 };
 	int all_pos_thr[2];	
+	for (n = 0; n < 2; n++)for (j = 0; j <= nthr_dist[n]; j++)fp_nsites[n][j] = 0;
 	for(n=0;n<2;n++)
 	{
-		for (j = 0; j <= nthr_dist[n]; j++)tp_one[j] = fp_one[j] = fp_nsites[n][j] = 0;		
+		for (j = 0; j <= nthr_dist[n]; j++)tp_one[j] = fp_one[j] = 0;		
 		if (n == 0)
 		{
 			int check = PWM_rec_real_one(pwm, min, raz, nthr_dist[0], thr_all[0], fpr_all[0], tp_one, len_partner[0], nseq_real, seq_real);
@@ -1098,13 +1110,13 @@ int main(int argc, char* argv[])
 		}
 		else
 		{
-			int check = SGA_rec_real_one(&sta, nthr_dist[1], thr_all[1], fpr_all[1], tp_one, nseq_real, seq_real);
+			int check = SGA_rec_real_one(&sta, sga_min, sga_raz, nthr_dist[1], thr_all[1], fpr_all[1], tp_one, nseq_real, seq_real);
 			if (check == -1)
 			{
 				printf("Motif sga recognition error, real\n");
 				exit(1);
 			}
-			check = SGA_rec_back_one(&sta, nthr_dist[1], thr_all[1], fpr_all[1], fp_one, fp_nsites[1], nseq_back, seq_back, all_pos[1]);
+			check = SGA_rec_back_one(&sta, sga_min, sga_raz, nthr_dist[1], thr_all[1], fpr_all[1], fp_one, fp_nsites[1], nseq_back, seq_back, all_pos[1]);
 			if (check == -1)
 			{
 				printf("Motif sga recognition error, real\n");
@@ -1116,10 +1128,12 @@ int main(int argc, char* argv[])
 		int count_one = 0;
 		for (i = 0; i < nthr_dist[n]; i++)
 		{
-			count_one += fp_nsites[n][i];
-			//printf("Count %d FPsites %d FPpeak %d TPpeak %d\n", count_one,fp_nsites[n][i], fp_one[i], tp_one[i]);
+			count_one = fp_nsites[n][i];
+			double err_neg = -log10((double)count_one / all_pos[n]);
+	//		printf("Thr %f ERR_prom %f ERR_neg %f Count %d FPsites %d FPpeak %d = %f TPpeak %d = %f\n", thr_all[n][i],fpr_all[n][i],err_neg, count_one,fp_nsites[n][i], fp_one[i],(double)fp_one[i]/nseq_back, tp_one[i], (double)tp_one[i] / nseq_real);
 			if (count_one >= all_pos_thr[n]) //|| tp_one[i] >= nseq_real_thr
-			{				
+			{
+				printf("All pos %d\n", all_pos[n]);
 				index_thr[n] = i;
 				fp_thr_rest[n] = 1 - (double)(count_one - all_pos_thr[n]) / fp_nsites[n][i];
 				break;
@@ -1176,14 +1190,14 @@ int main(int argc, char* argv[])
 	for (n = 0; n < 2; n++)for (j = 0; j <= nthr_dist[n]; j++)tp_two[n][j] = 0;
 	for (n = 0; n < 2; n++)for (j = 0; j <= nthr_dist[n]; j++)fp_two[n][j] = 0;
 	//printf("Real %d\n",mot + 1);
-	int check = PWM_SGA_rec_real(pwm, min, raz, &sta, nthr_dist, thr_all, fpr_all, tp_two, len_partner, nseq_real, seq_real);
+	int check = PWM_SGA_rec_real(pwm, min, raz, &sta, sga_min, sga_raz, nthr_dist, thr_all, fpr_all, tp_two, len_partner, nseq_real, seq_real);
 	if (check == -1)
 	{
 		printf("Motifs pwm&sga recognition error, real\n");
 		exit(1);
 	}
 	//printf("Back %d\n", mot + 1);		
-	check = PWM_SGA_rec_real(pwm, min, raz, &sta, nthr_dist, thr_all, fpr_all, fp_two, len_partner, nseq_back, seq_back);
+	check = PWM_SGA_rec_real(pwm, min, raz, &sta, sga_min, sga_raz, nthr_dist, thr_all, fpr_all, fp_two, len_partner, nseq_back, seq_back);
 	if (check == -1)
 	{
 		printf("Motifs pwm&sga recognition error, back\n");
@@ -1213,7 +1227,7 @@ int main(int argc, char* argv[])
 	int nthr_dist_two1 = nthr_dist_two - 1;
 	for (i = 0; i < nthr_dist_two; i++)
 	{
-		count_two += tab[i].fps;
+		count_two = tab[i].fps;
 		if (tab[i].fps > 0 && (i == nthr_dist_two1 || tab[i + 1].err != tab[i].err))
 		{
 			//printf("ERR %f Count %d FPsites %d FPpeak %d TPpeak %d\n", tab[i].err, count_two, tab[i].fps, tab[i].fpr, tab[i].tpr);
