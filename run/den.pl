@@ -42,7 +42,7 @@ $cmd= "$path_exe/pfm_to_pwm_mat.exe ${path_in}${motif_base}${i}${motif_ext} $pat
 print "$cmd\n";
 system $cmd;
 
-$cmd= "$path_exe/pwm_iz_pwm_thr_dist0.exe ${path_in}${motif_base}${i}${motif_ext} ${path_out}${motif_base}${i}${pwm_ext} ${genome_prom} ${path_out}${motif_base}${i}${dist_ext} ${binary} 0.01 0.0000005 ${pwm_log} 0.00002 0";
+$cmd= "$path_exe/pwm_iz_pwm_thr_dist0.exe ${path_in}${motif_base}${i}${motif_ext} ${path_out}${motif_base}${i}${pwm_ext} ${genome_prom} ${path_out}${motif_base}${i}${dist_ext} ${binary} 0.01 0.0000005 ${pwm_log} 0.00002 0 ab";
 print "$cmd\n";
 system $cmd;
 }
