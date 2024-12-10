@@ -31,6 +31,12 @@ int StrNStr(char* str, char c, int n)
 	}
 	return -1;
 }
+void DelHole(char* str)
+{
+	char* hole;
+	hole = strstr(str, "\n");
+	if (hole != NULL) *hole = 0;
+}
 double UnderStol(char* str, int nstol, char razd)
 {
 	if (nstol == 0)return atof(str);
@@ -118,8 +124,8 @@ struct city {
 	char site[300];
 	int size;
 	int len;
-	double c;
-	double std;
+	double min;
+	double raz;
 	struct due tot[DIM];
 	void get_copy(city* a);
 	void sort_all(void);
@@ -136,15 +142,16 @@ int city::get_file(char* file)
 	}
 	char d[300];
 	fgets(d, sizeof(d), in);
-	DelChar(d, '\n');
+	DelHole(d);
 	strcpy(site, d);
 	fgets(d, sizeof(d), in);
 	size = atoi(d);
 	fgets(d, sizeof(d), in);
 	len = atoi(d);
 	fgets(d, sizeof(d), in);
-	c = atof(d);
-	std = 0.05;
+	min = atof(d);
+	fgets(d, sizeof(d), in);
+	raz = atof(d);
 	char sep = '\t', s[30];
 	int i, test;
 	for (i = 0; i < size; i++)
@@ -168,9 +175,9 @@ void city::get_copy(city* a)
 {
 	strcpy(a->site, site);
 	a->size = size;
-	a->std = std;
+	a->min = min;
 	a->len = len;
-	a->c = c;
+	a->raz = raz;
 	int i;
 	for (i = 0; i < size; i++)
 	{
@@ -214,12 +221,6 @@ int compare_qbs(const void* X1, const void* X2)//decrease
 	if (S1->err - S2->err > 0)return -1;
 	if (S1->err - S2->err < 0)return 1;
 	return 0;
-}
-void DelHole(char* str)
-{
-	char* hole;
-	hole = strstr(str, "\n");
-	if (hole != NULL) *hole = 0;
 }
 char* TransStr(char* d)
 {
@@ -543,6 +544,8 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 		int index = nthr_dist;
 		for (i = 0; i <= len21; i++)
 		{
+			double sco2 = 0;
+			int gom = 0;
 			for (compl1 = 0; compl1 < 2; compl1++)
 			{
 				int ista;
@@ -550,7 +553,7 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 				else ista = len21 - i;
 				strncpy(d, &seq[compl1][n][ista], olen);
 				d[olen] = '\0';
-				if (strstr(d, "n") != NULL) { continue; }
+				if (strstr(d, "n") != NULL) { gom = 1; break; }
 				GetSostPro(d, word, cod);
 				double score = 0;
 				for (j = 0; j < olen; j++)
@@ -559,9 +562,13 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 				}
 				score -= min;
 				score /= raz;
-				if (score >= thr_cr)
+				if (score > sco2)sco2 = score;
+			}
+			if (gom == 0)
+			{
+				if (sco2 >= thr_cr)
 				{
-					if (score >= thr_all[0])
+					if (sco2 >= thr_all[0])
 					{
 						index = 0;
 						break;
@@ -571,7 +578,7 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 						int index_here = nthr_dist;
 						for (j = 1; j < nthr_dist; j++)
 						{
-							if (score >= thr_all[j] && score < thr_all[j - 1])
+							if (sco2 >= thr_all[j] && sco2 < thr_all[j - 1])
 							{
 								index_here = j;
 								break;
@@ -580,8 +587,8 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 						if (index_here < index)index = index_here;
 					}
 				}
+				if (index == 0)break;
 			}
-			if (index == 0)break;
 		}
 		for (j = index; j <= nthr_dist; j++)tpr[j]++;
 	}
@@ -605,6 +612,8 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 		int index_best = nthr_dist;
 		for (i = 0; i <= len21; i++)
 		{
+			double sco2 = 0;
+			int gom = 0;
 			for (compl1 = 0; compl1 < 2; compl1++)
 			{
 				int ista;
@@ -612,7 +621,7 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 				else ista = len21 - i;
 				strncpy(d, &seq[compl1][n][ista], olen);
 				d[olen] = '\0';
-				if (strstr(d, "n") != NULL) { continue; }
+				if (strstr(d, "n") != NULL) { gom = 1; break; }
 				all_pos++;
 				GetSostPro(d, word, cod);
 				double score = 0;
@@ -622,10 +631,15 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 				}
 				score -= min;
 				score /= raz;
+				if (score > sco2)sco2 = score;
+			}
+			if (gom == 0)
+			{
+				all_pos++;
 				int index = nthr_dist;
-				if (score >= thr_cr)
+				if (sco2 >= thr_cr)
 				{
-					if (score >= thr_all[0])
+					if (sco2 >= thr_all[0])
 					{
 						index = 0;
 					}
@@ -633,7 +647,7 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 					{
 						for (j = 1; j < nthr_dist; j++)
 						{
-							if (score >= thr_all[j] && score < thr_all[j - 1])
+							if (sco2 >= thr_all[j] && sco2 < thr_all[j - 1])
 							{
 								index = j;
 								break;
@@ -647,10 +661,9 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 		}
 		for (j = index_best; j <= nthr_dist; j++)fpr[j]++;
 	}
-//	all_pos /= 2;
 	return 1;
 }
-int SGA_rec_real_one(city *sta, double sga_min, double sga_raz, int nthr_dist, double* thr_all, double* fpr_all, int* tpr, int nseq, char*** seq)
+int SGA_rec_real_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all, int* tpr, int nseq, char*** seq)
 {
 	int i, j, n, m;
 	int compl1;	
@@ -665,6 +678,8 @@ int SGA_rec_real_one(city *sta, double sga_min, double sga_raz, int nthr_dist, d
 		int index = nthr_dist;
 		for (i = 0; i <= len21; i++)
 		{
+			double sco2 = 0;
+			int gom = 0;
 			for (compl1 = 0; compl1 < 2; compl1++)
 			{
 				int ista;
@@ -672,8 +687,8 @@ int SGA_rec_real_one(city *sta, double sga_min, double sga_raz, int nthr_dist, d
 				else ista = len21 - i;
 				strncpy(d, &seq[compl1][n][ista], sta->len);
 				d[sta->len] = '\0';
-				if (strstr(d, "n") != NULL) { continue; }				
-				double score = sta->c;
+				if (strstr(d, "n") != NULL) { gom = 1;break; }
+				double score = 0;
 				for (j = 0; j < sta->size; j++)
 				{
 					int rlenj = (sta->tot[j].end - sta->tot[j].sta + 1);
@@ -689,10 +704,14 @@ int SGA_rec_real_one(city *sta, double sga_min, double sga_raz, int nthr_dist, d
 						score += sta->tot[j].buf * fm;
 					}
 				}
-				score = (score - sga_min) / sga_raz;
-				if (score >= thr_cr)
+				score = (score - sta->min) / sta->raz;
+				if (score > sco2)sco2 = score;
+			}
+			if (gom == 0)
+			{
+				if (sco2 >= thr_cr)
 				{
-					if (score >= thr_all[0])
+					if (sco2 >= thr_all[0])
 					{
 						index = 0;
 						break;
@@ -702,7 +721,7 @@ int SGA_rec_real_one(city *sta, double sga_min, double sga_raz, int nthr_dist, d
 						int index_here = nthr_dist;
 						for (j = 1; j < nthr_dist; j++)
 						{
-							if (score >= thr_all[j] && score < thr_all[j - 1])
+							if (sco2 >= thr_all[j] && sco2 < thr_all[j - 1])
 							{
 								index_here = j;
 								break;
@@ -711,14 +730,14 @@ int SGA_rec_real_one(city *sta, double sga_min, double sga_raz, int nthr_dist, d
 						if (index_here < index)index = index_here;
 					}
 				}
-			}
+			}			
 			if (index == 0)break;
 		}
 		for (j = index; j <= nthr_dist; j++)tpr[j]++;
 	}
 	return 1;
 }
-int SGA_rec_back_one(city *sta, double sga_min, double sga_raz, int nthr_dist, double* thr_all, double* fpr_all, int* fpr, int* fp_nsites, int nseq, char*** seq, int& all_pos)
+int SGA_rec_back_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all, int* fpr, int* fp_nsites, int nseq, char*** seq, int& all_pos)
 {
 	int i, j, n, m;
 	int compl1;
@@ -734,6 +753,8 @@ int SGA_rec_back_one(city *sta, double sga_min, double sga_raz, int nthr_dist, d
 		int index_best = nthr_dist;
 		for (i = 0; i <= len21; i++)
 		{
+			double sco2 = 0;
+			int gom = 0;
 			for (compl1 = 0; compl1 < 2; compl1++)
 			{
 				int ista;
@@ -741,9 +762,8 @@ int SGA_rec_back_one(city *sta, double sga_min, double sga_raz, int nthr_dist, d
 				else ista = len21 - i;
 				strncpy(d, &seq[compl1][n][ista], sta->len);
 				d[sta->len] = '\0';
-				if (strstr(d, "n") != NULL) { continue; }
-				all_pos++;
-				double score = sta->c;
+				if (strstr(d, "n") != NULL) { gom = 1; break; }
+				double score = 0;
 				for (j = 0; j < sta->size; j++)
 				{
 					int rlenj = (sta->tot[j].end - sta->tot[j].sta + 1);
@@ -759,11 +779,16 @@ int SGA_rec_back_one(city *sta, double sga_min, double sga_raz, int nthr_dist, d
 						score += sta->tot[j].buf * fm;
 					}
 				}
-				score = (score - sga_min) / sga_raz;
+				score = (score - sta->min) / sta->raz;
+				if (score > sco2)sco2 = score;
+			}
+			if (gom == 0)
+			{
+				all_pos++;
 				int index = nthr_dist;
-				if (score >= thr_cr)
+				if (sco2 >= thr_cr)
 				{
-					if (score >= thr_all[0])
+					if (sco2 >= thr_all[0])
 					{
 						index = 0;
 					}
@@ -771,7 +796,7 @@ int SGA_rec_back_one(city *sta, double sga_min, double sga_raz, int nthr_dist, d
 					{
 						for (j = 1; j < nthr_dist; j++)
 						{
-							if (score >= thr_all[j] && score < thr_all[j - 1])
+							if (sco2 >= thr_all[j] && sco2 < thr_all[j - 1])
 							{
 								index = j;
 								break;
@@ -780,15 +805,14 @@ int SGA_rec_back_one(city *sta, double sga_min, double sga_raz, int nthr_dist, d
 					}
 				}
 				for (j = nthr_dist; j >= index; j--)fp_nsites[j]++;
-				if (index < index_best)index_best = index;				
+				if (index < index_best)index_best = index;
 			}
 		}
 		for (j = index_best; j <= nthr_dist; j++)fpr[j]++;
-	}
-	//all_pos /= 2;
+	}	
 	return 1;
 }
-int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city *sta, double sga_min, double sga_raz, int nthr_dist[2], double** thr_all, double** fpr_all, int** tp_two, int olen[2], int nseq, char*** seq)
+int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city *sta, int nthr_dist[2], double** thr_all, double** fpr_all, int** tp_two, int olen[2], int nseq, char*** seq)
 {
 	int i, j, k, n, m;
 	int compl1;
@@ -813,6 +837,8 @@ int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city
 			int len_pro1 = strlen(seq[0][n]);
 			int len21 = len_pro1 - olen[k];
 			index = best_inx[k] = nthr_dist[k];
+			double sco2 = 0;
+			int gom = 0;
 			for (i = 0; i <= len21; i++)
 			{
 				for (compl1 = 0; compl1 < 2; compl1++)
@@ -822,11 +848,11 @@ int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city
 					else ista = len21 - i;
 					strncpy(d, &seq[compl1][n][ista], olen[k]);
 					d[olen[k]] = '\0';
-					if (strstr(d, "n") != NULL) { continue; }
+					if (strstr(d, "n") != NULL) { gom = 1; break; }
 					double score = 0;
 					if (k == 0)
 					{
-						GetSostPro(d, word, cod);						
+						GetSostPro(d, word, cod);
 						for (j = 0; j < olen[k]; j++)
 						{
 							score += pwm[j][cod[j]];
@@ -836,7 +862,6 @@ int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city
 					}
 					else
 					{
-						score += sta->c;
 						for (j = 0; j < sta->size; j++)
 						{
 							int rlenj = (sta->tot[j].end - sta->tot[j].sta + 1);
@@ -852,11 +877,15 @@ int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city
 								score += sta->tot[j].buf * fm;
 							}
 						}
-						score = (score - sga_min) / sga_raz;
+						score = (score - sta->min) / sta->raz;
 					}
-					if (score >= thr_cr[k])
+					if (score > sco2)sco2 = score;
+				}
+				if (gom == 0)
+				{
+					if (sco2 >= thr_cr[k])
 					{
-						if (score >= thr_all[k][0])
+						if (sco2 >= thr_all[k][0])
 						{
 							index = 0;
 							break;
@@ -865,7 +894,7 @@ int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city
 						{
 							for (j = 1; j < nthr_dist[k]; j++)
 							{
-								if (score >= thr_all[k][j] && score < thr_all[k][j - 1])
+								if (sco2 >= thr_all[k][j] && sco2 < thr_all[k][j - 1])
 								{
 									index = j;
 									break;
@@ -873,9 +902,9 @@ int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city
 							}
 						}
 					}
-				}
-				if (index < best_inx[k])best_inx[k] = index;
-				if (index == 0)break;
+					if (index < best_inx[k])best_inx[k] = index;
+					if (index == 0)break;
+				}								
 			}
 		}
 		if (fpr_all[0][best_inx[0]] > fpr_all[1][best_inx[1]])tp_two[0][best_inx[0]]++;
@@ -1044,8 +1073,7 @@ int main(int argc, char* argv[])
 	{
 		printf("Input file %s can't be opened!\n", partner_sga);
 		return -1;
-	}
-	double sga_min=0, sga_max=0, sga_raz =0;
+	}	
 	{
 		int mu = 0;
 		mu = fread(&len_partner[0], sizeof(int), 1, in_pwm);
@@ -1060,14 +1088,7 @@ int main(int argc, char* argv[])
 		mu = fread(&nthr_dist_all[1], sizeof(int), 1, in_sga);
 		mu = fread(thr_all[1], sizeof(double), nthr_dist_all[1], in_sga);
 		mu = fread(fpr_all[1], sizeof(double), nthr_dist_all[1], in_sga);
-		fclose(in_sga);
-		sga_min = sta.c, sga_max = sta.c;
-		for (j = 0; j < sta.size; j++)
-		{
-			if (sta.tot[j].buf < 0)sga_min += sta.tot[j].buf;
-			else sga_max += sta.tot[j].buf;
-		}
-		sga_raz = sga_max - sga_min;
+		fclose(in_sga);		
 		len_partner[1] = sta.len;
 		for (n = 0; n < 2; n++)nthr_dist[n] = nthr_dist_all[n];
 		for (n = 0; n < 2; n++)
@@ -1110,13 +1131,13 @@ int main(int argc, char* argv[])
 		}
 		else
 		{
-			int check = SGA_rec_real_one(&sta, sga_min, sga_raz, nthr_dist[1], thr_all[1], fpr_all[1], tp_one, nseq_real, seq_real);
+			int check = SGA_rec_real_one(&sta,nthr_dist[1], thr_all[1], fpr_all[1], tp_one, nseq_real, seq_real);
 			if (check == -1)
 			{
 				printf("Motif sga recognition error, real\n");
 				exit(1);
 			}
-			check = SGA_rec_back_one(&sta, sga_min, sga_raz, nthr_dist[1], thr_all[1], fpr_all[1], fp_one, fp_nsites[1], nseq_back, seq_back, all_pos[1]);
+			check = SGA_rec_back_one(&sta, nthr_dist[1], thr_all[1], fpr_all[1], fp_one, fp_nsites[1], nseq_back, seq_back, all_pos[1]);
 			if (check == -1)
 			{
 				printf("Motif sga recognition error, real\n");
@@ -1190,14 +1211,14 @@ int main(int argc, char* argv[])
 	for (n = 0; n < 2; n++)for (j = 0; j <= nthr_dist[n]; j++)tp_two[n][j] = 0;
 	for (n = 0; n < 2; n++)for (j = 0; j <= nthr_dist[n]; j++)fp_two[n][j] = 0;
 	//printf("Real %d\n",mot + 1);
-	int check = PWM_SGA_rec_real(pwm, min, raz, &sta, sga_min, sga_raz, nthr_dist, thr_all, fpr_all, tp_two, len_partner, nseq_real, seq_real);
+	int check = PWM_SGA_rec_real(pwm, min, raz, &sta, nthr_dist, thr_all, fpr_all, tp_two, len_partner, nseq_real, seq_real);
 	if (check == -1)
 	{
 		printf("Motifs pwm&sga recognition error, real\n");
 		exit(1);
 	}
 	//printf("Back %d\n", mot + 1);		
-	check = PWM_SGA_rec_real(pwm, min, raz, &sta, sga_min, sga_raz, nthr_dist, thr_all, fpr_all, fp_two, len_partner, nseq_back, seq_back);
+	check = PWM_SGA_rec_real(pwm, min, raz, &sta, nthr_dist, thr_all, fpr_all, fp_two, len_partner, nseq_back, seq_back);
 	if (check == -1)
 	{
 		printf("Motifs pwm&sga recognition error, back\n");
