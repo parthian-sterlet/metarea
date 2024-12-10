@@ -391,6 +391,8 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 		int index = nthr_dist;
 		for (i = 0; i <= len21; i++)
 		{
+			double sco2 = 0;
+			int gom = 0;
 			for (compl1 = 0; compl1 < 2; compl1++)
 			{
 				int ista;
@@ -398,7 +400,7 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 				else ista = len21 - i;
 				strncpy(d, &seq[compl1][n][ista], olen);
 				d[olen] = '\0';
-				if (strstr(d, "n") != NULL) { continue; }
+				if (strstr(d, "n") != NULL) { gom = 1; break; }
 				GetSostPro(d, word, cod);
 				double score = 0;
 				for (j = 0; j < olen; j++)
@@ -407,9 +409,13 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 				}
 				score -= min;
 				score /= raz;
-				if (score >= thr_cr)
+				if (score > sco2)sco2 = score;
+			}
+			if (gom == 0)
+			{
+				if (sco2 >= thr_cr)
 				{
-					if (score >= thr_all[0])
+					if (sco2 >= thr_all[0])
 					{
 						index = 0;
 						break;
@@ -419,7 +425,7 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 						int index_here = nthr_dist;
 						for (j = 1; j < nthr_dist; j++)
 						{
-							if (score >= thr_all[j] && score < thr_all[j - 1])
+							if (sco2 >= thr_all[j] && sco2 < thr_all[j - 1])
 							{
 								index_here = j;
 								break;
@@ -428,8 +434,8 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 						if (index_here < index)index = index_here;
 					}
 				}
+				if (index == 0)break;
 			}
-			if (index == 0)break;
 		}
 		for (j = index; j <= nthr_dist; j++)tpr[j]++;
 	}
@@ -453,6 +459,8 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 		int index_best = nthr_dist;
 		for (i = 0; i <= len21; i++)
 		{
+			double sco2 = 0;
+			int gom = 0;
 			for (compl1 = 0; compl1 < 2; compl1++)
 			{
 				int ista;
@@ -460,7 +468,7 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 				else ista = len21 - i;
 				strncpy(d, &seq[compl1][n][ista], olen);
 				d[olen] = '\0';
-				if (strstr(d, "n") != NULL) { continue; }
+				if (strstr(d, "n") != NULL) { gom = 1; break; }
 				all_pos++;
 				GetSostPro(d, word, cod);
 				double score = 0;
@@ -470,10 +478,15 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 				}
 				score -= min;
 				score /= raz;
+				if (score > sco2)sco2 = score;
+			}
+			if (gom == 0)
+			{
+				all_pos++;
 				int index = nthr_dist;
-				if (score >= thr_cr)
+				if (sco2 >= thr_cr)
 				{
-					if (score >= thr_all[0])
+					if (sco2 >= thr_all[0])
 					{
 						index = 0;
 					}
@@ -481,7 +494,7 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 					{
 						for (j = 1; j < nthr_dist; j++)
 						{
-							if (score >= thr_all[j] && score < thr_all[j - 1])
+							if (sco2 >= thr_all[j] && sco2 < thr_all[j - 1])
 							{
 								index = j;
 								break;
@@ -524,6 +537,8 @@ int PWM_rec_real(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 			index = best_inx[k] = nthr_dist[k];
 			for (i = 0; i <= len21; i++)
 			{
+				double sco2 = 0;
+				int gom = 0;
 				for (compl1 = 0; compl1 < 2; compl1++)
 				{
 					int ista;
@@ -531,7 +546,7 @@ int PWM_rec_real(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 					else ista = len21 - i;
 					strncpy(d, &seq[compl1][n][ista], olen[k]);
 					d[olen[k]] = '\0';
-					if (strstr(d, "n") != NULL) { continue; }
+					if (strstr(d, "n") != NULL) { gom = 1; break; }
 					GetSostPro(d, word, cod);
 					double score = 0;
 					for (j = 0; j < olen[k]; j++)
@@ -540,9 +555,13 @@ int PWM_rec_real(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 					}
 					score -= min[k];
 					score /= raz[k];
-					if (score >= thr_cr[k])
+					if (score > sco2)sco2 = score;
+				}
+				if (gom == 0)
+				{
+					if (sco2 >= thr_cr[k])
 					{
-						if (score >= thr_all[k][0])
+						if (sco2 >= thr_all[k][0])
 						{
 							index = 0;
 							break;
@@ -551,7 +570,7 @@ int PWM_rec_real(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 						{
 							for (j = 1; j < nthr_dist[k]; j++)
 							{
-								if (score >= thr_all[k][j] && score < thr_all[k][j - 1])
+								if (sco2 >= thr_all[k][j] && sco2 < thr_all[k][j - 1])
 								{
 									index = j;
 									break;
@@ -559,9 +578,9 @@ int PWM_rec_real(double(&pwm)[2][MATLEN][OLIGNUM], double min[2], double raz[2],
 							}
 						}
 					}
+					if (index < best_inx[k])best_inx[k] = index;
+					if (index == 0)break;
 				}
-				if (index < best_inx[k])best_inx[k] = index;
-				if (index == 0)break;
 			}
 		}
 		if (fpr_all[0][best_inx[0]] > fpr_all[1][best_inx[1]])tp_two[0][best_inx[0]]++;
@@ -639,13 +658,8 @@ int main(int argc, char* argv[])
 		printf("%s 1,2input fasta foreground,background  3,4input model's binary files anchor,library 5double ERRthresh 6,7files out pAUC_list log", argv[0]);
 		return -1;
 	}
-//	strcpy(path_fasta, argv[1]);
 	strcpy(file_for, argv[1]);
 	strcpy(file_back, argv[2]);
-	//strcpy(pfile_for, path_fasta);
-	//strcpy(pfile_back, path_fasta);
-//	strcat(pfile_for, file_for);
-//	strcat(pfile_back, file_back);
 	strcpy(anchor, argv[3]);
 	strcpy(partner_db, argv[4]); //h12hs, h12mm	
 	double fp2 = atof(argv[5]); //ERR threshold for pAUC-PR	
@@ -833,8 +847,6 @@ int main(int argc, char* argv[])
 	int len_partner[2], nthr_dist[2];
 	double pwm[2][MATLEN][OLIGNUM];
 	double pfm[2][MATLEN][OLIGNUM];
-	//double pwm1[MATLEN][OLIGNUM];
-	//double pfm1[MATLEN][OLIGNUM];
 
 	int nthr_dist_max = 20000;
 	double** thr_all;
