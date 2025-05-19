@@ -19,7 +19,7 @@
 
 int StrNStr(char* str, char c, int n)
 {
-	int i, len = strlen(str);
+	int i, len = (int)strlen(str);
 	int k = 1;
 	for (i = 0; i < len; i++)
 	{
@@ -46,7 +46,7 @@ double UnderStol(char* str, int nstol, char razd)
 	int p2 = StrNStr(str, razd, nstol + 1);
 	if (p2 == -1)
 	{
-		p2 = strlen(str);
+		p2 = (int)strlen(str);
 	}
 	if (p1 == -1 || p2 == -1) return -1;
 	int len = p2 - p1 - 1;
@@ -61,7 +61,7 @@ int UnderStolStr(char* str, int nstol, char* ret, size_t size, char sep)
 	if (nstol == 0)
 	{
 		p2 = StrNStr(str, sep, 1);
-		if (p2 == -1)p2 = strlen(str);
+		if (p2 == -1)p2 = (int)strlen(str);
 		strncpy(ret, str, p2);
 		ret[p2] = '\0';
 		return 1;
@@ -72,7 +72,7 @@ int UnderStolStr(char* str, int nstol, char* ret, size_t size, char sep)
 		p2 = StrNStr(str, sep, nstol + 1);
 		if (p2 == -1)
 		{
-			p2 = strlen(str);
+			p2 = (int)strlen(str);
 		}
 		if (p1 == -1 || p2 == -1) return -1;
 		len = p2 - p1 - 1;
@@ -92,7 +92,7 @@ void DelChar(char* str, char c)
 	int i, lens, size;
 
 	size = 0;
-	lens = strlen(str);
+	lens = (int)strlen(str);
 	for (i = 0; i < lens; i++)
 	{
 		if (str[i] != c)str[size++] = str[i];
@@ -491,7 +491,7 @@ void GetSostPro(char* d, int word, int* sost)
 	int i, j, k, i_sost, let;
 	char letter[] = "acgt";
 	int ten[6] = { 1, 4, 16, 64, 256, 1024 };
-	int lens = strlen(d);
+	int lens = (int)strlen(d);
 	int size = 1;
 	for (k = 0; k < word; k++)size *= 4;
 	for (i = 0; i < size; i++)sost[i] = 0;
@@ -539,7 +539,7 @@ int PWM_rec_real_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 	for (n = 0; n < nseq; n++)
 	{
 		//if ((n + 1) % 500 == 0)printf("\b\b\b\b\b\b\b%7d", n + 1);
-		int len_pro1 = strlen(seq[0][n]);
+		int len_pro1 = (int)strlen(seq[0][n]);
 		int len21 = len_pro1 - olen;
 		int index = nthr_dist;
 		for (i = 0; i <= len21; i++)
@@ -607,7 +607,7 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 	for (n = 0; n < nseq; n++)
 	{
 		//if ((n+1) % 500 == 0)printf("\b\b\b\b\b\b\b%7d", n+1);
-		int len_pro1 = strlen(seq[0][n]);
+		int len_pro1 = (int)strlen(seq[0][n]);
 		int len21 = len_pro1 - olen;
 		int index_best = nthr_dist;
 		for (i = 0; i <= len21; i++)
@@ -621,8 +621,7 @@ int PWM_rec_back_one(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, int 
 				else ista = len21 - i;
 				strncpy(d, &seq[compl1][n][ista], olen);
 				d[olen] = '\0';
-				if (strstr(d, "n") != NULL) { gom = 1; break; }
-				all_pos++;
+				if (strstr(d, "n") != NULL) { gom = 1; break; }				
 				GetSostPro(d, word, cod);
 				double score = 0;
 				for (j = 0; j < olen; j++)
@@ -673,7 +672,7 @@ int SGA_rec_real_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all,
 	for (n = 0; n < nseq; n++)
 	{
 		//if ((n + 1) % 500 == 0)printf("\b\b\b\b\b\b\b%7d", n + 1);
-		int len_pro1 = strlen(seq[0][n]);
+		int len_pro1 = (int)strlen(seq[0][n]);
 		int len21 = len_pro1 - sta->len;
 		int index = nthr_dist;
 		for (i = 0; i <= len21; i++)
@@ -748,7 +747,7 @@ int SGA_rec_back_one(city *sta, int nthr_dist, double* thr_all, double* fpr_all,
 	for (n = 0; n < nseq; n++)
 	{
 		//if ((n+1) % 500 == 0)printf("\b\b\b\b\b\b\b%7d", n+1);
-		int len_pro1 = strlen(seq[0][n]);
+		int len_pro1 = (int)strlen(seq[0][n]);
 		int len21 = len_pro1 - sta->len;
 		int index_best = nthr_dist;
 		for (i = 0; i <= len21; i++)
@@ -834,7 +833,7 @@ int PWM_SGA_rec_real(double(&pwm)[MATLEN][OLIGNUM], double min, double raz, city
 		for (k = 0; k < 2; k++)
 		{
 			int index;
-			int len_pro1 = strlen(seq[0][n]);
+			int len_pro1 = (int)strlen(seq[0][n]);
 			int len21 = len_pro1 - olen[k];
 			index = best_inx[k] = nthr_dist[k];
 			double sco2 = 0;
@@ -1075,7 +1074,7 @@ int main(int argc, char* argv[])
 		return -1;
 	}	
 	{
-		int mu = 0;
+		size_t mu = 0;
 		mu = fread(&len_partner[0], sizeof(int), 1, in_pwm);
 		mu = fread(pfm, sizeof(double), 4 * len_partner[0], in_pwm);
 		mu = fread(pwm, sizeof(double), 4 * len_partner[0], in_pwm);
@@ -1305,7 +1304,7 @@ int main(int argc, char* argv[])
 	double rat = prauc_two / prauc_max;
 	printf("%s\t%s\t%s\t%s\t%f\t%f\t%f\t%f\n", file_for, file_back, partner_pwm, partner_sga, prauc_one[0], prauc_one[1], prauc_two,rat);
 	//fprintf(outlog, "%s\t%s\t%s\t%s\t%g\t%g\t%g\n", file_for, file_back, partner_pwm, partner_sga, prauc_one[0], prauc_one[1], prauc_two);
-	if ((out_auc = fopen(file_auc, "wt")) == NULL)
+	if ((out_auc = fopen(file_auc, "at")) == NULL)
 	{
 		fprintf(out_auc, "Input file %s can't be opened!\n", file_auc);
 		exit(1);
