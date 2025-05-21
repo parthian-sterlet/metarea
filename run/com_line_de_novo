@@ -1,1 +1,1 @@
-./den.pl ../src/ ../examples/de_novo/ ../out/ motif .pfm 7 0.002 ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2 .fa _gb.fa ../genomes/mm/ups2kb_mm10.seq
+./den_pwm.pl ../src/ ../examples/de_novo/ ../out/ motif .pfm 7 0.002 ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2 .fa _gb.fa ../genomes/mm/ups2kb_mm10.seq
