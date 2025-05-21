@@ -1,0 +1,1 @@
+./den_sga.pl ../src/ ../examples/de_novo/ ../out/ ../genomes/mm/ motifs .mat  0.002 ../examples/PEAKS040296_STAT6_P52633_MACS2 .fa _gb.fa ups2kb_mm10.seq
