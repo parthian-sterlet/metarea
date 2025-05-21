@@ -19,7 +19,7 @@ void DelChar(char* str, char c)
 	int i, lens, size;
 
 	size = 0;
-	lens = strlen(str);
+	lens = (int)strlen(str);
 	for (i = 0; i < lens; i++)
 	{
 		if (str[i] != c)str[size++] = str[i];
@@ -47,7 +47,7 @@ int UnderStol(char* str, int nstol, char* ret, size_t size, char sep)
 	if (nstol == 0)
 	{
 		p2 = StrNStr(str, sep, 1);
-		if (p2 == -1)p2 = strlen(str);
+		if (p2 == -1)p2 = (int)strlen(str);
 		strncpy(ret, str, p2);
 		ret[p2] = '\0';
 		return 1;
@@ -58,7 +58,7 @@ int UnderStol(char* str, int nstol, char* ret, size_t size, char sep)
 		p2 = StrNStr(str, sep, nstol + 1);
 		if (p2 == -1)
 		{
-			p2 = strlen(str);
+			p2 = (int)strlen(str);
 		}
 		if (p1 == -1 || p2 == -1) return -1;
 		len = p2 - p1 - 1;
@@ -69,23 +69,32 @@ int UnderStol(char* str, int nstol, char* ret, size_t size, char sep)
 }
 int main(int argc, char* argv[])
 {
-	char d[300], s[300], head[300], file_out_log[300], file_in_pfm[300], file_in_pwm[300], file_in_tab[300], file_out_distb[300];
+	char d[300], s[300], head[300], mode[3], file_out_log[300], file_in_pfm[300], file_in_pwm[300], file_in_tab[300], file_out_distb[300];
 	int i, j, k;
 	FILE* out_log, * in_pfm, *in_pwm, *in_tab, * out_distb;
-	if (argc != 6)
+	if (argc != 7)
 	{
-		printf("%s 1file in_pfm 2file in_pwm 3file in tab 4file out_binary 5file out_log\n", argv[0]);		
+		printf("%s 1file in_pfm 2file in_pwm 3file in tab 4file out_binary 5char mode(wb OR ab) 6file out_log\n", argv[0]);		
 		return -1;
 	}
 	strcpy(file_in_pfm, argv[1]);
 	strcpy(file_in_pwm, argv[2]);
 	strcpy(file_in_tab, argv[3]);
 	strcpy(file_out_distb, argv[4]);
-	strcpy(file_out_log, argv[5]);
+	strcpy(mode, argv[5]);
+	strcpy(file_out_log, argv[6]);
 
 	if ((in_pfm = fopen(file_in_pfm, "rt")) == NULL)
 	{
 		printf("Out file %s can't be opened!\n", file_in_pfm);
+		return -1;
+	}
+	int check_mode = 0;
+	if (strcmp(mode, "ab") == 0)check_mode = 1;
+	if (strcmp(mode, "wb") == 0)check_mode = 1;
+	if (check_mode == 0)
+	{
+		printf("binary file %s mode is wrong!\t ab OR wb is allowed\n", file_out_distb);
 		return -1;
 	}
 	int alfabet = 0;
@@ -97,25 +106,25 @@ int main(int argc, char* argv[])
 	{
 		DelChar(head, '\n');
 		DelChar(head, '\r');
-		int headlen = strlen(head);
+		int headlen = (int)strlen(head);
 		if (head[headlen - 1] == '\t')
 		{
 			head[headlen - 1] = '\0';
 			headlen--;
 		}
-		int shift_col, counttab = 0;
+		int counttab = 0;
 		for (i = 0; i < headlen; i++)
 		{
 			if (head[i] == '\t')counttab++;
 		}
-		if (counttab == 4 || counttab == 16)
+		if (counttab == 4) // || counttab == 16
 		{
 			shift_col = 1;
 			alfabet = counttab;
 		}
 		else
 		{
-			if (counttab == 3 || counttab == 15)
+			if (counttab == 3) // || counttab == 15
 			{
 				shift_col = 0;
 				alfabet = counttab + 1;
@@ -235,7 +244,7 @@ int main(int argc, char* argv[])
 	}
 	fclose(in_tab);
 
-	if ((out_distb = fopen(file_out_distb, "wb")) == NULL)
+	if ((out_distb = fopen(file_out_distb, "ab")) == NULL)
 	{
 		printf("Out file %s can't be opened!\n", file_out_distb);
 		return -1;
@@ -256,5 +265,7 @@ int main(int argc, char* argv[])
 	}
 	fprintf(out_log, "%d\t%d\t%.18f\t%.18f\n", len, n_thresh, thr_dist[0], fpr_dist[0]);
 	fclose(out_log);
+	delete[] thr_dist;
+	delete[] fpr_dist;
 	return 0;
 }

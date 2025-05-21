@@ -16,7 +16,7 @@ void DelChar(char* str, char c)
 	int i, lens, size;
 
 	size = 0;
-	lens = strlen(str);
+	lens = (int)strlen(str);
 	for (i = 0; i < lens; i++)
 	{
 		if (str[i] != c)str[size++] = str[i];
@@ -44,7 +44,7 @@ int UnderStol(char* str, int nstol, char* ret, size_t size, char sep)
 	if (nstol == 0)
 	{
 		p2 = StrNStr(str, sep, 1);
-		if (p2 == -1)p2 = strlen(str);
+		if (p2 == -1)p2 = (int)strlen(str);
 		strncpy(ret, str, p2);
 		ret[p2] = '\0';
 		return 1;
@@ -55,7 +55,7 @@ int UnderStol(char* str, int nstol, char* ret, size_t size, char sep)
 		p2 = StrNStr(str, sep, nstol + 1);
 		if (p2 == -1)
 		{
-			p2 = strlen(str);
+			p2 = (int)strlen(str);
 		}
 		if (p1 == -1 || p2 == -1) return -1;
 		len = p2 - p1 - 1;
@@ -64,6 +64,34 @@ int UnderStol(char* str, int nstol, char* ret, size_t size, char sep)
 		return 1;
 	}
 }
+int UnderStolStr(char* str, int nstol, char* ret, size_t size, char sep)
+{
+	memset(ret, '\0', size);
+	int p1, p2, len;
+	if (nstol == 0)
+	{
+		p2 = StrNStr(str, sep, 1);
+		if (p2 == -1)p2 = (int)strlen(str);
+		strncpy(ret, str, p2);
+		ret[p2] = '\0';
+		return 1;
+	}
+	else
+	{
+		p1 = StrNStr(str, sep, nstol);
+		p2 = StrNStr(str, sep, nstol + 1);
+		if (p2 == -1)
+		{
+			p2 = (int)strlen(str);
+		}
+		if (p1 == -1 || p2 == -1) return -1;
+		len = p2 - p1 - 1;
+		strncpy(ret, &str[p1 + 1], len);
+		ret[len] = '\0';
+		return 1;
+	}
+}
+
 struct due {
 	double buf;
 	int sta;
@@ -89,8 +117,8 @@ struct city {
 	char site[300];
 	int size;
 	int len;
-	double c;
-	double std;
+	double min;
+	double raz;
 	struct due tot[DIM];
 	void get_copy(city* a);
 	void sort_all(void);
@@ -114,21 +142,22 @@ int city::get_file(char* file)
 	fgets(d, sizeof(d), in);
 	len = atoi(d);
 	fgets(d, sizeof(d), in);
-	c = atof(d);
-	std = 0.05;
+	min = atof(d);
+	fgets(d, sizeof(d), in);
+	raz = atof(d);
 	char sep = '\t', s[30];
 	int i, test;
 	for (i = 0; i < size; i++)
 	{
 		fgets(d, sizeof(d), in);
 		tot[i].sta = atoi(d);
-		test = UnderStol(d, 1, s, sizeof(s), sep);
+		test = UnderStolStr(d, 1, s, sizeof(s), sep);
 		if (test == -1) { printf("Wrong format %s\n", d); return(-1); }
 		tot[i].end = atoi(s);
-		test = UnderStol(d, 2, s, sizeof(s), sep);
+		test = UnderStolStr(d, 2, s, sizeof(s), sep);
 		if (test == -1) { printf("Wrong format %s\n", d); return(-1); }
 		tot[i].buf = atof(s);
-		test = UnderStol(d, 3, s, sizeof(s), sep);
+		test = UnderStolStr(d, 3, s, sizeof(s), sep);
 		if (test == -1) { printf("Wrong format %s\n", d); return(-1); }
 		tot[i].num = atoi(s);
 	}
@@ -139,15 +168,16 @@ void city::get_copy(city* a)
 {
 	strcpy(a->site, site);
 	a->size = size;
-	a->std = std;
+	a->min = min;
 	a->len = len;
-	a->c = c;
+	a->raz = raz;
 	int i;
 	for (i = 0; i < size; i++)
 	{
 		tot[i].get_copy(&a->tot[i]);
 	}
 }
+
 int compare_due(const void* X1, const void* X2)
 {
 	struct due* S1 = (struct due*)X1;
@@ -168,21 +198,30 @@ void city::sort_all(void)
 int main(int argc, char* argv[])
 {
 	char d[300], file_out_log[300], file_in_sga[300], file_in_tab[300], file_out_distb[300];
-	char s[100];
+	char s[100], mode[3];
 	int k;
 	FILE* out_log, * in_tab, * out_distb;
 	city sta;
 
-	if (argc != 5)
+	if (argc != 6)
 	{
-		printf("%s 1file in_pfm 2file in_pwm 3file in tab 4file out_binary 5file out_log\n", argv[0]);		//6file out_cpp_arr 7file out_cpp_struct_many 8char name
+		printf("%s 1file in_sga 2file in tab 3file out_binary 4char mode(wb OR ab) 5file out_log\n", argv[0]);		
 		return -1;
 	}
 	strcpy(file_in_sga, argv[1]);
 	strcpy(file_in_tab, argv[2]);
 	strcpy(file_out_distb, argv[3]);
-	strcpy(file_out_log, argv[4]);
+	strcpy(mode, argv[4]);
+	strcpy(file_out_log, argv[5]);
 
+	int check_mode = 0;
+	if (strcmp(mode, "ab") == 0)check_mode = 1;
+	if (strcmp(mode, "wb") == 0)check_mode = 1;
+	if (check_mode == 0)
+	{
+		printf("binary file %s mode is wrong!\t ab OR wb is allowed\n", file_out_distb);
+		return -1;
+	}
 	if (sta.get_file(file_in_sga) == -1)
 	{
 		printf("Site %s function not found!", file_in_sga);
@@ -229,7 +268,7 @@ int main(int argc, char* argv[])
 	}
 	fclose(in_tab);
 
-	if ((out_distb = fopen(file_out_distb, "wb")) == NULL)
+	if ((out_distb = fopen(file_out_distb, mode)) == NULL)
 	{
 		printf("Out file %s can't be opened!\n", file_out_distb);
 		return -1;
@@ -247,5 +286,7 @@ int main(int argc, char* argv[])
 	}
 	fprintf(out_log, "%d\t%d\t%.18f\t%.18f\n", sta.len, n_thresh, thr_dist[0], fpr_dist[0]);
 	fclose(out_log);
+	delete[] thr_dist;
+	delete[] fpr_dist;
 	return 0;
 }
