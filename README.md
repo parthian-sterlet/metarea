@@ -130,4 +130,4 @@ Finally, MetArea algorithm computes the joint PR curve for the combination of tw
 
 - Generation of the binary file for the PWM model from the text files of the model matrices PFM/PWM and the table (Thresholds of model vs. ERRs), [pwm_pwm_txt_bin](https://github.com/parthian-sterlet/metarea/blob/main/run/pwm_pwm_txt_bin)
  
-- Generation of the binary files for the SiteGA model from the text files of the model matrix and the table (Thresholds of model vs. ERRs), [pwm_sga_txt_bin](https://github.com/parthian-sterlet/metarea/blob/main/run/pwm_sga_txt_bin)
+- Generation of the binary file for the SiteGA model from the text file of the model matrix and the table (Thresholds of model vs. ERRs), [pwm_sga_txt_bin](https://github.com/parthian-sterlet/metarea/blob/main/run/pwm_sga_txt_bin)
