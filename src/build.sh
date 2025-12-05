@@ -28,6 +28,8 @@ chmod a+x com_line_de_novo_pwm
 chmod a+x com_line_de_novo_sga
 chmod a+x den_pwm.pl
 chmod a+x den_sga.pl
+chmod a+x pwm_pwm_txt_bin
+chmod a+x pwm_sga_txt_bin
 
 cd ../partners
 cat h12core_hg38.binary.tar.gz.part* > h12core_hg38.binary.tar.gz
