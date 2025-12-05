@@ -1,4 +1,4 @@
 ./pfm_to_pwm_mat.exe ../examples/pwm_sga/PEAKS039234_BHLHA15.pfm ./examples/pwm_sga/PEAKS039234_BHLHA15.pwm
 ./pwm_iz_pwm_thr_dist0.exe ../examples/pwm_sga/PEAKS039234_BHLHA15.pfm ../examples/pwm_sga/PEAKS039234_BHLHA15.pwm ../genomes/mm/mm_ups2kb.seq ../examples/pwm_sga/pwm.dist ../examples/pwm_sga/pwm.binary 0.01 0.0000005 ../examples/pwm_sga/pwm.log 0.00002 0
-./sitega_thr_dist_mat.exe ../examples/ PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa ../examples/pwm_sga/PEAKS039234_BHLHA15_sga.mat ../genomes/mm/mm_ups2kb.seq ../examples/pwm_sga/sga.dist ../examples/pwm_sga/sga.binary 0.01 0.5 0.0000005
+./sitega_thr_dist_mat.exe ../genomes/mm/  ../examples/pwm_sga/PEAKS039234_BHLHA15_sga.mat mm_ups2kb.seq ../examples/pwm_sga/sga.dist ../examples/pwm_sga/sga.binary 0.01 0.0000005 ../examples/pwm_sga/sga_log wb
 ./pauc_forback_pwm_sga_only.exe  ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2.fa ../examples/PEAKS039234_BHLHA15_Q9QYC3_MACS2_pb.fa ../examples/pwm_sga/pwm.binary ../examples/pwm_sga/sga.binary 0.002 ../examples/pwm_sga/pwm_sga.pauc ../examples/pwm_sga/pwm.prc ../examples/pwm_sga/sga.prc  ../examples/pwm_sga/pwm_sga.prc
