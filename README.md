@@ -102,6 +102,21 @@ Finally, MetArea algorithm computes the joint PR curve for the combination of tw
 9. output file log1, list of pAUPRC values for all single motifs from the collection, [example list of pAUPRC values fo single motifs](https://github.com/parthian-sterlet/metarea/blob/main/examples/lib_lib/PEAKS039234_BHLHA15_Q9QYC3_MACS2.auc_log1)
 10. output file log2, list of joint pAUPRC values for all pairs of motifs formed by top-scored M motifs, [example list of joint pAUPRC values for all pairs of motifs](https://github.com/parthian-sterlet/metarea/blob/main/examples/lib_lib/PEAKS039234_BHLHA15_Q9QYC3_MACS2.auc_log2) including the corresponding list of the significance of similarity of motifs in pairs
 
+# How to compile
+* In Linux system: 
+
+git clone https://github.com/parthian-sterlet/metarea
+
+cd metarea/src
+
+chmod a+x build.sh
+
+./build.sh
+
+* In Windiws system:
+
+separate compilation of all source files in VC++
+
 # Command line examples
 
 - One PWM motif vs. another PWM motif, [pauc_forback_2motifs_only.cpp](https://github.com/parthian-sterlet/metarea/blob/main/src/pauc_forback_2motifs_only.cpp)
