@@ -2,7 +2,7 @@
 
 g++ -o pauc_forback_2motifs.exe pauc_forback_2motifs.cpp
 g++ -o pauc_forback_2motif0.exe pauc_forback_2motif0.cpp
-g++ -o pauc_forback_2motif0.exe pauc_forback_2motif0s.cpp
+g++ -o pauc_forback_2motif0s.exe pauc_forback_2motif0s.cpp
 g++ -o pauc_forback_anc_lib.exe pauc_forback_anc_lib.cpp
 g++ -o pauc_forback_pwm_sga_only.exe pauc_forback_pwm_sga_only.cpp
 g++ -o pauc_forback_2motifs_only.exe pauc_forback_2motifs_only.cpp
